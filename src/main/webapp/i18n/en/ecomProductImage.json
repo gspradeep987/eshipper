@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomProductImage": {
+      "home": {
+        "title": "Ecom Product Images",
+        "createLabel": "Create a new Ecom Product Image",
+        "createOrEditLabel": "Create or edit a Ecom Product Image",
+        "notFound": "No Ecom Product Images found"
+      },
+      "created": "A new Ecom Product Image is created with identifier {{ param }}",
+      "updated": "A Ecom Product Image is updated with identifier {{ param }}",
+      "deleted": "A Ecom Product Image is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Product Image {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Product Image"
+      },
+      "imageName": "Image Name",
+      "imagePath": "Image Path",
+      "ecomProduct": "Ecom Product"
+    }
+  }
+}

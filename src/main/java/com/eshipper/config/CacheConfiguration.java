@@ -42,6 +42,36 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.User.class.getName());
             createCache(cm, com.eshipper.domain.Authority.class.getName());
             createCache(cm, com.eshipper.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.eshipper.domain.EcomStore.class.getName());
+            createCache(cm, com.eshipper.domain.EcomStore.class.getName() + ".ecomMailTemplates");
+            createCache(cm, com.eshipper.domain.EcomStore.class.getName() + ".ecomOrders");
+            createCache(cm, com.eshipper.domain.EcomStore.class.getName() + ".shipmentServices");
+            createCache(cm, com.eshipper.domain.EcomStoreAddress.class.getName());
+            createCache(cm, com.eshipper.domain.EcomStoreColorTheme.class.getName());
+            createCache(cm, com.eshipper.domain.ShipmentService.class.getName());
+            createCache(cm, com.eshipper.domain.ShipmentService.class.getName() + ".ecomStores");
+            createCache(cm, com.eshipper.domain.EcomStoreShipmentSettings.class.getName());
+            createCache(cm, com.eshipper.domain.EcomStorePackageSettings.class.getName());
+            createCache(cm, com.eshipper.domain.EcomStoreMarkup.class.getName());
+            createCache(cm, com.eshipper.domain.EcomMarkupPrimary.class.getName());
+            createCache(cm, com.eshipper.domain.EcomMarkupSecondary.class.getName());
+            createCache(cm, com.eshipper.domain.EcomMarkupTertiary.class.getName());
+            createCache(cm, com.eshipper.domain.EcomMarkupQuaternary.class.getName());
+            createCache(cm, com.eshipper.domain.EcomMailTemplate.class.getName());
+            createCache(cm, com.eshipper.domain.EcomProduct.class.getName());
+            createCache(cm, com.eshipper.domain.EcomProduct.class.getName() + ".ecomProductImages");
+            createCache(cm, com.eshipper.domain.EcomProduct.class.getName() + ".ecomWarehouses");
+            createCache(cm, com.eshipper.domain.EcomProductImage.class.getName());
+            createCache(cm, com.eshipper.domain.EcomWarehouse.class.getName());
+            createCache(cm, com.eshipper.domain.EcomWarehouse.class.getName() + ".ecomProducts");
+            createCache(cm, com.eshipper.domain.EcomOrder.class.getName());
+            createCache(cm, com.eshipper.domain.EcomOrder.class.getName() + ".ecomProducts");
+            createCache(cm, com.eshipper.domain.Currency.class.getName());
+            createCache(cm, com.eshipper.domain.Company.class.getName());
+            createCache(cm, com.eshipper.domain.Country.class.getName());
+            createCache(cm, com.eshipper.domain.ShippingAddress.class.getName());
+            createCache(cm, com.eshipper.domain.Province.class.getName());
+            createCache(cm, com.eshipper.domain.City.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

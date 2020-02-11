@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomMarkupQuaternary": {
+      "home": {
+        "title": "Ecom Markup Quaternaries",
+        "createLabel": "Create a new Ecom Markup Quaternary",
+        "createOrEditLabel": "Create or edit a Ecom Markup Quaternary",
+        "notFound": "No Ecom Markup Quaternaries found"
+      },
+      "created": "A new Ecom Markup Quaternary is created with identifier {{ param }}",
+      "updated": "A Ecom Markup Quaternary is updated with identifier {{ param }}",
+      "deleted": "A Ecom Markup Quaternary is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Markup Quaternary {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Markup Quaternary"
+      },
+      "value": "Value",
+      "country": "Country",
+      "ecomStoreMarkup": "Ecom Store Markup"
+    }
+  }
+}

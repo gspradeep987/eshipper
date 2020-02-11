@@ -1,0 +1,51 @@
+{
+  "eshipperApp": {
+    "ecomOrder": {
+      "home": {
+        "title": "Ecom Orders",
+        "createLabel": "Create a new Ecom Order",
+        "createOrEditLabel": "Create or edit a Ecom Order",
+        "notFound": "No Ecom Orders found"
+      },
+      "created": "A new Ecom Order is created with identifier {{ param }}",
+      "updated": "A Ecom Order is updated with identifier {{ param }}",
+      "deleted": "A Ecom Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Order"
+      },
+      "ecomOrderNumber": "Ecom Order Number",
+      "customerName": "Customer Name",
+      "domainName": "Domain Name",
+      "name": "Name",
+      "email": "Email",
+      "gateway": "Gateway",
+      "totalPrice": "Total Price",
+      "subTotalPrice": "Sub Total Price",
+      "totalWeight": "Total Weight",
+      "totalTax": "Total Tax",
+      "fulfillmentStatus": "Fulfillment Status",
+      "paymentStatus": "Payment Status",
+      "financialStatus": "Financial Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "updatedBy": "Updated By",
+      "isCancelled": "Is Cancelled",
+      "isShipped": "Is Shipped",
+      "eshipperStatus": "Eshipper Status",
+      "residentialShippingAddress": "Residential Shipping Address",
+      "shippingOrderRef": "Shipping Order Ref",
+      "fromEmail": "From Email",
+      "isCancelSchedule": "Is Cancel Schedule",
+      "isSchedulePickup": "Is Schedule Pickup",
+      "packageTypeId": "Package Type Id",
+      "ecomProduct": "Ecom Product",
+      "currency": "Currency",
+      "shippingAddress": "Shipping Address",
+      "billingAddress": "Billing Address",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

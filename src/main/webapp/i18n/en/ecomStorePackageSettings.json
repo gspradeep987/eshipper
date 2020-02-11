@@ -1,0 +1,26 @@
+{
+  "eshipperApp": {
+    "ecomStorePackageSettings": {
+      "home": {
+        "title": "Ecom Store Package Settings",
+        "createLabel": "Create a new Ecom Store Package Settings",
+        "createOrEditLabel": "Create or edit a Ecom Store Package Settings",
+        "notFound": "No Ecom Store Package Settings found"
+      },
+      "created": "A new Ecom Store Package Settings is created with identifier {{ param }}",
+      "updated": "A Ecom Store Package Settings is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Package Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Package Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Package Settings"
+      },
+      "packingInfo1": "Packing Info 1",
+      "packingInfo2": "Packing Info 2",
+      "packingInfo3": "Packing Info 3",
+      "packingInfo4": "Packing Info 4",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

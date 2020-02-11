@@ -1,0 +1,40 @@
+{
+    "name": "EcomStorePackageSettings",
+    "fields": [
+        {
+            "fieldName": "packingInfo1",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "packingInfo2",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "packingInfo3",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "packingInfo4",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStore",
+            "otherEntityRelationshipName": "ecomStorePackageSettings",
+            "relationshipName": "ecomStore",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200211052000",
+    "entityTableName": "ecom_store_package_settings",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity EcomStoreMarkup.
+    -->
+    <changeSet id="20200211052100-1" author="jhipster">
+        <createTable tableName="ecom_store_markup">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="markup_type" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="min_value" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="domestic_value" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="intl_value" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="flat_rate_value" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="opex_value" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="ecom_markup_primary_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_primary_id" />
+            </column>
+            <column name="ecom_markup_secondary_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_secondary_id" />
+            </column>
+            <column name="ecom_markup_tertiary_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_tertiary_id" />
+            </column>
+            <column name="ecom_markup_quaternary_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_quaternary_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20200211052100-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20200211052100-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/ecom_store_markup.csv"
+                  separator=";"
+                  tableName="ecom_store_markup">
+            <column name="id" type="numeric"/>
+            <column name="markup_type" type="string"/>
+            <column name="min_value" type="numeric"/>
+            <column name="domestic_value" type="numeric"/>
+            <column name="intl_value" type="numeric"/>
+            <column name="flat_rate_value" type="numeric"/>
+            <column name="opex_value" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

@@ -211,7 +211,7 @@ relationship OneToMany {
   EcomOrder{currency} to Currency
   EcomOrder{shippingAddress} to ShippingAddress
   EcomOrder{billingAddress} to ShippingAddress
-  EcomStore to EcomProduct
+  EcomStore{ecomProduct} to EcomProduct
 }
 
  relationship ManyToMany {

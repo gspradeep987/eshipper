@@ -1,0 +1,31 @@
+{
+  "eshipperApp": {
+    "ecomStoreAddress": {
+      "home": {
+        "title": "Ecom Store Addresses",
+        "createLabel": "Create a new Ecom Store Address",
+        "createOrEditLabel": "Create or edit a Ecom Store Address",
+        "notFound": "No Ecom Store Addresses found"
+      },
+      "created": "A new Ecom Store Address is created with identifier {{ param }}",
+      "updated": "A Ecom Store Address is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Address"
+      },
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "name": "Name",
+      "phone": "Phone",
+      "emailAccId": "Email Acc Id",
+      "defaultAddress": "Default Address",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "eshipperApp": {
+    "ecomStoreShipmentSettings": {
+      "home": {
+        "title": "Ecom Store Shipment Settings",
+        "createLabel": "Create a new Ecom Store Shipment Settings",
+        "createOrEditLabel": "Create or edit a Ecom Store Shipment Settings",
+        "notFound": "No Ecom Store Shipment Settings found"
+      },
+      "created": "A new Ecom Store Shipment Settings is created with identifier {{ param }}",
+      "updated": "A Ecom Store Shipment Settings is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Shipment Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Shipment Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Shipment Settings"
+      },
+      "shippingMode": "Shipping Mode",
+      "signatureReqd": "Signature Reqd",
+      "schedulePickup": "Schedule Pickup",
+      "liveRates": "Live Rates",
+      "addResidential": "Add Residential",
+      "tailgateAtDestination": "Tailgate At Destination",
+      "tailgateAtSource": "Tailgate At Source",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

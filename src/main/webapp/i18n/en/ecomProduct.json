@@ -1,0 +1,39 @@
+{
+  "eshipperApp": {
+    "ecomProduct": {
+      "home": {
+        "title": "Ecom Products",
+        "createLabel": "Create a new Ecom Product",
+        "createOrEditLabel": "Create or edit a Ecom Product",
+        "notFound": "No Ecom Products found"
+      },
+      "created": "A new Ecom Product is created with identifier {{ param }}",
+      "updated": "A Ecom Product is updated with identifier {{ param }}",
+      "deleted": "A Ecom Product is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Product"
+      },
+      "title": "Title",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "weight": "Weight",
+      "dimUnit": "Dim Unit",
+      "wghtUnit": "Wght Unit",
+      "goodsValue": "Goods Value",
+      "productValue": "Product Value",
+      "hsCodes": "Hs Codes",
+      "sku": "Sku",
+      "policy": "Policy",
+      "insuranceAmt": "Insurance Amt",
+      "isInsured": "Is Insured",
+      "ecomProductImage": "Ecom Product Image",
+      "country": "Country",
+      "ecomWarehouse": "Ecom Warehouse",
+      "ecomOrder": "Ecom Order"
+    }
+  }
+}

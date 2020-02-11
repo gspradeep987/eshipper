@@ -1,0 +1,35 @@
+{
+    "name": "EcomMarkupQuaternary",
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "ecomMarkupQuaternary",
+            "relationshipName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStoreMarkup",
+            "otherEntityRelationshipName": "ecomMarkupQuaternary",
+            "relationshipName": "ecomStoreMarkup",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200211052500",
+    "entityTableName": "ecom_markup_quaternary",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

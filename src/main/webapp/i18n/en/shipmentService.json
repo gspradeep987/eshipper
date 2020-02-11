@@ -1,0 +1,23 @@
+{
+  "eshipperApp": {
+    "shipmentService": {
+      "home": {
+        "title": "Shipment Services",
+        "createLabel": "Create a new Shipment Service",
+        "createOrEditLabel": "Create or edit a Shipment Service",
+        "notFound": "No Shipment Services found"
+      },
+      "created": "A new Shipment Service is created with identifier {{ param }}",
+      "updated": "A Shipment Service is updated with identifier {{ param }}",
+      "deleted": "A Shipment Service is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shipment Service {{ id }}?"
+      },
+      "detail": {
+        "title": "Shipment Service"
+      },
+      "name": "Name",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

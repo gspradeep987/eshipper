@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomStoreColorTheme": {
+      "home": {
+        "title": "Ecom Store Color Themes",
+        "createLabel": "Create a new Ecom Store Color Theme",
+        "createOrEditLabel": "Create or edit a Ecom Store Color Theme",
+        "notFound": "No Ecom Store Color Themes found"
+      },
+      "created": "A new Ecom Store Color Theme is created with identifier {{ param }}",
+      "updated": "A Ecom Store Color Theme is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Color Theme is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Color Theme {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Color Theme"
+      },
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

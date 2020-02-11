@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ecom-store-markup-heading" jhiTranslate="eshipperApp.ecomStoreMarkup.home.createOrEditLabel">Create or edit a Ecom Store Markup</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.markupType" for="field_markupType">Markup Type</label>
+                    <input type="text" class="form-control" name="markupType" id="field_markupType"
+                           formControlName="markupType"/>
+                    <div *ngIf="editForm.get('markupType')!.invalid && (editForm.get('markupType')!.dirty || editForm.get('markupType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('markupType')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.minValue" for="field_minValue">Min Value</label>
+                    <input type="number" class="form-control" name="minValue" id="field_minValue"
+                           formControlName="minValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.domesticValue" for="field_domesticValue">Domestic Value</label>
+                    <input type="number" class="form-control" name="domesticValue" id="field_domesticValue"
+                           formControlName="domesticValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.intlValue" for="field_intlValue">Intl Value</label>
+                    <input type="number" class="form-control" name="intlValue" id="field_intlValue"
+                           formControlName="intlValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.flatRateValue" for="field_flatRateValue">Flat Rate Value</label>
+                    <input type="number" class="form-control" name="flatRateValue" id="field_flatRateValue"
+                           formControlName="flatRateValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.opexValue" for="field_opexValue">Opex Value</label>
+                    <input type="number" class="form-control" name="opexValue" id="field_opexValue"
+                           formControlName="opexValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupPrimary" for="field_ecomMarkupPrimary">Ecom Markup Primary</label>
+                    <select class="form-control" id="field_ecomMarkupPrimary" name="ecomMarkupPrimary" formControlName="ecomMarkupPrimaryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ecomMarkupPrimaryOption.id" *ngFor="let ecomMarkupPrimaryOption of ecommarkupprimaries; trackBy: trackById">{{ ecomMarkupPrimaryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupSecondary" for="field_ecomMarkupSecondary">Ecom Markup Secondary</label>
+                    <select class="form-control" id="field_ecomMarkupSecondary" name="ecomMarkupSecondary" formControlName="ecomMarkupSecondaryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ecomMarkupSecondaryOption.id" *ngFor="let ecomMarkupSecondaryOption of ecommarkupsecondaries; trackBy: trackById">{{ ecomMarkupSecondaryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupTertiary" for="field_ecomMarkupTertiary">Ecom Markup Tertiary</label>
+                    <select class="form-control" id="field_ecomMarkupTertiary" name="ecomMarkupTertiary" formControlName="ecomMarkupTertiaryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ecomMarkupTertiaryOption.id" *ngFor="let ecomMarkupTertiaryOption of ecommarkuptertiaries; trackBy: trackById">{{ ecomMarkupTertiaryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupQuaternary" for="field_ecomMarkupQuaternary">Ecom Markup Quaternary</label>
+                    <select class="form-control" id="field_ecomMarkupQuaternary" name="ecomMarkupQuaternary" formControlName="ecomMarkupQuaternaryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ecomMarkupQuaternaryOption.id" *ngFor="let ecomMarkupQuaternaryOption of ecommarkupquaternaries; trackBy: trackById">{{ ecomMarkupQuaternaryOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
