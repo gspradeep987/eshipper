@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity EcomProduct.
+    -->
+    <changeSet id="20200211052700-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="ecom_product"
+                                 constraintName="fk_ecom_product_country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_product_id"
+                                 baseTableName="ecom_product_ecom_warehouse"
+                                 constraintName="fk_ecom_product_ecom_warehouse_ecom_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_product"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_warehouse_id"
+                                 baseTableName="ecom_product_ecom_warehouse"
+                                 constraintName="fk_ecom_product_ecom_warehouse_ecom_warehouse_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_warehouse"/>
+        
+        <addForeignKeyConstraint baseColumnNames="ecom_order_id"
+                                 baseTableName="ecom_product"
+                                 constraintName="fk_ecom_product_ecom_order_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_order"/>
+
+    </changeSet>
+</databaseChangeLog>

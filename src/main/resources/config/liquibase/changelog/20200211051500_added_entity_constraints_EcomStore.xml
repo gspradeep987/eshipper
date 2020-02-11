@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity EcomStore.
+    -->
+    <changeSet id="20200211051500-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ecom_store_address_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_store_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store_address"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_store_color_theme_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_store_color_theme_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store_color_theme"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_store_shipment_settings_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_store_shipment_settings_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store_shipment_settings"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_store_package_settings_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_store_package_settings_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store_package_settings"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_store_markup_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_store_markup_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store_markup"/>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_product_id"
+                                 baseTableName="ecom_store"
+                                 constraintName="fk_ecom_store_ecom_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_product"/>
+
+        <addForeignKeyConstraint baseColumnNames="ecom_store_id"
+                                 baseTableName="ecom_store_shipment_service"
+                                 constraintName="fk_ecom_store_shipment_service_ecom_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ecom_store"/>
+
+        <addForeignKeyConstraint baseColumnNames="shipment_service_id"
+                                 baseTableName="ecom_store_shipment_service"
+                                 constraintName="fk_ecom_store_shipment_service_shipment_service_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shipment_service"/>
+        
+    </changeSet>
+</databaseChangeLog>

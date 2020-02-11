@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ecomStoreShipmentSettings">
+            <h2><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.detail.title">Ecom Store Shipment Settings</span> {{ ecomStoreShipmentSettings.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.shippingMode">Shipping Mode</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.shippingMode }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.signatureReqd">Signature Reqd</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.signatureReqd }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.schedulePickup">Schedule Pickup</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.schedulePickup }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.liveRates">Live Rates</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.liveRates }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.addResidential">Add Residential</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.addResidential }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.tailgateAtDestination">Tailgate At Destination</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.tailgateAtDestination }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStoreShipmentSettings.tailgateAtSource">Tailgate At Source</span></dt>
+                <dd>
+                    <span>{{ ecomStoreShipmentSettings.tailgateAtSource }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ecom-store-shipment-settings', ecomStoreShipmentSettings.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

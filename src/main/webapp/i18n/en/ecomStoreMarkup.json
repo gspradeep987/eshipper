@@ -1,0 +1,32 @@
+{
+  "eshipperApp": {
+    "ecomStoreMarkup": {
+      "home": {
+        "title": "Ecom Store Markups",
+        "createLabel": "Create a new Ecom Store Markup",
+        "createOrEditLabel": "Create or edit a Ecom Store Markup",
+        "notFound": "No Ecom Store Markups found"
+      },
+      "created": "A new Ecom Store Markup is created with identifier {{ param }}",
+      "updated": "A Ecom Store Markup is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Markup is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Markup {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Markup"
+      },
+      "markupType": "Markup Type",
+      "minValue": "Min Value",
+      "domesticValue": "Domestic Value",
+      "intlValue": "Intl Value",
+      "flatRateValue": "Flat Rate Value",
+      "opexValue": "Opex Value",
+      "ecomMarkupPrimary": "Ecom Markup Primary",
+      "ecomMarkupSecondary": "Ecom Markup Secondary",
+      "ecomMarkupTertiary": "Ecom Markup Tertiary",
+      "ecomMarkupQuaternary": "Ecom Markup Quaternary",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

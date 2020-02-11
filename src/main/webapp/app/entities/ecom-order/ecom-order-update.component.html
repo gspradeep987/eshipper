@@ -1,0 +1,282 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ecom-order-heading" jhiTranslate="eshipperApp.ecomOrder.home.createOrEditLabel">Create or edit a Ecom Order</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.ecomOrderNumber" for="field_ecomOrderNumber">Ecom Order Number</label>
+                    <input type="number" class="form-control" name="ecomOrderNumber" id="field_ecomOrderNumber"
+                           formControlName="ecomOrderNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.customerName" for="field_customerName">Customer Name</label>
+                    <input type="text" class="form-control" name="customerName" id="field_customerName"
+                           formControlName="customerName"/>
+                    <div *ngIf="editForm.get('customerName')!.invalid && (editForm.get('customerName')!.dirty || editForm.get('customerName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('customerName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.domainName" for="field_domainName">Domain Name</label>
+                    <input type="text" class="form-control" name="domainName" id="field_domainName"
+                           formControlName="domainName"/>
+                    <div *ngIf="editForm.get('domainName')!.invalid && (editForm.get('domainName')!.dirty || editForm.get('domainName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('domainName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.gateway" for="field_gateway">Gateway</label>
+                    <input type="text" class="form-control" name="gateway" id="field_gateway"
+                           formControlName="gateway"/>
+                    <div *ngIf="editForm.get('gateway')!.invalid && (editForm.get('gateway')!.dirty || editForm.get('gateway')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gateway')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.totalPrice" for="field_totalPrice">Total Price</label>
+                    <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
+                           formControlName="totalPrice"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.subTotalPrice" for="field_subTotalPrice">Sub Total Price</label>
+                    <input type="number" class="form-control" name="subTotalPrice" id="field_subTotalPrice"
+                           formControlName="subTotalPrice"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.totalWeight" for="field_totalWeight">Total Weight</label>
+                    <input type="number" class="form-control" name="totalWeight" id="field_totalWeight"
+                           formControlName="totalWeight"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.totalTax" for="field_totalTax">Total Tax</label>
+                    <input type="number" class="form-control" name="totalTax" id="field_totalTax"
+                           formControlName="totalTax"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.fulfillmentStatus" for="field_fulfillmentStatus">Fulfillment Status</label>
+                    <input type="text" class="form-control" name="fulfillmentStatus" id="field_fulfillmentStatus"
+                           formControlName="fulfillmentStatus"/>
+                    <div *ngIf="editForm.get('fulfillmentStatus')!.invalid && (editForm.get('fulfillmentStatus')!.dirty || editForm.get('fulfillmentStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fulfillmentStatus')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.paymentStatus" for="field_paymentStatus">Payment Status</label>
+                    <input type="text" class="form-control" name="paymentStatus" id="field_paymentStatus"
+                           formControlName="paymentStatus"/>
+                    <div *ngIf="editForm.get('paymentStatus')!.invalid && (editForm.get('paymentStatus')!.dirty || editForm.get('paymentStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('paymentStatus')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.financialStatus" for="field_financialStatus">Financial Status</label>
+                    <input type="text" class="form-control" name="financialStatus" id="field_financialStatus"
+                           formControlName="financialStatus"/>
+                    <div *ngIf="editForm.get('financialStatus')!.invalid && (editForm.get('financialStatus')!.dirty || editForm.get('financialStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('financialStatus')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.updatedDate" for="field_updatedDate">Updated Date</label>
+                    <div class="input-group">
+                        <input id="field_updatedDate" type="text" class="form-control" name="updatedDate" ngbDatepicker #updatedDateDp="ngbDatepicker" formControlName="updatedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="updatedDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                    <div *ngIf="editForm.get('updatedBy')!.invalid && (editForm.get('updatedBy')!.dirty || editForm.get('updatedBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('updatedBy')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.isCancelled" for="field_isCancelled">Is Cancelled</label>
+                    <input type="checkbox" class="form-control" name="isCancelled" id="field_isCancelled"
+                           formControlName="isCancelled"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.isShipped" for="field_isShipped">Is Shipped</label>
+                    <input type="checkbox" class="form-control" name="isShipped" id="field_isShipped"
+                           formControlName="isShipped"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.eshipperStatus" for="field_eshipperStatus">Eshipper Status</label>
+                    <input type="text" class="form-control" name="eshipperStatus" id="field_eshipperStatus"
+                           formControlName="eshipperStatus"/>
+                    <div *ngIf="editForm.get('eshipperStatus')!.invalid && (editForm.get('eshipperStatus')!.dirty || editForm.get('eshipperStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('eshipperStatus')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.residentialShippingAddress" for="field_residentialShippingAddress">Residential Shipping Address</label>
+                    <input type="checkbox" class="form-control" name="residentialShippingAddress" id="field_residentialShippingAddress"
+                           formControlName="residentialShippingAddress"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.shippingOrderRef" for="field_shippingOrderRef">Shipping Order Ref</label>
+                    <input type="number" class="form-control" name="shippingOrderRef" id="field_shippingOrderRef"
+                           formControlName="shippingOrderRef"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.fromEmail" for="field_fromEmail">From Email</label>
+                    <input type="text" class="form-control" name="fromEmail" id="field_fromEmail"
+                           formControlName="fromEmail"/>
+                    <div *ngIf="editForm.get('fromEmail')!.invalid && (editForm.get('fromEmail')!.dirty || editForm.get('fromEmail')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fromEmail')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.isCancelSchedule" for="field_isCancelSchedule">Is Cancel Schedule</label>
+                    <input type="checkbox" class="form-control" name="isCancelSchedule" id="field_isCancelSchedule"
+                           formControlName="isCancelSchedule"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.isSchedulePickup" for="field_isSchedulePickup">Is Schedule Pickup</label>
+                    <input type="checkbox" class="form-control" name="isSchedulePickup" id="field_isSchedulePickup"
+                           formControlName="isSchedulePickup"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.packageTypeId" for="field_packageTypeId">Package Type Id</label>
+                    <input type="number" class="form-control" name="packageTypeId" id="field_packageTypeId"
+                           formControlName="packageTypeId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.currency" for="field_currency">Currency</label>
+                    <select class="form-control" id="field_currency" name="currency" formControlName="currencyId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="currencyOption.id" *ngFor="let currencyOption of currencies; trackBy: trackById">{{ currencyOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.shippingAddress" for="field_shippingAddress">Shipping Address</label>
+                    <select class="form-control" id="field_shippingAddress" name="shippingAddress" formControlName="shippingAddressId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="shippingAddressOption.id" *ngFor="let shippingAddressOption of shippingaddresses; trackBy: trackById">{{ shippingAddressOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.billingAddress" for="field_billingAddress">Billing Address</label>
+                    <select class="form-control" id="field_billingAddress" name="billingAddress" formControlName="billingAddressId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="shippingAddressOption.id" *ngFor="let shippingAddressOption of shippingaddresses; trackBy: trackById">{{ shippingAddressOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomOrder.ecomStore" for="field_ecomStore">Ecom Store</label>
+                    <select class="form-control" id="field_ecomStore" name="ecomStore" formControlName="ecomStoreId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ecomStoreOption.id" *ngFor="let ecomStoreOption of ecomstores; trackBy: trackById">{{ ecomStoreOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -14,6 +14,36 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051500_added_entity_EcomStore.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051600_added_entity_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051700_added_entity_EcomStoreColorTheme.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051800_added_entity_ShipmentService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051900_added_entity_EcomStoreShipmentSettings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052000_added_entity_EcomStorePackageSettings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052100_added_entity_EcomStoreMarkup.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052200_added_entity_EcomMarkupPrimary.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052300_added_entity_EcomMarkupSecondary.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052400_added_entity_EcomMarkupTertiary.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052500_added_entity_EcomMarkupQuaternary.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052600_added_entity_EcomMailTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052700_added_entity_EcomProduct.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052800_added_entity_EcomProductImage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052900_added_entity_EcomWarehouse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053000_added_entity_EcomOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053100_added_entity_Currency.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053200_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053400_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053500_added_entity_ShippingAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053600_added_entity_Province.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053700_added_entity_City.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200211051500_added_entity_constraints_EcomStore.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211051600_added_entity_constraints_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052100_added_entity_constraints_EcomStoreMarkup.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052500_added_entity_constraints_EcomMarkupQuaternary.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052600_added_entity_constraints_EcomMailTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052700_added_entity_constraints_EcomProduct.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211052800_added_entity_constraints_EcomProductImage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053000_added_entity_constraints_EcomOrder.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

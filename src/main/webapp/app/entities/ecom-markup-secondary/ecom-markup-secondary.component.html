@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.ecomMarkupSecondary.home.title">Ecom Markup Secondaries</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ecom-markup-secondary" [routerLink]="['/ecom-markup-secondary/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.ecomMarkupSecondary.home.createLabel">
+            Create a new Ecom Markup Secondary
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="ecomMarkupSecondaries?.length === 0">
+        <span jhiTranslate="eshipperApp.ecomMarkupSecondary.home.notFound">No ecomMarkupSecondaries found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="ecomMarkupSecondaries?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomMarkupSecondary.value">Value</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomMarkupSecondary.fromZip">From Zip</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomMarkupSecondary.toZip">To Zip</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ecomMarkupSecondary of ecomMarkupSecondaries ;trackBy: trackId">
+                    <td><a [routerLink]="['/ecom-markup-secondary', ecomMarkupSecondary.id, 'view']">{{ ecomMarkupSecondary.id }}</a></td>
+                    <td>{{ ecomMarkupSecondary.value }}</td>
+                    <td>{{ ecomMarkupSecondary.fromZip }}</td>
+                    <td>{{ ecomMarkupSecondary.toZip }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/ecom-markup-secondary', ecomMarkupSecondary.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/ecom-markup-secondary', ecomMarkupSecondary.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(ecomMarkupSecondary)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

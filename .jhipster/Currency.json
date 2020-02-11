@@ -1,0 +1,15 @@
+{
+    "name": "Currency",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200211053100",
+    "entityTableName": "currency",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

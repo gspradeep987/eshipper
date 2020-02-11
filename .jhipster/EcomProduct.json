@@ -1,0 +1,117 @@
+{
+    "name": "EcomProduct",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "length",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "width",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "dimUnit",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "5"
+        },
+        {
+            "fieldName": "wghtUnit",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "5"
+        },
+        {
+            "fieldName": "goodsValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "productValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "hsCodes",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "6"
+        },
+        {
+            "fieldName": "sku",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "policy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "insuranceAmt",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "isInsured",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ecomProductImage",
+            "otherEntityRelationshipName": "ecomProduct",
+            "relationshipName": "ecomProductImage"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "ecomProduct",
+            "relationshipName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "ecomWarehouse",
+            "otherEntityRelationshipName": "ecomProduct",
+            "relationshipName": "ecomWarehouse",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ecomOrder",
+            "otherEntityRelationshipName": "ecomProduct",
+            "relationshipName": "ecomOrder",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200211052700",
+    "entityTableName": "ecom_product",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

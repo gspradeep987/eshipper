@@ -1,0 +1,26 @@
+{
+  "eshipperApp": {
+    "ecomMarkupTertiary": {
+      "home": {
+        "title": "Ecom Markup Tertiaries",
+        "createLabel": "Create a new Ecom Markup Tertiary",
+        "createOrEditLabel": "Create or edit a Ecom Markup Tertiary",
+        "notFound": "No Ecom Markup Tertiaries found"
+      },
+      "created": "A new Ecom Markup Tertiary is created with identifier {{ param }}",
+      "updated": "A Ecom Markup Tertiary is updated with identifier {{ param }}",
+      "deleted": "A Ecom Markup Tertiary is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Markup Tertiary {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Markup Tertiary"
+      },
+      "wgt1to5": "Wgt 1 To 5",
+      "wgt6to10": "Wgt 6 To 10",
+      "wgt11to15": "Wgt 11 To 15",
+      "wgt16": "Wgt 16",
+      "ecomStoreMarkup": "Ecom Store Markup"
+    }
+  }
+}

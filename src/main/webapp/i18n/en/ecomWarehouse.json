@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomWarehouse": {
+      "home": {
+        "title": "Ecom Warehouses",
+        "createLabel": "Create a new Ecom Warehouse",
+        "createOrEditLabel": "Create or edit a Ecom Warehouse",
+        "notFound": "No Ecom Warehouses found"
+      },
+      "created": "A new Ecom Warehouse is created with identifier {{ param }}",
+      "updated": "A Ecom Warehouse is updated with identifier {{ param }}",
+      "deleted": "A Ecom Warehouse is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Warehouse {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Warehouse"
+      },
+      "name": "Name",
+      "address": "Address",
+      "ecomProduct": "Ecom Product"
+    }
+  }
+}

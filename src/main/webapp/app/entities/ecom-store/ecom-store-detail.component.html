@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ecomStore">
+            <h2><span jhiTranslate="eshipperApp.ecomStore.detail.title">Ecom Store</span> {{ ecomStore.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.ecomStore.name">Name</span></dt>
+                <dd>
+                    <span>{{ ecomStore.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.nickName">Nick Name</span></dt>
+                <dd>
+                    <span>{{ ecomStore.nickName }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.apiPassword">Api Password</span></dt>
+                <dd>
+                    <span>{{ ecomStore.apiPassword }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.domain">Domain</span></dt>
+                <dd>
+                    <span>{{ ecomStore.domain }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.syncFrequency">Sync Frequency</span></dt>
+                <dd>
+                    <span>{{ ecomStore.syncFrequency }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.syncInterval">Sync Interval</span></dt>
+                <dd>
+                    <span>{{ ecomStore.syncInterval }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.active">Active</span></dt>
+                <dd>
+                    <span>{{ ecomStore.active }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.isManualSync">Is Manual Sync</span></dt>
+                <dd>
+                    <span>{{ ecomStore.isManualSync }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ ecomStore.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ ecomStore.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomStoreAddress">Ecom Store Address</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomStoreAddressId">
+                        <a [routerLink]="['/ecom-store-address', ecomStore.ecomStoreAddressId, 'view']">{{ ecomStore.ecomStoreAddressId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomStoreColorTheme">Ecom Store Color Theme</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomStoreColorThemeId">
+                        <a [routerLink]="['/ecom-store-color-theme', ecomStore.ecomStoreColorThemeId, 'view']">{{ ecomStore.ecomStoreColorThemeId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomStoreShipmentSettings">Ecom Store Shipment Settings</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomStoreShipmentSettingsId">
+                        <a [routerLink]="['/ecom-store-shipment-settings', ecomStore.ecomStoreShipmentSettingsId, 'view']">{{ ecomStore.ecomStoreShipmentSettingsId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomStorePackageSettings">Ecom Store Package Settings</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomStorePackageSettingsId">
+                        <a [routerLink]="['/ecom-store-package-settings', ecomStore.ecomStorePackageSettingsId, 'view']">{{ ecomStore.ecomStorePackageSettingsId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomStoreMarkup">Ecom Store Markup</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomStoreMarkupId">
+                        <a [routerLink]="['/ecom-store-markup', ecomStore.ecomStoreMarkupId, 'view']">{{ ecomStore.ecomStoreMarkupId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.companyId">
+                        <a [routerLink]="['/company', ecomStore.companyId, 'view']">{{ ecomStore.companyId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.user">User</span></dt>
+                <dd>
+                    {{ ecomStore.userId }}
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.ecomProduct">Ecom Product</span></dt>
+                <dd>
+                    <div *ngIf="ecomStore.ecomProductId">
+                        <a [routerLink]="['/ecom-product', ecomStore.ecomProductId, 'view']">{{ ecomStore.ecomProductId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStore.shipmentService">Shipment Service</span></dt>
+                <dd>
+                    <span *ngFor="let shipmentService of ecomStore.shipmentServices; let last = last">
+                        <a [routerLink]="['/shipment-service', shipmentService?.id, 'view']">{{ shipmentService.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ecom-store', ecomStore.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

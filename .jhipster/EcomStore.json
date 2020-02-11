@@ -1,0 +1,158 @@
+{
+    "name": "EcomStore",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "nickName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "apiPassword",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "domain",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "syncFrequency",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "syncInterval",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "25"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isManualSync",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStoreAddress",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomStoreAddress",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStoreColorTheme",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomStoreColorTheme",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStoreShipmentSettings",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomStoreShipmentSettings",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStorePackageSettings",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomStorePackageSettings",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "ecomStoreMarkup",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomStoreMarkup",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ecomMailTemplate",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomMailTemplate"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ecomOrder",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "company",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "company",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ecomProduct",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "ecomProduct",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "shipmentService",
+            "otherEntityRelationshipName": "ecomStore",
+            "relationshipName": "shipmentService",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200211051500",
+    "entityTableName": "ecom_store",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

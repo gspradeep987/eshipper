@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ecom-store-package-settings-heading" jhiTranslate="eshipperApp.ecomStorePackageSettings.home.createOrEditLabel">Create or edit a Ecom Store Package Settings</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo1" for="field_packingInfo1">Packing Info 1</label>
+                    <input type="checkbox" class="form-control" name="packingInfo1" id="field_packingInfo1"
+                           formControlName="packingInfo1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo2" for="field_packingInfo2">Packing Info 2</label>
+                    <input type="checkbox" class="form-control" name="packingInfo2" id="field_packingInfo2"
+                           formControlName="packingInfo2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo3" for="field_packingInfo3">Packing Info 3</label>
+                    <input type="checkbox" class="form-control" name="packingInfo3" id="field_packingInfo3"
+                           formControlName="packingInfo3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo4" for="field_packingInfo4">Packing Info 4</label>
+                    <input type="checkbox" class="form-control" name="packingInfo4" id="field_packingInfo4"
+                           formControlName="packingInfo4"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

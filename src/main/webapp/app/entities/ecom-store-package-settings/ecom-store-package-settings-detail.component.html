@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ecomStorePackageSettings">
+            <h2><span jhiTranslate="eshipperApp.ecomStorePackageSettings.detail.title">Ecom Store Package Settings</span> {{ ecomStorePackageSettings.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo1">Packing Info 1</span></dt>
+                <dd>
+                    <span>{{ ecomStorePackageSettings.packingInfo1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo2">Packing Info 2</span></dt>
+                <dd>
+                    <span>{{ ecomStorePackageSettings.packingInfo2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo3">Packing Info 3</span></dt>
+                <dd>
+                    <span>{{ ecomStorePackageSettings.packingInfo3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomStorePackageSettings.packingInfo4">Packing Info 4</span></dt>
+                <dd>
+                    <span>{{ ecomStorePackageSettings.packingInfo4 }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ecom-store-package-settings', ecomStorePackageSettings.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

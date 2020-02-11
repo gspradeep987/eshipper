@@ -1,0 +1,25 @@
+{
+  "eshipperApp": {
+    "ecomMarkupSecondary": {
+      "home": {
+        "title": "Ecom Markup Secondaries",
+        "createLabel": "Create a new Ecom Markup Secondary",
+        "createOrEditLabel": "Create or edit a Ecom Markup Secondary",
+        "notFound": "No Ecom Markup Secondaries found"
+      },
+      "created": "A new Ecom Markup Secondary is created with identifier {{ param }}",
+      "updated": "A Ecom Markup Secondary is updated with identifier {{ param }}",
+      "deleted": "A Ecom Markup Secondary is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Markup Secondary {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Markup Secondary"
+      },
+      "value": "Value",
+      "fromZip": "From Zip",
+      "toZip": "To Zip",
+      "ecomStoreMarkup": "Ecom Store Markup"
+    }
+  }
+}

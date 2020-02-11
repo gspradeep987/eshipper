@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ecom-markup-tertiary-heading" jhiTranslate="eshipperApp.ecomMarkupTertiary.home.createOrEditLabel">Create or edit a Ecom Markup Tertiary</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomMarkupTertiary.wgt1to5" for="field_wgt1to5">Wgt 1 To 5</label>
+                    <input type="number" class="form-control" name="wgt1to5" id="field_wgt1to5"
+                           formControlName="wgt1to5"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomMarkupTertiary.wgt6to10" for="field_wgt6to10">Wgt 6 To 10</label>
+                    <input type="number" class="form-control" name="wgt6to10" id="field_wgt6to10"
+                           formControlName="wgt6to10"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomMarkupTertiary.wgt11to15" for="field_wgt11to15">Wgt 11 To 15</label>
+                    <input type="number" class="form-control" name="wgt11to15" id="field_wgt11to15"
+                           formControlName="wgt11to15"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.ecomMarkupTertiary.wgt16" for="field_wgt16">Wgt 16</label>
+                    <input type="number" class="form-control" name="wgt16" id="field_wgt16"
+                           formControlName="wgt16"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
