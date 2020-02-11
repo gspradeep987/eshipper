@@ -1,0 +1,226 @@
+
+entity EcomStore {
+	name String maxlength(255)
+    nickName String maxlength(255)
+	apiPassword String maxlength(255)
+	domain String maxlength(255)
+	syncFrequency Integer
+	syncInterval String maxlength(25)
+	active Boolean
+    isManualSync Boolean
+    createdDate LocalDate
+	updatedDate LocalDate
+}
+
+entity EcomStoreAddress {
+  address1 String maxlength(255)
+  address2 String maxlength(255)
+  name String maxlength(255)
+  phone String maxlength(25)
+  emailAccId String maxlength(255)
+  defaultAddress Boolean
+
+}
+
+entity EcomStoreColorTheme {
+	primary String maxlength(255)
+	secondary String maxlength(255)
+}
+
+entity ShipmentService {
+ name String maxlength(255)
+}
+
+entity EcomStoreShipmentSettings {
+  shippingMode String maxlength(20)
+  signatureReqd String maxlength(255)
+  schedulePickup Boolean
+  liveRates Boolean
+  addResidential Boolean
+  tailgateAtDestination Boolean
+  tailgateAtSource Boolean
+
+}
+
+entity EcomStorePackageSettings {
+  packingInfo1 Boolean
+  packingInfo2 Boolean
+  packingInfo3 Boolean
+  packingInfo4 Boolean
+}
+
+entity EcomStoreMarkup {
+markupType String maxlength(20)
+minValue Float
+domesticValue Float
+intlValue Float
+flatRateValue Float
+opexValue Float
+
+}
+
+entity EcomMarkupPrimary {
+	value Float
+	fromLane String maxlength(50)
+	toLane String maxlength(50)
+}
+
+entity EcomMarkupSecondary {
+	value Float
+	fromZip String maxlength(50)
+	toZip String maxlength(50)
+
+}
+entity EcomMarkupTertiary {
+	wgt1to5 Float
+	wgt6to10 Float
+	wgt11to15 Float
+	wgt16 Float
+}
+entity EcomMarkupQuaternary {
+	value Float
+}
+
+entity EcomMailTemplate {
+templateName String maxlength(50)
+templateType String maxlength(50)
+note String maxlength(50)
+subject String maxlength(50)
+content String maxlength(50)
+isCustomTemplate Boolean
+isOrder Boolean
+isShipment Boolean
+isProductPurchased Boolean
+isAmountPaid Boolean
+isStoreInfo Boolean
+isBody1 Boolean
+
+
+}
+
+entity EcomProduct {
+title String maxlength(100)
+length Float
+width Float 
+height Float
+weight Float
+dimUnit String maxlength(5)
+wghtUnit String maxlength(5)
+goodsValue Float
+productValue Float
+hsCodes String maxlength(6)
+sku String
+policy String 
+insuranceAmt Float
+isInsured Boolean
+
+}
+
+entity EcomProductImage {
+imageName String maxlength(100)
+imagePath String maxlength(100)
+}
+
+entity EcomWarehouse {
+ name String maxlength(50)
+ address String maxlength(50)
+}
+
+entity EcomOrder {
+ecomOrderNumber Long
+customerName String maxlength(255)
+domainName String maxlength(255)
+name String maxlength(100)
+email String maxlength(100)
+gateway String maxlength(255)
+totalPrice Double
+subTotalPrice Double
+totalWeight Float
+totalTax Float
+fulfillmentStatus String maxlength(100)
+paymentStatus String maxlength(100)
+ financialStatus String maxlength(100)
+ createdDate LocalDate
+ updatedDate LocalDate
+ updatedBy String maxlength(100)
+ isCancelled Boolean
+ isShipped Boolean
+ eshipperStatus String maxlength(100)
+ residentialShippingAddress Boolean
+ shippingOrderRef Integer
+ fromEmail String maxlength(100)
+ isCancelSchedule Boolean
+ isSchedulePickup Boolean
+ packageTypeId Long
+}
+
+entity Currency{
+
+}
+entity Company{
+
+}
+entity User{
+
+}
+
+entity Country {
+
+}
+entity ShippingAddress{
+}
+entity Province {
+
+}
+
+entity City {
+
+}
+
+
+relationship OneToOne { 
+  EcomStore to EcomStoreAddress
+  EcomStore to EcomStoreColorTheme
+  EcomStore to EcomStoreShipmentSettings
+  EcomStore to EcomStorePackageSettings
+ 
+  EcomStore to EcomStoreMarkup
+  EcomStoreMarkup to EcomMarkupPrimary
+  EcomStoreMarkup to EcomMarkupSecondary
+  EcomStoreMarkup to EcomMarkupTertiary
+  EcomStoreMarkup to EcomMarkupQuaternary  
+  
+  
+}
+
+relationship OneToMany {
+	EcomStore to EcomMailTemplate
+	EcomProduct to EcomProductImage
+	EcomStore to EcomOrder
+	EcomOrder to EcomProduct
+}
+
+
+ relationship ManyToOne {
+  EcomStore{company} to Company
+  EcomMarkupQuaternary{country} to Country
+  EcomStore{user} to User
+  EcomStoreAddress{country} to Country
+  EcomStoreAddress{province} to Province
+  EcomStoreAddress{city} to City
+  EcomProduct{country} to Country
+  EcomOrder{currency} to Currency
+  EcomOrder{shippingAddress} to ShippingAddress
+  EcomOrder{billingAddress} to ShippingAddress
+  EcomStore to EcomProduct
+}
+
+ relationship ManyToMany {
+ EcomStore to ShipmentService
+ EcomProduct to EcomWarehouse
+ }
+
+
+dto all with mapstruct
+service all with serviceImpl
+
