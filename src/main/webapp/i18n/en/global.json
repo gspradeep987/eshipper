@@ -29,6 +29,7 @@
         "shippingAddress": "Shipping Address",
         "province": "Province",
         "city": "City",
+        "ecomStoreSync": "Ecom Store Sync",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

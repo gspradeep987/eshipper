@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomStoreSync": {
+      "home": {
+        "title": "Ecom Store Syncs",
+        "createLabel": "Create a new Ecom Store Sync",
+        "createOrEditLabel": "Create or edit a Ecom Store Sync",
+        "notFound": "No Ecom Store Syncs found"
+      },
+      "created": "A new Ecom Store Sync is created with identifier {{ param }}",
+      "updated": "A Ecom Store Sync is updated with identifier {{ param }}",
+      "deleted": "A Ecom Store Sync is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Store Sync {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Store Sync"
+      },
+      "name": "Name",
+      "syncFrequency": "Sync Frequency",
+      "syncInterval": "Sync Interval"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+entity EcomStoreSync {
+	name String maxlength(255)    
+	syncFrequency Integer
+	syncInterval String maxlength(25)
+}
+
+dto all with mapstruct
+service all with serviceImpl
+
+
+
