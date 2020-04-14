@@ -1,0 +1,9 @@
+{
+  "eshipperApp": {
+    "AccountOwner": {
+      "null": "",
+      "OWNACCOUNT": "OWNACCOUNT",
+      "CUSTOMERACCOUNT": "CUSTOMERACCOUNT"
+    }
+  }
+}

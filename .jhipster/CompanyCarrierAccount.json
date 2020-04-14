@@ -1,0 +1,72 @@
+{
+    "name": "CompanyCarrierAccount",
+    "fields": [
+        {
+            "fieldName": "accountOwner",
+            "fieldType": "AccountOwner",
+            "fieldValues": "OWNACCOUNT,CUSTOMERACCOUNT"
+        },
+        {
+            "fieldName": "accountNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "meterNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "30"
+        },
+        {
+            "fieldName": "key",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "30"
+        },
+        {
+            "fieldName": "password",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "30"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "companyCarrierAccount",
+            "relationshipName": "region",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "carrier",
+            "otherEntityRelationshipName": "companyCarrierAccount",
+            "relationshipName": "carrier",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "franchise",
+            "otherEntityRelationshipName": "companyCarrierAccount",
+            "relationshipName": "franchise",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200414113800",
+    "entityTableName": "company_carrier_account",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

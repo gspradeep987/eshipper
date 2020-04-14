@@ -1,0 +1,4 @@
+export const enum AccountOwner {
+  OWNACCOUNT = 'OWNACCOUNT',
+  CUSTOMERACCOUNT = 'CUSTOMERACCOUNT'
+}

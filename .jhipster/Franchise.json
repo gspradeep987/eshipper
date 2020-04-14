@@ -1,0 +1,16 @@
+{
+    "name": "Franchise",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200414114100",
+    "entityTableName": "franchise",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

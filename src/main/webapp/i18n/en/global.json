@@ -30,6 +30,9 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "companyCarrierAccount": "Company Carrier Account",
+        "carrier": "Carrier",
+        "franchise": "Franchise",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

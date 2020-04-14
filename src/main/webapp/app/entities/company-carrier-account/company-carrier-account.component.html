@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.companyCarrierAccount.home.title">Company Carrier Accounts</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-company-carrier-account" [routerLink]="['/company-carrier-account/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.companyCarrierAccount.home.createLabel">
+            Create a new Company Carrier Account
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="companyCarrierAccounts?.length === 0">
+        <span jhiTranslate="eshipperApp.companyCarrierAccount.home.notFound">No companyCarrierAccounts found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="companyCarrierAccounts?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.accountOwner">Account Owner</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.accountNumber">Account Number</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.meterNumber">Meter Number</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.key">Key</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.password">Password</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.region">Region</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.carrier">Carrier</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.companyCarrierAccount.franchise">Franchise</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let companyCarrierAccount of companyCarrierAccounts ;trackBy: trackId">
+                    <td><a [routerLink]="['/company-carrier-account', companyCarrierAccount.id, 'view']">{{ companyCarrierAccount.id }}</a></td>
+                    <td jhiTranslate="{{ 'eshipperApp.AccountOwner.' + companyCarrierAccount.accountOwner }}">{{ companyCarrierAccount.accountOwner }}</td>
+                    <td>{{ companyCarrierAccount.accountNumber }}</td>
+                    <td>{{ companyCarrierAccount.meterNumber }}</td>
+                    <td>{{ companyCarrierAccount.key }}</td>
+                    <td>{{ companyCarrierAccount.password }}</td>
+                    <td>
+                        <div *ngIf="companyCarrierAccount.regionId">
+                            <a [routerLink]="['/country', companyCarrierAccount.regionId , 'view']" >{{ companyCarrierAccount.regionId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="companyCarrierAccount.carrierId">
+                            <a [routerLink]="['/carrier', companyCarrierAccount.carrierId , 'view']" >{{ companyCarrierAccount.carrierId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="companyCarrierAccount.franchiseId">
+                            <a [routerLink]="['/franchise', companyCarrierAccount.franchiseId , 'view']" >{{ companyCarrierAccount.franchiseId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/company-carrier-account', companyCarrierAccount.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/company-carrier-account', companyCarrierAccount.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(companyCarrierAccount)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

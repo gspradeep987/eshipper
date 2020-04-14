@@ -165,6 +165,24 @@
                             <span jhiTranslate="global.menu.entities.ecomStoreSync">Ecom Store Sync</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="company-carrier-account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.companyCarrierAccount">Company Carrier Account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="carrier" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.carrier">Carrier</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="franchise" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.franchise">Franchise</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

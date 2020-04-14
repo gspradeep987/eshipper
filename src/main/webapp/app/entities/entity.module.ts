@@ -97,6 +97,19 @@ import { RouterModule } from '@angular/router';
       {
         path: 'ecom-store-sync',
         loadChildren: () => import('./ecom-store-sync/ecom-store-sync.module').then(m => m.EshipperEcomStoreSyncModule)
+      },
+      {
+        path: 'company-carrier-account',
+        loadChildren: () =>
+          import('./company-carrier-account/company-carrier-account.module').then(m => m.EshipperCompanyCarrierAccountModule)
+      },
+      {
+        path: 'carrier',
+        loadChildren: () => import('./carrier/carrier.module').then(m => m.EshipperCarrierModule)
+      },
+      {
+        path: 'franchise',
+        loadChildren: () => import('./franchise/franchise.module').then(m => m.EshipperFranchiseModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

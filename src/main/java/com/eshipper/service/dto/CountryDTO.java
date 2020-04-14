@@ -7,10 +7,10 @@ import java.util.Objects;
  * A DTO for the {@link com.eshipper.domain.Country} entity.
  */
 public class CountryDTO implements Serializable {
-
+    
     private Long id;
 
-
+    
     public Long getId() {
         return id;
     }

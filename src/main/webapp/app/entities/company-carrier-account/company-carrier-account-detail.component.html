@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyCarrierAccount">
+            <h2><span jhiTranslate="eshipperApp.companyCarrierAccount.detail.title">Company Carrier Account</span> {{ companyCarrierAccount.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.accountOwner">Account Owner</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'eshipperApp.AccountOwner.' + companyCarrierAccount.accountOwner }}">{{ companyCarrierAccount.accountOwner }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.accountNumber">Account Number</span></dt>
+                <dd>
+                    <span>{{ companyCarrierAccount.accountNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.meterNumber">Meter Number</span></dt>
+                <dd>
+                    <span>{{ companyCarrierAccount.meterNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.key">Key</span></dt>
+                <dd>
+                    <span>{{ companyCarrierAccount.key }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.password">Password</span></dt>
+                <dd>
+                    <span>{{ companyCarrierAccount.password }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.region">Region</span></dt>
+                <dd>
+                    <div *ngIf="companyCarrierAccount.regionId">
+                        <a [routerLink]="['/country', companyCarrierAccount.regionId, 'view']">{{ companyCarrierAccount.regionId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.carrier">Carrier</span></dt>
+                <dd>
+                    <div *ngIf="companyCarrierAccount.carrierId">
+                        <a [routerLink]="['/carrier', companyCarrierAccount.carrierId, 'view']">{{ companyCarrierAccount.carrierId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyCarrierAccount.franchise">Franchise</span></dt>
+                <dd>
+                    <div *ngIf="companyCarrierAccount.franchiseId">
+                        <a [routerLink]="['/franchise', companyCarrierAccount.franchiseId, 'view']">{{ companyCarrierAccount.franchiseId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-carrier-account', companyCarrierAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
