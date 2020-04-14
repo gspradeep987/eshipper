@@ -1,0 +1,33 @@
+entity CompanyCarrierAccount {
+
+	AccountOwner AccountOwner
+	accountNumber Integer
+	meterNumber String maxlength(30)
+    key String maxlength(30)
+    password String maxlength(30)
+}
+
+enum AccountOwner {
+    OWNACCOUNT, CUSTOMERACCOUNT
+}
+
+entity Country {
+	
+}
+entity Carrier {
+	
+}
+entity Franchise {
+
+}
+
+
+relationship ManyToOne {
+	CompanyCarrierAccount{region} to Country
+    CompanyCarrierAccount{carrier} to Carrier
+    CompanyCarrierAccount{franchise} to Franchise
+}
+
+
+dto all with mapstruct
+service all with serviceImpl

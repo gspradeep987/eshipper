@@ -1,0 +1,29 @@
+{
+  "eshipperApp": {
+    "companyCarrierAccount": {
+      "home": {
+        "title": "Company Carrier Accounts",
+        "createLabel": "Create a new Company Carrier Account",
+        "createOrEditLabel": "Create or edit a Company Carrier Account",
+        "notFound": "No Company Carrier Accounts found"
+      },
+      "created": "A new Company Carrier Account is created with identifier {{ param }}",
+      "updated": "A Company Carrier Account is updated with identifier {{ param }}",
+      "deleted": "A Company Carrier Account is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company Carrier Account {{ id }}?"
+      },
+      "detail": {
+        "title": "Company Carrier Account"
+      },
+      "accountOwner": "Account Owner",
+      "accountNumber": "Account Number",
+      "meterNumber": "Meter Number",
+      "key": "Key",
+      "password": "Password",
+      "region": "Region",
+      "carrier": "Carrier",
+      "franchise": "Franchise"
+    }
+  }
+}
