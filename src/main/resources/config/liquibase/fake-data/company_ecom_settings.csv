@@ -1,0 +1,11 @@
+id;notify_recipient;create_packing_list;create_packing_slip;ecom_module;include_taxes_in_rvenues;show_avg_customer_value;show_avg_order_value;show_avg_shipment_value;remove_serial_returners;show_package_statistics;include_all_items_ret_customers
+1;true;true;true;false;true;false;true;false;true;false;true
+2;true;false;true;false;false;true;false;false;false;false;false
+3;false;true;false;true;false;false;false;true;false;true;true
+4;false;true;false;true;true;false;false;true;false;false;false
+5;true;true;false;true;false;false;false;true;true;false;true
+6;false;false;true;false;false;false;true;true;false;false;true
+7;true;false;false;false;false;true;true;true;true;false;true
+8;false;true;false;true;false;false;false;true;true;false;false
+9;true;true;true;false;true;false;false;true;true;false;true
+10;false;false;true;false;true;true;true;true;false;true;true

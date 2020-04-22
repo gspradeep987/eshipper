@@ -1,0 +1,16 @@
+{
+    "name": "SignatureRequired",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200422101400",
+    "entityTableName": "signature_required",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

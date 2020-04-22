@@ -30,6 +30,9 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "companyEcomSettings": "Company Ecom Settings",
+        "signatureRequired": "Signature Required",
+        "carrierSettings": "Carrier Settings",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
