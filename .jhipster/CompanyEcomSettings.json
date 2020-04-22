@@ -1,0 +1,77 @@
+{
+    "name": "CompanyEcomSettings",
+    "fields": [
+        {
+            "fieldName": "notifyRecipient",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createPackingList",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createPackingSlip",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ecomModule",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "includeTaxesInRvenues",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "showAvgCustomerValue",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "showAvgOrderValue",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "showAvgShipmentValue",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "removeSerialReturners",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "showPackageStatistics",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "includeAllItemsRetCustomers",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "signatureRequired",
+            "otherEntityRelationshipName": "companyEcomSettings",
+            "relationshipName": "signatureRequired",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "carrierSettings",
+            "otherEntityRelationshipName": "companyEcomSettings",
+            "relationshipName": "carrierSettings",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200422101300",
+    "entityTableName": "company_ecom_settings",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
