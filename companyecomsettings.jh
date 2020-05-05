@@ -1,0 +1,35 @@
+entity CompanyEcomSettings {
+
+	notifyRecipient Boolean
+	createPackingList Boolean
+    createPackingSlip Boolean
+    ecomModule Boolean
+    includeTaxesInRvenues Boolean
+    showAvgCustomerValue Boolean
+    showAvgOrderValue Boolean
+    showAvgShipmentValue Boolean
+    removeSerialReturners Boolean
+    showPackageStatistics Boolean
+    includeAllItemsRetCustomers Boolean
+    
+}
+
+entity SignatureRequired {
+	
+}
+
+entity CarrierSettings {
+	
+}
+
+
+relationship ManyToOne {
+	CompanyEcomSettings{signatureRequired} to SignatureRequired
+}
+
+relationship ManyToMany {
+ 	CompanyEcomSettings to CarrierSettings
+ }
+
+dto all with mapstruct
+service all with serviceImpl
