@@ -1,0 +1,34 @@
+{
+  "eshipperApp": {
+    "companyEcomSettings": {
+      "home": {
+        "title": "Company Ecom Settings",
+        "createLabel": "Create a new Company Ecom Settings",
+        "createOrEditLabel": "Create or edit a Company Ecom Settings",
+        "notFound": "No Company Ecom Settings found"
+      },
+      "created": "A new Company Ecom Settings is created with identifier {{ param }}",
+      "updated": "A Company Ecom Settings is updated with identifier {{ param }}",
+      "deleted": "A Company Ecom Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company Ecom Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Company Ecom Settings"
+      },
+      "notifyRecipient": "Notify Recipient",
+      "createPackingList": "Create Packing List",
+      "createPackingSlip": "Create Packing Slip",
+      "ecomModule": "Ecom Module",
+      "includeTaxesInRvenues": "Include Taxes In Rvenues",
+      "showAvgCustomerValue": "Show Avg Customer Value",
+      "showAvgOrderValue": "Show Avg Order Value",
+      "showAvgShipmentValue": "Show Avg Shipment Value",
+      "removeSerialReturners": "Remove Serial Returners",
+      "showPackageStatistics": "Show Package Statistics",
+      "includeAllItemsRetCustomers": "Include All Items Ret Customers",
+      "signatureRequired": "Signature Required",
+      "carrierSettings": "Carrier Settings"
+    }
+  }
+}

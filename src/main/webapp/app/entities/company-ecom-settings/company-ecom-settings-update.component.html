@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-company-ecom-settings-heading" jhiTranslate="eshipperApp.companyEcomSettings.home.createOrEditLabel">Create or edit a Company Ecom Settings</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.notifyRecipient" for="field_notifyRecipient">Notify Recipient</label>
+                    <input type="checkbox" class="form-control" name="notifyRecipient" id="field_notifyRecipient"
+                           formControlName="notifyRecipient"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.createPackingList" for="field_createPackingList">Create Packing List</label>
+                    <input type="checkbox" class="form-control" name="createPackingList" id="field_createPackingList"
+                           formControlName="createPackingList"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.createPackingSlip" for="field_createPackingSlip">Create Packing Slip</label>
+                    <input type="checkbox" class="form-control" name="createPackingSlip" id="field_createPackingSlip"
+                           formControlName="createPackingSlip"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.ecomModule" for="field_ecomModule">Ecom Module</label>
+                    <input type="checkbox" class="form-control" name="ecomModule" id="field_ecomModule"
+                           formControlName="ecomModule"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.includeTaxesInRvenues" for="field_includeTaxesInRvenues">Include Taxes In Rvenues</label>
+                    <input type="checkbox" class="form-control" name="includeTaxesInRvenues" id="field_includeTaxesInRvenues"
+                           formControlName="includeTaxesInRvenues"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.showAvgCustomerValue" for="field_showAvgCustomerValue">Show Avg Customer Value</label>
+                    <input type="checkbox" class="form-control" name="showAvgCustomerValue" id="field_showAvgCustomerValue"
+                           formControlName="showAvgCustomerValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.showAvgOrderValue" for="field_showAvgOrderValue">Show Avg Order Value</label>
+                    <input type="checkbox" class="form-control" name="showAvgOrderValue" id="field_showAvgOrderValue"
+                           formControlName="showAvgOrderValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.showAvgShipmentValue" for="field_showAvgShipmentValue">Show Avg Shipment Value</label>
+                    <input type="checkbox" class="form-control" name="showAvgShipmentValue" id="field_showAvgShipmentValue"
+                           formControlName="showAvgShipmentValue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.removeSerialReturners" for="field_removeSerialReturners">Remove Serial Returners</label>
+                    <input type="checkbox" class="form-control" name="removeSerialReturners" id="field_removeSerialReturners"
+                           formControlName="removeSerialReturners"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.showPackageStatistics" for="field_showPackageStatistics">Show Package Statistics</label>
+                    <input type="checkbox" class="form-control" name="showPackageStatistics" id="field_showPackageStatistics"
+                           formControlName="showPackageStatistics"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.includeAllItemsRetCustomers" for="field_includeAllItemsRetCustomers">Include All Items Ret Customers</label>
+                    <input type="checkbox" class="form-control" name="includeAllItemsRetCustomers" id="field_includeAllItemsRetCustomers"
+                           formControlName="includeAllItemsRetCustomers"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.companyEcomSettings.signatureRequired" for="field_signatureRequired">Signature Required</label>
+                    <select class="form-control" id="field_signatureRequired" name="signatureRequired" formControlName="signatureRequiredId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="signatureRequiredOption.id" *ngFor="let signatureRequiredOption of signaturerequireds; trackBy: trackById">{{ signatureRequiredOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="eshipperApp.companyEcomSettings.carrierSettings" for="field_carrierSettings">Carrier Settings</label>
+                    <select class="form-control" id="field_carrierSettings" multiple name="carrierSettings" formControlName="carrierSettings">
+                        <option [ngValue]="getSelected(editForm.get('carrierSettings')!.value, carrierSettingsOption)" *ngFor="let carrierSettingsOption of carriersettings; trackBy: trackById">{{ carrierSettingsOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
