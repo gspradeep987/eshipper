@@ -1,0 +1,25 @@
+{
+    "name": "CarrierSettings",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "companyEcomSettings",
+            "otherEntityRelationshipName": "carrierSettings",
+            "relationshipName": "companyEcomSettings",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200505052000",
+    "entityTableName": "carrier_settings",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

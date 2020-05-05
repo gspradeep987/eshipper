@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "carrierSettings": {
+      "home": {
+        "title": "Carrier Settings",
+        "createLabel": "Create a new Carrier Settings",
+        "createOrEditLabel": "Create or edit a Carrier Settings",
+        "notFound": "No Carrier Settings found"
+      },
+      "created": "A new Carrier Settings is created with identifier {{ param }}",
+      "updated": "A Carrier Settings is updated with identifier {{ param }}",
+      "deleted": "A Carrier Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Carrier Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Carrier Settings"
+      },
+      "companyEcomSettings": "Company Ecom Settings"
+    }
+  }
+}

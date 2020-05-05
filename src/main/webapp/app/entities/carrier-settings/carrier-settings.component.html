@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.carrierSettings.home.title">Carrier Settings</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-carrier-settings" [routerLink]="['/carrier-settings/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.carrierSettings.home.createLabel">
+            Create a new Carrier Settings
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="carrierSettings?.length === 0">
+        <span jhiTranslate="eshipperApp.carrierSettings.home.notFound">No carrierSettings found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="carrierSettings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let carrierSettings of carrierSettings ;trackBy: trackId">
+                    <td><a [routerLink]="['/carrier-settings', carrierSettings.id, 'view']">{{ carrierSettings.id }}</a></td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/carrier-settings', carrierSettings.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/carrier-settings', carrierSettings.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(carrierSettings)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

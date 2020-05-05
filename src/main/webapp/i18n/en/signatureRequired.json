@@ -1,0 +1,21 @@
+{
+  "eshipperApp": {
+    "signatureRequired": {
+      "home": {
+        "title": "Signature Requireds",
+        "createLabel": "Create a new Signature Required",
+        "createOrEditLabel": "Create or edit a Signature Required",
+        "notFound": "No Signature Requireds found"
+      },
+      "created": "A new Signature Required is created with identifier {{ param }}",
+      "updated": "A Signature Required is updated with identifier {{ param }}",
+      "deleted": "A Signature Required is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Signature Required {{ id }}?"
+      },
+      "detail": {
+        "title": "Signature Required"
+      }
+    }
+  }
+}

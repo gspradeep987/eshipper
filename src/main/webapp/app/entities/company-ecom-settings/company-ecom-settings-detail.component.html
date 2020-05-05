@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyEcomSettings">
+            <h2><span jhiTranslate="eshipperApp.companyEcomSettings.detail.title">Company Ecom Settings</span> {{ companyEcomSettings.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.notifyRecipient">Notify Recipient</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.notifyRecipient }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.createPackingList">Create Packing List</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.createPackingList }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.createPackingSlip">Create Packing Slip</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.createPackingSlip }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.ecomModule">Ecom Module</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.ecomModule }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.includeTaxesInRvenues">Include Taxes In Rvenues</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.includeTaxesInRvenues }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.showAvgCustomerValue">Show Avg Customer Value</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.showAvgCustomerValue }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.showAvgOrderValue">Show Avg Order Value</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.showAvgOrderValue }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.showAvgShipmentValue">Show Avg Shipment Value</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.showAvgShipmentValue }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.removeSerialReturners">Remove Serial Returners</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.removeSerialReturners }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.showPackageStatistics">Show Package Statistics</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.showPackageStatistics }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.includeAllItemsRetCustomers">Include All Items Ret Customers</span></dt>
+                <dd>
+                    <span>{{ companyEcomSettings.includeAllItemsRetCustomers }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.signatureRequired">Signature Required</span></dt>
+                <dd>
+                    <div *ngIf="companyEcomSettings.signatureRequiredId">
+                        <a [routerLink]="['/signature-required', companyEcomSettings.signatureRequiredId, 'view']">{{ companyEcomSettings.signatureRequiredId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.companyEcomSettings.carrierSettings">Carrier Settings</span></dt>
+                <dd>
+                    <span *ngFor="let carrierSettings of companyEcomSettings.carrierSettings; let last = last">
+                        <a [routerLink]="['/carrier-settings', carrierSettings?.id, 'view']">{{ carrierSettings.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-ecom-settings', companyEcomSettings.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
