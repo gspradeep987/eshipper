@@ -23,86 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.ecomOrderNumber">Ecom Order Number</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.customerName">Customer Name</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.domainName">Domain Name</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.email">Email</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.gateway">Gateway</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.totalPrice">Total Price</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.subTotalPrice">Sub Total Price</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.totalWeight">Total Weight</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.totalTax">Total Tax</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.fulfillmentStatus">Fulfillment Status</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.paymentStatus">Payment Status</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.financialStatus">Financial Status</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.createdDate">Created Date</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.updatedDate">Updated Date</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.updatedBy">Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.isCancelled">Is Cancelled</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.isShipped">Is Shipped</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.eshipperStatus">Eshipper Status</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.residentialShippingAddress">Residential Shipping Address</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.shippingOrderRef">Shipping Order Ref</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.fromEmail">From Email</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.isCancelSchedule">Is Cancel Schedule</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.isSchedulePickup">Is Schedule Pickup</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.packageTypeId">Package Type Id</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.currency">Currency</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.shippingAddress">Shipping Address</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.billingAddress">Billing Address</span></th>
-                    <th scope="col" ><span jhiTranslate="eshipperApp.ecomOrder.ecomStore">Ecom Store</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let ecomOrder of ecomOrders ;trackBy: trackId">
                     <td><a [routerLink]="['/ecom-order', ecomOrder.id, 'view']">{{ ecomOrder.id }}</a></td>
-                    <td>{{ ecomOrder.ecomOrderNumber }}</td>
-                    <td>{{ ecomOrder.customerName }}</td>
-                    <td>{{ ecomOrder.domainName }}</td>
-                    <td>{{ ecomOrder.name }}</td>
-                    <td>{{ ecomOrder.email }}</td>
-                    <td>{{ ecomOrder.gateway }}</td>
-                    <td>{{ ecomOrder.totalPrice }}</td>
-                    <td>{{ ecomOrder.subTotalPrice }}</td>
-                    <td>{{ ecomOrder.totalWeight }}</td>
-                    <td>{{ ecomOrder.totalTax }}</td>
-                    <td>{{ ecomOrder.fulfillmentStatus }}</td>
-                    <td>{{ ecomOrder.paymentStatus }}</td>
-                    <td>{{ ecomOrder.financialStatus }}</td>
-                    <td>{{ ecomOrder.createdDate | date:'mediumDate' }}</td>
-                    <td>{{ ecomOrder.updatedDate | date:'mediumDate' }}</td>
-                    <td>{{ ecomOrder.updatedBy }}</td>
-                    <td>{{ ecomOrder.isCancelled }}</td>
-                    <td>{{ ecomOrder.isShipped }}</td>
-                    <td>{{ ecomOrder.eshipperStatus }}</td>
-                    <td>{{ ecomOrder.residentialShippingAddress }}</td>
-                    <td>{{ ecomOrder.shippingOrderRef }}</td>
-                    <td>{{ ecomOrder.fromEmail }}</td>
-                    <td>{{ ecomOrder.isCancelSchedule }}</td>
-                    <td>{{ ecomOrder.isSchedulePickup }}</td>
-                    <td>{{ ecomOrder.packageTypeId }}</td>
-                    <td>
-                        <div *ngIf="ecomOrder.currencyId">
-                            <a [routerLink]="['/currency', ecomOrder.currencyId , 'view']" >{{ ecomOrder.currencyId }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="ecomOrder.shippingAddressId">
-                            <a [routerLink]="['/shipping-address', ecomOrder.shippingAddressId , 'view']" >{{ ecomOrder.shippingAddressId }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="ecomOrder.billingAddressId">
-                            <a [routerLink]="['/shipping-address', ecomOrder.billingAddressId , 'view']" >{{ ecomOrder.billingAddressId }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="ecomOrder.ecomStoreId">
-                            <a [routerLink]="['/ecom-store', ecomOrder.ecomStoreId , 'view']" >{{ ecomOrder.ecomStoreId }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

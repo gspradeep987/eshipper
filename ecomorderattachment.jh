@@ -1,0 +1,18 @@
+entity EcomorderAttachment {
+	name String maxlength(255)    
+	attachmentPath String maxlength(255)
+}
+
+entity EcomOrder {
+
+}
+
+relationship ManyToOne {
+  EcomorderAttachment{ecomOrder} to EcomOrder
+  }
+
+dto all with mapstruct
+service all with serviceImpl
+
+
+

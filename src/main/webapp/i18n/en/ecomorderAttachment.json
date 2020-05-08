@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "ecomorderAttachment": {
+      "home": {
+        "title": "Ecomorder Attachments",
+        "createLabel": "Create a new Ecomorder Attachment",
+        "createOrEditLabel": "Create or edit a Ecomorder Attachment",
+        "notFound": "No Ecomorder Attachments found"
+      },
+      "created": "A new Ecomorder Attachment is created with identifier {{ param }}",
+      "updated": "A Ecomorder Attachment is updated with identifier {{ param }}",
+      "deleted": "A Ecomorder Attachment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecomorder Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecomorder Attachment"
+      },
+      "name": "Name",
+      "attachmentPath": "Attachment Path",
+      "ecomOrder": "Ecom Order"
+    }
+  }
+}
