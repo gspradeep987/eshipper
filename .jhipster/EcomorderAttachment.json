@@ -1,0 +1,41 @@
+{
+    "name": "EcomorderAttachment",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "attachmentPath",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ecomOrder",
+            "otherEntityRelationshipName": "ecomorderAttachment",
+            "relationshipName": "ecomOrder",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200508110400",
+    "entityTableName": "ecomorder_attachment",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

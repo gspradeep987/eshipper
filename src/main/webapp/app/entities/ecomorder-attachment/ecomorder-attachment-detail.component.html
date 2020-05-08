@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ecomorderAttachment">
+            <h2><span jhiTranslate="eshipperApp.ecomorderAttachment.detail.title">Ecomorder Attachment</span> {{ ecomorderAttachment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.ecomorderAttachment.name">Name</span></dt>
+                <dd>
+                    <span>{{ ecomorderAttachment.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomorderAttachment.attachmentPath">Attachment Path</span></dt>
+                <dd>
+                    <span>{{ ecomorderAttachment.attachmentPath }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.ecomorderAttachment.ecomOrder">Ecom Order</span></dt>
+                <dd>
+                    <div *ngIf="ecomorderAttachment.ecomOrderId">
+                        <a [routerLink]="['/ecom-order', ecomorderAttachment.ecomOrderId, 'view']">{{ ecomorderAttachment.ecomOrderId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ecomorder-attachment', ecomorderAttachment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
