@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -46,7 +45,7 @@ public class EcomOrderResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/ecom-orders")
-    public ResponseEntity<EcomOrderDTO> createEcomOrder(@Valid @RequestBody EcomOrderDTO ecomOrderDTO) throws URISyntaxException {
+    public ResponseEntity<EcomOrderDTO> createEcomOrder(@RequestBody EcomOrderDTO ecomOrderDTO) throws URISyntaxException {
         log.debug("REST request to save EcomOrder : {}", ecomOrderDTO);
         if (ecomOrderDTO.getId() != null) {
             throw new BadRequestAlertException("A new ecomOrder cannot already have an ID", ENTITY_NAME, "idexists");
@@ -67,7 +66,7 @@ public class EcomOrderResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/ecom-orders")
-    public ResponseEntity<EcomOrderDTO> updateEcomOrder(@Valid @RequestBody EcomOrderDTO ecomOrderDTO) throws URISyntaxException {
+    public ResponseEntity<EcomOrderDTO> updateEcomOrder(@RequestBody EcomOrderDTO ecomOrderDTO) throws URISyntaxException {
         log.debug("REST request to update EcomOrder : {}", ecomOrderDTO);
         if (ecomOrderDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

@@ -1,15 +1,15 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { EcomOrderService } from 'app/entities/ecom-order/ecom-order.service';
-import { IEcomOrder, EcomOrder } from 'app/shared/model/ecom-order.model';
+import { EcomOrderAttachmentService } from 'app/entities/ecom-order-attachment/ecom-order-attachment.service';
+import { IEcomOrderAttachment, EcomOrderAttachment } from 'app/shared/model/ecom-order-attachment.model';
 
 describe('Service Tests', () => {
-  describe('EcomOrder Service', () => {
+  describe('EcomOrderAttachment Service', () => {
     let injector: TestBed;
-    let service: EcomOrderService;
+    let service: EcomOrderAttachmentService;
     let httpMock: HttpTestingController;
-    let elemDefault: IEcomOrder;
-    let expectedResult: IEcomOrder | IEcomOrder[] | boolean | null;
+    let elemDefault: IEcomOrderAttachment;
+    let expectedResult: IEcomOrderAttachment | IEcomOrderAttachment[] | boolean | null;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('Service Tests', () => {
       });
       expectedResult = null;
       injector = getTestBed();
-      service = injector.get(EcomOrderService);
+      service = injector.get(EcomOrderAttachmentService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new EcomOrder(0);
+      elemDefault = new EcomOrderAttachment(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -34,7 +34,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(elemDefault);
       });
 
-      it('should create a EcomOrder', () => {
+      it('should create a EcomOrderAttachment', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -44,15 +44,21 @@ describe('Service Tests', () => {
 
         const expected = Object.assign({}, returnedFromService);
 
-        service.create(new EcomOrder()).subscribe(resp => (expectedResult = resp.body));
+        service.create(new EcomOrderAttachment()).subscribe(resp => (expectedResult = resp.body));
 
         const req = httpMock.expectOne({ method: 'POST' });
         req.flush(returnedFromService);
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should update a EcomOrder', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should update a EcomOrderAttachment', () => {
+        const returnedFromService = Object.assign(
+          {
+            name: 'BBBBBB',
+            attachmentPath: 'BBBBBB'
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -63,8 +69,14 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should return a list of EcomOrder', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should return a list of EcomOrderAttachment', () => {
+        const returnedFromService = Object.assign(
+          {
+            name: 'BBBBBB',
+            attachmentPath: 'BBBBBB'
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -76,7 +88,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a EcomOrder', () => {
+      it('should delete a EcomOrderAttachment', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });
