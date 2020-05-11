@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "salesAgentType": {
+      "home": {
+        "title": "Sales Agent Types",
+        "createLabel": "Create a new Sales Agent Type",
+        "createOrEditLabel": "Create or edit a Sales Agent Type",
+        "notFound": "No Sales Agent Types found"
+      },
+      "created": "A new Sales Agent Type is created with identifier {{ param }}",
+      "updated": "A Sales Agent Type is updated with identifier {{ param }}",
+      "deleted": "A Sales Agent Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sales Agent Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Sales Agent Type"
+      },
+      "agentType": "Agent Type"
+    }
+  }
+}

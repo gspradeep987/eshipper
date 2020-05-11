@@ -1,0 +1,28 @@
+{
+  "eshipperApp": {
+    "woSalesOperationalDetails": {
+      "home": {
+        "title": "Wo Sales Operational Details",
+        "createLabel": "Create a new Wo Sales Operational Details",
+        "createOrEditLabel": "Create or edit a Wo Sales Operational Details",
+        "notFound": "No Wo Sales Operational Details found"
+      },
+      "created": "A new Wo Sales Operational Details is created with identifier {{ param }}",
+      "updated": "A Wo Sales Operational Details is updated with identifier {{ param }}",
+      "deleted": "A Wo Sales Operational Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wo Sales Operational Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Wo Sales Operational Details"
+      },
+      "defaultOpExpense": "Default Op Expense",
+      "opExpPalletShip": "Op Exp Pallet Ship",
+      "opExpPackageShip": "Op Exp Package Ship",
+      "opExpPack": "Op Exp Pack",
+      "opExpSmartePost": "Op Exp Smarte Post",
+      "woSalesOperationalCarrier": "Wo Sales Operational Carrier",
+      "woSalesAgent": "Wo Sales Agent"
+    }
+  }
+}

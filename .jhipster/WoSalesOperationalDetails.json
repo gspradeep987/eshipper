@@ -1,0 +1,51 @@
+{
+    "name": "WoSalesOperationalDetails",
+    "fields": [
+        {
+            "fieldName": "defaultOpExpense",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "opExpPalletShip",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "opExpPackageShip",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "opExpPack",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "opExpSmartePost",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "woSalesOperationalCarrier",
+            "otherEntityRelationshipName": "woSalesOperationalDetails",
+            "relationshipName": "woSalesOperationalCarrier"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesAgent",
+            "otherEntityRelationshipName": "woSalesOperationalDetails",
+            "relationshipName": "woSalesAgent",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200511064600",
+    "entityTableName": "wo_sales_operational_details",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

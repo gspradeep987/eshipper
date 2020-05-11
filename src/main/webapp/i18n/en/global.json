@@ -30,6 +30,17 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "woSalesAgent": "Wo Sales Agent",
+        "salesAgentType": "Sales Agent Type",
+        "woSalesAgentDetails": "Wo Sales Agent Details",
+        "paymentMethod": "Payment Method",
+        "woSalesCommissionDetails": "Wo Sales Commission Details",
+        "woSalesCommissionCarrier": "Wo Sales Commission Carrier",
+        "woSalesOperationalDetails": "Wo Sales Operational Details",
+        "woSalesOperationalCarrier": "Wo Sales Operational Carrier",
+        "woSalesCommissionTransfer": "Wo Sales Commission Transfer",
+        "carrier": "Carrier",
+        "carrierService": "Carrier Service",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

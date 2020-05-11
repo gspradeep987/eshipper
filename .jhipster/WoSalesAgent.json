@@ -1,0 +1,61 @@
+{
+    "name": "WoSalesAgent",
+    "fields": [
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesAgentDetails",
+            "otherEntityRelationshipName": "woSalesAgent",
+            "relationshipName": "woSalesAgentDetails",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesCommissionDetails",
+            "otherEntityRelationshipName": "woSalesAgent",
+            "relationshipName": "woSalesCommissionDetails",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesOperationalDetails",
+            "otherEntityRelationshipName": "woSalesAgent",
+            "relationshipName": "woSalesOperationalDetails",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesCommissionTransfer",
+            "otherEntityRelationshipName": "woSalesAgent",
+            "relationshipName": "woSalesCommissionTransfer",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "salesAgentType",
+            "otherEntityRelationshipName": "woSalesAgent",
+            "relationshipName": "salesAgentType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200511064000",
+    "entityTableName": "wo_sales_agent",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

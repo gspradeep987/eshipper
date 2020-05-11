@@ -1,0 +1,16 @@
+{
+    "name": "Carrier",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200511064900",
+    "entityTableName": "carrier",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

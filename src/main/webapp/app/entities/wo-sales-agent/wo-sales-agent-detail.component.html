@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="woSalesAgent">
+            <h2><span jhiTranslate="eshipperApp.woSalesAgent.detail.title">Wo Sales Agent</span> {{ woSalesAgent.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{ woSalesAgent.isActive }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.woSalesAgentDetails">Wo Sales Agent Details</span></dt>
+                <dd>
+                    <div *ngIf="woSalesAgent.woSalesAgentDetailsId">
+                        <a [routerLink]="['/wo-sales-agent-details', woSalesAgent.woSalesAgentDetailsId, 'view']">{{ woSalesAgent.woSalesAgentDetailsId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.woSalesCommissionDetails">Wo Sales Commission Details</span></dt>
+                <dd>
+                    <div *ngIf="woSalesAgent.woSalesCommissionDetailsId">
+                        <a [routerLink]="['/wo-sales-commission-details', woSalesAgent.woSalesCommissionDetailsId, 'view']">{{ woSalesAgent.woSalesCommissionDetailsId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.woSalesOperationalDetails">Wo Sales Operational Details</span></dt>
+                <dd>
+                    <div *ngIf="woSalesAgent.woSalesOperationalDetailsId">
+                        <a [routerLink]="['/wo-sales-operational-details', woSalesAgent.woSalesOperationalDetailsId, 'view']">{{ woSalesAgent.woSalesOperationalDetailsId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.woSalesCommissionTransfer">Wo Sales Commission Transfer</span></dt>
+                <dd>
+                    <div *ngIf="woSalesAgent.woSalesCommissionTransferId">
+                        <a [routerLink]="['/wo-sales-commission-transfer', woSalesAgent.woSalesCommissionTransferId, 'view']">{{ woSalesAgent.woSalesCommissionTransferId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgent.salesAgentType">Sales Agent Type</span></dt>
+                <dd>
+                    <div *ngIf="woSalesAgent.salesAgentTypeId">
+                        <a [routerLink]="['/sales-agent-type', woSalesAgent.salesAgentTypeId, 'view']">{{ woSalesAgent.salesAgentTypeId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wo-sales-agent', woSalesAgent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

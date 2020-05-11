@@ -73,6 +73,19 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Province.class.getName());
             createCache(cm, com.eshipper.domain.City.class.getName());
             createCache(cm, com.eshipper.domain.EcomStoreSync.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesAgent.class.getName());
+            createCache(cm, com.eshipper.domain.SalesAgentType.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesAgentDetails.class.getName());
+            createCache(cm, com.eshipper.domain.PaymentMethod.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesCommissionDetails.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesCommissionDetails.class.getName() + ".woSalesCommissionCarriers");
+            createCache(cm, com.eshipper.domain.WoSalesCommissionCarrier.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesOperationalDetails.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesOperationalDetails.class.getName() + ".woSalesOperationalCarriers");
+            createCache(cm, com.eshipper.domain.WoSalesOperationalCarrier.class.getName());
+            createCache(cm, com.eshipper.domain.WoSalesCommissionTransfer.class.getName());
+            createCache(cm, com.eshipper.domain.Carrier.class.getName());
+            createCache(cm, com.eshipper.domain.CarrierService.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
