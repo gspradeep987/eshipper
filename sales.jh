@@ -1,0 +1,62 @@
+entity WoSalesAgent {
+	isActive Boolean
+}
+
+entity SalesAgentType {
+	agentType String
+}
+entity WoSalesAgentDetails {
+	hstNumber Long,
+    promoCode String,
+    promoUrl String
+}
+entity PaymentMethod {
+}
+entity WoSalesCommissionDetails {
+	commission Float
+}
+entity WoSalesCommissionCarrier {
+    commissionPercentageByCarrier Float
+}
+entity WoSalesOperationalDetails {
+	defaultOpExpense Integer,
+    opExpPalletShip Integer,
+    opExpPackageShip Integer,
+    opExpPack Integer,
+    opExpSmartePost Integer
+}
+entity WoSalesOperationalCarrier {
+	opExp Float
+}
+entity WoSalesCommissionTransfer {
+    customerTransferDate LocalDate,
+    isIncludeHistoricalData Boolean
+}
+entity Carrier {
+}
+entity CarrierService {
+}
+relationship OneToOne {
+	WoSalesAgent to WoSalesAgentDetails
+    WoSalesAgent to WoSalesCommissionDetails
+    WoSalesAgent to WoSalesOperationalDetails
+    WoSalesAgent to WoSalesCommissionTransfer
+}
+relationship OneToMany {
+	WoSalesCommissionDetails to WoSalesCommissionCarrier
+    WoSalesOperationalDetails to WoSalesOperationalCarrier
+}
+relationship ManyToOne {
+	WoSalesAgent{salesAgentType} to SalesAgentType
+    PaymentMethod{woSalesAgentDetails} to WoSalesAgentDetails
+    WoSalesOperationalCarrier{carrier} to Carrier
+    WoSalesOperationalCarrier{carrierService} to CarrierService
+    WoSalesCommissionCarrier{carrier} to Carrier
+    WoSalesCommissionCarrier{carrierService} to CarrierService
+}
+paginate all with pagination
+
+dto all with mapstruct
+
+service all with serviceImpl
+

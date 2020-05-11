@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="woSalesAgentDetails">
+            <h2><span jhiTranslate="eshipperApp.woSalesAgentDetails.detail.title">Wo Sales Agent Details</span> {{ woSalesAgentDetails.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.woSalesAgentDetails.hstNumber">Hst Number</span></dt>
+                <dd>
+                    <span>{{ woSalesAgentDetails.hstNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgentDetails.promoCode">Promo Code</span></dt>
+                <dd>
+                    <span>{{ woSalesAgentDetails.promoCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesAgentDetails.promoUrl">Promo Url</span></dt>
+                <dd>
+                    <span>{{ woSalesAgentDetails.promoUrl }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wo-sales-agent-details', woSalesAgentDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

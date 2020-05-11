@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paymentMethod">
+            <h2><span jhiTranslate="eshipperApp.paymentMethod.detail.title">Payment Method</span> {{ paymentMethod.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.paymentMethod.woSalesAgentDetails">Wo Sales Agent Details</span></dt>
+                <dd>
+                    <div *ngIf="paymentMethod.woSalesAgentDetailsId">
+                        <a [routerLink]="['/wo-sales-agent-details', paymentMethod.woSalesAgentDetailsId, 'view']">{{ paymentMethod.woSalesAgentDetailsId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment-method', paymentMethod.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "eshipperApp": {
+    "carrierService": {
+      "home": {
+        "title": "Carrier Services",
+        "createLabel": "Create a new Carrier Service",
+        "createOrEditLabel": "Create or edit a Carrier Service",
+        "notFound": "No Carrier Services found"
+      },
+      "created": "A new Carrier Service is created with identifier {{ param }}",
+      "updated": "A Carrier Service is updated with identifier {{ param }}",
+      "deleted": "A Carrier Service is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Carrier Service {{ id }}?"
+      },
+      "detail": {
+        "title": "Carrier Service"
+      }
+    }
+  }
+}

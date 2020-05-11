@@ -1,0 +1,35 @@
+{
+    "name": "WoSalesCommissionDetails",
+    "fields": [
+        {
+            "fieldName": "commission",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "woSalesCommissionCarrier",
+            "otherEntityRelationshipName": "woSalesCommissionDetails",
+            "relationshipName": "woSalesCommissionCarrier"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesAgent",
+            "otherEntityRelationshipName": "woSalesCommissionDetails",
+            "relationshipName": "woSalesAgent",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200511064400",
+    "entityTableName": "wo_sales_commission_details",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,24 @@
+{
+    "name": "PaymentMethod",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "woSalesAgentDetails",
+            "otherEntityRelationshipName": "paymentMethod",
+            "relationshipName": "woSalesAgentDetails",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200511064300",
+    "entityTableName": "payment_method",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
