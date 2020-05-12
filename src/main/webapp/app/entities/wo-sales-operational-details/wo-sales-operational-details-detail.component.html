@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="woSalesOperationalDetails">
+            <h2><span jhiTranslate="eshipperApp.woSalesOperationalDetails.detail.title">Wo Sales Operational Details</span> {{ woSalesOperationalDetails.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalDetails.defaultOpExpense">Default Op Expense</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalDetails.defaultOpExpense }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPalletShip">Op Exp Pallet Ship</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalDetails.opExpPalletShip }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPackageShip">Op Exp Package Ship</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalDetails.opExpPackageShip }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPack">Op Exp Pack</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalDetails.opExpPack }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpSmartePost">Op Exp Smarte Post</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalDetails.opExpSmartePost }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wo-sales-operational-details', woSalesOperationalDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+    "name": "SalesAgentType",
+    "fields": [
+        {
+            "fieldName": "agentType",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200512110200",
+    "entityTableName": "sales_agent_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
