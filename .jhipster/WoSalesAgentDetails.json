@@ -1,0 +1,44 @@
+{
+    "name": "WoSalesAgentDetails",
+    "fields": [
+        {
+            "fieldName": "hstNumber",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "promoCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "promoUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "paymentMethod",
+            "otherEntityRelationshipName": "woSalesAgentDetails",
+            "relationshipName": "paymentMethod",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "woSalesAgent",
+            "otherEntityRelationshipName": "woSalesAgentDetails",
+            "relationshipName": "woSalesAgent",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200512110300",
+    "entityTableName": "wo_sales_agent_details",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

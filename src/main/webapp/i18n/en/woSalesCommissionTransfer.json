@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "woSalesCommissionTransfer": {
+      "home": {
+        "title": "Wo Sales Commission Transfers",
+        "createLabel": "Create a new Wo Sales Commission Transfer",
+        "createOrEditLabel": "Create or edit a Wo Sales Commission Transfer",
+        "notFound": "No Wo Sales Commission Transfers found"
+      },
+      "created": "A new Wo Sales Commission Transfer is created with identifier {{ param }}",
+      "updated": "A Wo Sales Commission Transfer is updated with identifier {{ param }}",
+      "deleted": "A Wo Sales Commission Transfer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wo Sales Commission Transfer {{ id }}?"
+      },
+      "detail": {
+        "title": "Wo Sales Commission Transfer"
+      },
+      "customerTransferDate": "Customer Transfer Date",
+      "isIncludeHistoricalData": "Is Include Historical Data",
+      "woSalesAgent": "Wo Sales Agent"
+    }
+  }
+}

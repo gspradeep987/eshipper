@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!--
+        Added the constraints for entity WoSalesOperationalCarrier.
+    -->
+    <changeSet id="20200512110800-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="carrier_id"
+                                 baseTableName="wo_sales_operational_carrier"
+                                 constraintName="fk_wo_sales_operational_carrier_carrier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="carrier"/>
+
+        <addForeignKeyConstraint baseColumnNames="carrier_service_id"
+                                 baseTableName="wo_sales_operational_carrier"
+                                 constraintName="fk_wo_sales_operational_carrier_carrier_service_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="carrier_service"/>
+
+        <addForeignKeyConstraint baseColumnNames="wo_sales_operational_details_id"
+                                 baseTableName="wo_sales_operational_carrier"
+                                 constraintName="fk_wo_sales_operational_carrier_wo_sales_operational_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wo_sales_operational_details"/>
+
+    </changeSet>
+</databaseChangeLog>

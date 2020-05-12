@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!--
+        Added the constraints for entity WoSalesAgent.
+    -->
+    <changeSet id="20200512110100-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="wo_sales_agent_details_id"
+                                 baseTableName="wo_sales_agent"
+                                 constraintName="fk_wo_sales_agent_wo_sales_agent_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wo_sales_agent_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="wo_sales_commission_details_id"
+                                 baseTableName="wo_sales_agent"
+                                 constraintName="fk_wo_sales_agent_wo_sales_commission_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wo_sales_commission_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="wo_sales_operational_details_id"
+                                 baseTableName="wo_sales_agent"
+                                 constraintName="fk_wo_sales_agent_wo_sales_operational_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wo_sales_operational_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="wo_sales_commission_transfer_id"
+                                 baseTableName="wo_sales_agent"
+                                 constraintName="fk_wo_sales_agent_wo_sales_commission_transfer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wo_sales_commission_transfer"/>
+
+        <addForeignKeyConstraint baseColumnNames="sales_agent_type_id"
+                                 baseTableName="wo_sales_agent"
+                                 constraintName="fk_wo_sales_agent_sales_agent_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sales_agent_type"/>
+
+    </changeSet>
+</databaseChangeLog>
