@@ -37,6 +37,18 @@
     <include file="config/liquibase/changelog/20200211053600_added_entity_Province.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053700_added_entity_City.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200312111600_added_entity_EcomStoreSync.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071100_added_entity_WoSalesAgent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071200_added_entity_SalesAgentType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071300_added_entity_WoSalesAgentDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071400_added_entity_PaymentMethod.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071500_added_entity_WoSalesCommissionDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071600_added_entity_WoSalesCommissionCarrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071700_added_entity_WoSalesOperationalDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071800_added_entity_WoSalesOperationalCarrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071900_added_entity_WoSalesCommissionTransfer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514072000_added_entity_Carrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514072100_added_entity_CarrierService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514072200_added_entity_User10.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200211051500_added_entity_constraints_EcomStore.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211051600_added_entity_constraints_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
@@ -46,5 +58,10 @@
     <include file="config/liquibase/changelog/20200211052700_added_entity_constraints_EcomProduct.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211052800_added_entity_constraints_EcomProductImage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053000_added_entity_constraints_EcomOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071100_added_entity_constraints_WoSalesAgent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071300_added_entity_constraints_WoSalesAgentDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071600_added_entity_constraints_WoSalesCommissionCarrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514071800_added_entity_constraints_WoSalesOperationalCarrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200514072200_added_entity_constraints_User10.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

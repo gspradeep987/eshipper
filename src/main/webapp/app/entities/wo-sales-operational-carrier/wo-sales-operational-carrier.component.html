@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.woSalesOperationalCarrier.home.title">Wo Sales Operational Carriers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wo-sales-operational-carrier" [routerLink]="['/wo-sales-operational-carrier/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.woSalesOperationalCarrier.home.createLabel">
+            Create a new Wo Sales Operational Carrier
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="woSalesOperationalCarriers?.length === 0">
+        <span jhiTranslate="eshipperApp.woSalesOperationalCarrier.home.notFound">No woSalesOperationalCarriers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="woSalesOperationalCarriers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="opExp"><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.opExp">Op Exp</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="carrierId"><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.carrier">Carrier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="carrierServiceId"><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.carrierService">Carrier Service</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="woSalesOperationalDetailsId"><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.woSalesOperationalDetails">Wo Sales Operational Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let woSalesOperationalCarrier of woSalesOperationalCarriers ;trackBy: trackId">
+                    <td><a [routerLink]="['/wo-sales-operational-carrier', woSalesOperationalCarrier.id, 'view']">{{ woSalesOperationalCarrier.id }}</a></td>
+                    <td>{{ woSalesOperationalCarrier.opExp }}</td>
+                    <td>
+                        <div *ngIf="woSalesOperationalCarrier.carrierId">
+                            <a [routerLink]="['/carrier', woSalesOperationalCarrier.carrierId , 'view']" >{{ woSalesOperationalCarrier.carrierId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="woSalesOperationalCarrier.carrierServiceId">
+                            <a [routerLink]="['/carrier-service', woSalesOperationalCarrier.carrierServiceId , 'view']" >{{ woSalesOperationalCarrier.carrierServiceId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="woSalesOperationalCarrier.woSalesOperationalDetailsId">
+                            <a [routerLink]="['/wo-sales-operational-details', woSalesOperationalCarrier.woSalesOperationalDetailsId , 'view']" >{{ woSalesOperationalCarrier.woSalesOperationalDetailsId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/wo-sales-operational-carrier', woSalesOperationalCarrier.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/wo-sales-operational-carrier', woSalesOperationalCarrier.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(woSalesOperationalCarrier)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="woSalesOperationalCarriers?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
