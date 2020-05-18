@@ -15,28 +15,7 @@
       },
       "detail": {
         "title": "Ecom Store"
-      },
-      "name": "Name",
-      "nickName": "Nick Name",
-      "apiPassword": "Api Password",
-      "domain": "Domain",
-      "syncFrequency": "Sync Frequency",
-      "syncInterval": "Sync Interval",
-      "active": "Active",
-      "isManualSync": "Is Manual Sync",
-      "createdDate": "Created Date",
-      "updatedDate": "Updated Date",
-      "ecomStoreAddress": "Ecom Store Address",
-      "ecomStoreColorTheme": "Ecom Store Color Theme",
-      "ecomStoreShipmentSettings": "Ecom Store Shipment Settings",
-      "ecomStorePackageSettings": "Ecom Store Package Settings",
-      "ecomStoreMarkup": "Ecom Store Markup",
-      "ecomMailTemplate": "Ecom Mail Template",
-      "ecomOrder": "Ecom Order",
-      "company": "Company",
-      "user": "User",
-      "ecomProduct": "Ecom Product",
-      "shipmentService": "Shipment Service"
+      }
     }
   }
 }

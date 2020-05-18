@@ -1,0 +1,18 @@
+entity EcomAutomationRules {
+	name String maxlength(255)	
+    enable Boolean
+    createdDate LocalDate
+    createdBy String maxlength(255)
+}
+
+entity EcomStore {
+
+}
+
+relationship ManyToOne {
+	EcomAutomationRules{ecomStore} to EcomStore
+}
+
+dto all with mapstruct
+service all with serviceImpl
+

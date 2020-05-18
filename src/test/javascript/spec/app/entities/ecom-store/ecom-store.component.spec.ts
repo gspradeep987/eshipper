@@ -16,7 +16,7 @@ describe('Component Tests', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [EshipperTestModule],
-        declarations: [EcomStoreComponent]
+        declarations: [EcomStoreComponent],
       })
         .overrideTemplate(EcomStoreComponent, '')
         .compileComponents();
@@ -33,7 +33,7 @@ describe('Component Tests', () => {
         of(
           new HttpResponse({
             body: [new EcomStore(123)],
-            headers
+            headers,
           })
         )
       );

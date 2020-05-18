@@ -6,7 +6,7 @@ import { IEcomStore } from 'app/shared/model/ecom-store.model';
 import { EcomStoreService } from './ecom-store.service';
 
 @Component({
-  templateUrl: './ecom-store-delete-dialog.component.html'
+  templateUrl: './ecom-store-delete-dialog.component.html',
 })
 export class EcomStoreDeleteDialogComponent {
   ecomStore?: IEcomStore;

@@ -8,8 +8,6 @@ import com.eshipper.service.mapper.EcomStoreMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,19 +57,11 @@ public class EcomStoreServiceImpl implements EcomStoreService {
     @Transactional(readOnly = true)
     public List<EcomStoreDTO> findAll() {
         log.debug("Request to get all EcomStores");
-        return ecomStoreRepository.findAllWithEagerRelationships().stream()
+        return ecomStoreRepository.findAll().stream()
             .map(ecomStoreMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the ecomStores with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    public Page<EcomStoreDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return ecomStoreRepository.findAllWithEagerRelationships(pageable).map(ecomStoreMapper::toDto);
-    }
 
     /**
      * Get one ecomStore by id.
@@ -83,7 +73,7 @@ public class EcomStoreServiceImpl implements EcomStoreService {
     @Transactional(readOnly = true)
     public Optional<EcomStoreDTO> findOne(Long id) {
         log.debug("Request to get EcomStore : {}", id);
-        return ecomStoreRepository.findOneWithEagerRelationships(id)
+        return ecomStoreRepository.findById(id)
             .map(ecomStoreMapper::toDto);
     }
 
@@ -95,6 +85,7 @@ public class EcomStoreServiceImpl implements EcomStoreService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete EcomStore : {}", id);
+
         ecomStoreRepository.deleteById(id);
     }
 }

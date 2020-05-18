@@ -5,7 +5,7 @@ import { IEcomStore } from 'app/shared/model/ecom-store.model';
 
 @Component({
   selector: 'jhi-ecom-store-detail',
-  templateUrl: './ecom-store-detail.component.html'
+  templateUrl: './ecom-store-detail.component.html',
 })
 export class EcomStoreDetailComponent implements OnInit {
   ecomStore: IEcomStore | null = null;
