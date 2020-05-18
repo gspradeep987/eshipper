@@ -1,0 +1,26 @@
+{
+  "eshipperApp": {
+    "ecomAutomationRules": {
+      "home": {
+        "title": "Ecom Automation Rules",
+        "createLabel": "Create a new Ecom Automation Rules",
+        "createOrEditLabel": "Create or edit a Ecom Automation Rules",
+        "notFound": "No Ecom Automation Rules found"
+      },
+      "created": "A new Ecom Automation Rules is created with identifier {{ param }}",
+      "updated": "A Ecom Automation Rules is updated with identifier {{ param }}",
+      "deleted": "A Ecom Automation Rules is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Automation Rules {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Automation Rules"
+      },
+      "name": "Name",
+      "enable": "Enable",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "ecomStore": "Ecom Store"
+    }
+  }
+}

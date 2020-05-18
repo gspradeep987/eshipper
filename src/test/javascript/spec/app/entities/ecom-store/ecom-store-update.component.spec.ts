@@ -18,7 +18,7 @@ describe('Component Tests', () => {
       TestBed.configureTestingModule({
         imports: [EshipperTestModule],
         declarations: [EcomStoreUpdateComponent],
-        providers: [FormBuilder]
+        providers: [FormBuilder],
       })
         .overrideTemplate(EcomStoreUpdateComponent, '')
         .compileComponents();

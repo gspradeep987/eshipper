@@ -10,7 +10,7 @@ import { EcomStoreDeleteDialogComponent } from './ecom-store-delete-dialog.compo
 
 @Component({
   selector: 'jhi-ecom-store',
-  templateUrl: './ecom-store.component.html'
+  templateUrl: './ecom-store.component.html',
 })
 export class EcomStoreComponent implements OnInit, OnDestroy {
   ecomStores?: IEcomStore[];

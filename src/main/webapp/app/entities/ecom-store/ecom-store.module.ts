@@ -11,6 +11,6 @@ import { ecomStoreRoute } from './ecom-store.route';
 @NgModule({
   imports: [EshipperSharedModule, RouterModule.forChild(ecomStoreRoute)],
   declarations: [EcomStoreComponent, EcomStoreDetailComponent, EcomStoreUpdateComponent, EcomStoreDeleteDialogComponent],
-  entryComponents: [EcomStoreDeleteDialogComponent]
+  entryComponents: [EcomStoreDeleteDialogComponent],
 })
 export class EshipperEcomStoreModule {}

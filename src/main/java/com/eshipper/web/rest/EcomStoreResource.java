@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -46,7 +45,7 @@ public class EcomStoreResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/ecom-stores")
-    public ResponseEntity<EcomStoreDTO> createEcomStore(@Valid @RequestBody EcomStoreDTO ecomStoreDTO) throws URISyntaxException {
+    public ResponseEntity<EcomStoreDTO> createEcomStore(@RequestBody EcomStoreDTO ecomStoreDTO) throws URISyntaxException {
         log.debug("REST request to save EcomStore : {}", ecomStoreDTO);
         if (ecomStoreDTO.getId() != null) {
             throw new BadRequestAlertException("A new ecomStore cannot already have an ID", ENTITY_NAME, "idexists");
@@ -67,7 +66,7 @@ public class EcomStoreResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/ecom-stores")
-    public ResponseEntity<EcomStoreDTO> updateEcomStore(@Valid @RequestBody EcomStoreDTO ecomStoreDTO) throws URISyntaxException {
+    public ResponseEntity<EcomStoreDTO> updateEcomStore(@RequestBody EcomStoreDTO ecomStoreDTO) throws URISyntaxException {
         log.debug("REST request to update EcomStore : {}", ecomStoreDTO);
         if (ecomStoreDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -81,11 +80,10 @@ public class EcomStoreResource {
     /**
      * {@code GET  /ecom-stores} : get all the ecomStores.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of ecomStores in body.
      */
     @GetMapping("/ecom-stores")
-    public List<EcomStoreDTO> getAllEcomStores(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<EcomStoreDTO> getAllEcomStores() {
         log.debug("REST request to get all EcomStores");
         return ecomStoreService.findAll();
     }
@@ -112,6 +110,7 @@ public class EcomStoreResource {
     @DeleteMapping("/ecom-stores/{id}")
     public ResponseEntity<Void> deleteEcomStore(@PathVariable Long id) {
         log.debug("REST request to delete EcomStore : {}", id);
+
         ecomStoreService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }

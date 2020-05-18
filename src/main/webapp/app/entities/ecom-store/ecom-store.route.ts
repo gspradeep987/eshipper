@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
+import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IEcomStore, EcomStore } from 'app/shared/model/ecom-store.model';
 import { EcomStoreService } from './ecom-store.service';
@@ -38,45 +39,45 @@ export const ecomStoreRoute: Routes = [
     path: '',
     component: EcomStoreComponent,
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'eshipperApp.ecomStore.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'eshipperApp.ecomStore.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
     component: EcomStoreDetailComponent,
     resolve: {
-      ecomStore: EcomStoreResolve
+      ecomStore: EcomStoreResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'eshipperApp.ecomStore.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'eshipperApp.ecomStore.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',
     component: EcomStoreUpdateComponent,
     resolve: {
-      ecomStore: EcomStoreResolve
+      ecomStore: EcomStoreResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'eshipperApp.ecomStore.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'eshipperApp.ecomStore.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/edit',
     component: EcomStoreUpdateComponent,
     resolve: {
-      ecomStore: EcomStoreResolve
+      ecomStore: EcomStoreResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'eshipperApp.ecomStore.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'eshipperApp.ecomStore.home.title',
     },
-    canActivate: [UserRouteAccessService]
-  }
+    canActivate: [UserRouteAccessService],
+  },
 ];
