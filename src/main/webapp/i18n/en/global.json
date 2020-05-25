@@ -30,6 +30,9 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "ecomOrderFullfillmentStatus": "Ecom Order Fullfillment Status",
+        "ecomOrderPaymentStatus": "Ecom Order Payment Status",
+        "ecomOrderSerchType": "Ecom Order Serch Type",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

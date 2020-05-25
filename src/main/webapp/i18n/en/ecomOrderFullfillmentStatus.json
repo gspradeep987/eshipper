@@ -1,0 +1,23 @@
+{
+  "eshipperApp": {
+    "ecomOrderFullfillmentStatus": {
+      "home": {
+        "title": "Ecom Order Fullfillment Statuses",
+        "createLabel": "Create a new Ecom Order Fullfillment Status",
+        "createOrEditLabel": "Create or edit a Ecom Order Fullfillment Status",
+        "notFound": "No Ecom Order Fullfillment Statuses found"
+      },
+      "created": "A new Ecom Order Fullfillment Status is created with identifier {{ param }}",
+      "updated": "A Ecom Order Fullfillment Status is updated with identifier {{ param }}",
+      "deleted": "A Ecom Order Fullfillment Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Order Fullfillment Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Order Fullfillment Status"
+      },
+      "name": "Name",
+      "value": "Value"
+    }
+  }
+}

@@ -37,6 +37,9 @@
     <include file="config/liquibase/changelog/20200211053600_added_entity_Province.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053700_added_entity_City.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200312111600_added_entity_EcomStoreSync.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525073606_added_entity_EcomOrderFullfillmentStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525073706_added_entity_EcomOrderPaymentStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525073806_added_entity_EcomOrderSerchType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200211051500_added_entity_constraints_EcomStore.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211051600_added_entity_constraints_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
