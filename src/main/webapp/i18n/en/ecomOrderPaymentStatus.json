@@ -1,0 +1,23 @@
+{
+  "eshipperApp": {
+    "ecomOrderPaymentStatus": {
+      "home": {
+        "title": "Ecom Order Payment Statuses",
+        "createLabel": "Create a new Ecom Order Payment Status",
+        "createOrEditLabel": "Create or edit a Ecom Order Payment Status",
+        "notFound": "No Ecom Order Payment Statuses found"
+      },
+      "created": "A new Ecom Order Payment Status is created with identifier {{ param }}",
+      "updated": "A Ecom Order Payment Status is updated with identifier {{ param }}",
+      "deleted": "A Ecom Order Payment Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Order Payment Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Order Payment Status"
+      },
+      "name": "Name",
+      "value": "Value"
+    }
+  }
+}

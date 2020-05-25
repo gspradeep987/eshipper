@@ -1,0 +1,23 @@
+{
+  "eshipperApp": {
+    "ecomOrderSerchType": {
+      "home": {
+        "title": "Ecom Order Serch Types",
+        "createLabel": "Create a new Ecom Order Serch Type",
+        "createOrEditLabel": "Create or edit a Ecom Order Serch Type",
+        "notFound": "No Ecom Order Serch Types found"
+      },
+      "created": "A new Ecom Order Serch Type is created with identifier {{ param }}",
+      "updated": "A Ecom Order Serch Type is updated with identifier {{ param }}",
+      "deleted": "A Ecom Order Serch Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ecom Order Serch Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Ecom Order Serch Type"
+      },
+      "name": "Name",
+      "value": "Value"
+    }
+  }
+}
