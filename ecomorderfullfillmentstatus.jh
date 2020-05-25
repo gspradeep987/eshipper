@@ -1,0 +1,20 @@
+entity EcomOrderFullfillmentStatus {
+	name String maxlength(50)   
+	value String maxlength(50)
+}
+
+entity EcomOrderPaymentStatus {
+	name String maxlength(50)   
+	value String maxlength(50)
+}
+
+entity EcomOrderSerchType {
+	name String maxlength(50)   
+	value String maxlength(50)
+}
+
+dto all with mapstruct
+service all with serviceImpl
+
+
+
