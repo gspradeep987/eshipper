@@ -1,0 +1,25 @@
+{
+  "eshipperApp": {
+    "woSalesCommissionCarrier": {
+      "home": {
+        "title": "Wo Sales Commission Carriers",
+        "createLabel": "Create a new Wo Sales Commission Carrier",
+        "createOrEditLabel": "Create or edit a Wo Sales Commission Carrier",
+        "notFound": "No Wo Sales Commission Carriers found"
+      },
+      "created": "A new Wo Sales Commission Carrier is created with identifier {{ param }}",
+      "updated": "A Wo Sales Commission Carrier is updated with identifier {{ param }}",
+      "deleted": "A Wo Sales Commission Carrier is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wo Sales Commission Carrier {{ id }}?"
+      },
+      "detail": {
+        "title": "Wo Sales Commission Carrier"
+      },
+      "commissionPercentageByCarrier": "Commission Percentage By Carrier",
+      "carrier": "Carrier",
+      "carrierService": "Carrier Service",
+      "woSalesCommissionDetails": "Wo Sales Commission Details"
+    }
+  }
+}

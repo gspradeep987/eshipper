@@ -1,40 +1,40 @@
 {
-    "name": "EcomMarkupTertiary",
-    "fields": [
-        {
-            "fieldName": "wgt1to5",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "wgt6to10",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "wgt11to15",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "wgt16",
-            "fieldType": "Float"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomStoreMarkup",
-            "otherEntityRelationshipName": "ecomMarkupTertiary",
-            "relationshipName": "ecomStoreMarkup",
-            "ownerSide": false
-        }
-    ],
-    "changelogDate": "20200211052400",
-    "entityTableName": "ecom_markup_tertiary",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomMarkupTertiary",
+  "fields": [
+    {
+      "fieldName": "wgt1to5",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "wgt6to10",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "wgt11to15",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "wgt16",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomStoreMarkup",
+      "otherEntityRelationshipName": "ecomMarkupTertiary",
+      "relationshipName": "ecomStoreMarkup",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200211052400",
+  "entityTableName": "ecom_markup_tertiary",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }
