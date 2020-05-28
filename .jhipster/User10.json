@@ -1,0 +1,24 @@
+{
+  "name": "User10",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "woSalesAgent",
+      "otherEntityRelationshipName": "user10",
+      "relationshipName": "woSalesAgent",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200528094737",
+  "entityTableName": "user_10",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

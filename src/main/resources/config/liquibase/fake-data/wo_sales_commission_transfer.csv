@@ -1,0 +1,11 @@
+id;customer_transfer_date;is_include_historical_data
+1;2020-05-27;true
+2;2020-05-28;true
+3;2020-05-27;true
+4;2020-05-27;true
+5;2020-05-28;true
+6;2020-05-27;false
+7;2020-05-28;false
+8;2020-05-28;false
+9;2020-05-28;true
+10;2020-05-27;false
