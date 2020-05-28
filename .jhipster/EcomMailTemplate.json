@@ -1,92 +1,82 @@
 {
-    "name": "EcomMailTemplate",
-    "fields": [
-        {
-            "fieldName": "templateName",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50"
-        },
-        {
-            "fieldName": "templateType",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50"
-        },
-        {
-            "fieldName": "note",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50"
-        },
-        {
-            "fieldName": "subject",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50"
-        },
-        {
-            "fieldName": "content",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50"
-        },
-        {
-            "fieldName": "isCustomTemplate",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isOrder",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isShipment",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isProductPurchased",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isAmountPaid",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isStoreInfo",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "isBody1",
-            "fieldType": "Boolean"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "ecomStore",
-            "otherEntityRelationshipName": "ecomMailTemplate",
-            "relationshipName": "ecomStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "changelogDate": "20200211052600",
-    "entityTableName": "ecom_mail_template",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomMailTemplate",
+  "fields": [
+    {
+      "fieldName": "templateName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "templateType",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "subject",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "isCustomTemplate",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isOrder",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isShipment",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isProductPurchased",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isAmountPaid",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isStoreInfo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isBody1",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ecomStore",
+      "otherEntityRelationshipName": "ecomMailTemplate",
+      "relationshipName": "ecomStore",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200211052600",
+  "entityTableName": "ecom_mail_template",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

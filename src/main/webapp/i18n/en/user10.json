@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "user10": {
+      "home": {
+        "title": "User 10 S",
+        "createLabel": "Create a new User 10",
+        "createOrEditLabel": "Create or edit a User 10",
+        "notFound": "No User 10 S found"
+      },
+      "created": "A new User 10 is created with identifier {{ param }}",
+      "updated": "A User 10 is updated with identifier {{ param }}",
+      "deleted": "A User 10 is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User 10 {{ id }}?"
+      },
+      "detail": {
+        "title": "User 10"
+      },
+      "woSalesAgent": "Wo Sales Agent"
+    }
+  }
+}

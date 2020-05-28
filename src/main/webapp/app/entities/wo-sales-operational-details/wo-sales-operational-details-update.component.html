@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-wo-sales-operational-details-heading" jhiTranslate="eshipperApp.woSalesOperationalDetails.home.createOrEditLabel">Create or edit a Wo Sales Operational Details</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesOperationalDetails.defaultOpExpense" for="field_defaultOpExpense">Default Op Expense</label>
+                    <input type="number" class="form-control" name="defaultOpExpense" id="field_defaultOpExpense"
+                           formControlName="defaultOpExpense"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPalletShip" for="field_opExpPalletShip">Op Exp Pallet Ship</label>
+                    <input type="number" class="form-control" name="opExpPalletShip" id="field_opExpPalletShip"
+                           formControlName="opExpPalletShip"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPackageShip" for="field_opExpPackageShip">Op Exp Package Ship</label>
+                    <input type="number" class="form-control" name="opExpPackageShip" id="field_opExpPackageShip"
+                           formControlName="opExpPackageShip"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpPack" for="field_opExpPack">Op Exp Pack</label>
+                    <input type="number" class="form-control" name="opExpPack" id="field_opExpPack"
+                           formControlName="opExpPack"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesOperationalDetails.opExpSmartePost" for="field_opExpSmartePost">Op Exp Smarte Post</label>
+                    <input type="number" class="form-control" name="opExpSmartePost" id="field_opExpSmartePost"
+                           formControlName="opExpSmartePost"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

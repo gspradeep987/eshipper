@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="woSalesOperationalCarrier">
+            <h2><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.detail.title">Wo Sales Operational Carrier</span> {{ woSalesOperationalCarrier.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.opExp">Op Exp</span></dt>
+                <dd>
+                    <span>{{ woSalesOperationalCarrier.opExp }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.carrier">Carrier</span></dt>
+                <dd>
+                    <div *ngIf="woSalesOperationalCarrier.carrierId">
+                        <a [routerLink]="['/carrier', woSalesOperationalCarrier.carrierId, 'view']">{{ woSalesOperationalCarrier.carrierId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.carrierService">Carrier Service</span></dt>
+                <dd>
+                    <div *ngIf="woSalesOperationalCarrier.carrierServiceId">
+                        <a [routerLink]="['/carrier-service', woSalesOperationalCarrier.carrierServiceId, 'view']">{{ woSalesOperationalCarrier.carrierServiceId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesOperationalCarrier.woSalesOperationalDetails">Wo Sales Operational Details</span></dt>
+                <dd>
+                    <div *ngIf="woSalesOperationalCarrier.woSalesOperationalDetailsId">
+                        <a [routerLink]="['/wo-sales-operational-details', woSalesOperationalCarrier.woSalesOperationalDetailsId, 'view']">{{ woSalesOperationalCarrier.woSalesOperationalDetailsId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wo-sales-operational-carrier', woSalesOperationalCarrier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

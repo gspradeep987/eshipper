@@ -1,0 +1,27 @@
+{
+  "eshipperApp": {
+    "woSalesAgent": {
+      "home": {
+        "title": "Wo Sales Agents",
+        "createLabel": "Create a new Wo Sales Agent",
+        "createOrEditLabel": "Create or edit a Wo Sales Agent",
+        "notFound": "No Wo Sales Agents found"
+      },
+      "created": "A new Wo Sales Agent is created with identifier {{ param }}",
+      "updated": "A Wo Sales Agent is updated with identifier {{ param }}",
+      "deleted": "A Wo Sales Agent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wo Sales Agent {{ id }}?"
+      },
+      "detail": {
+        "title": "Wo Sales Agent"
+      },
+      "isActive": "Is Active",
+      "woSalesAgentDetails": "Wo Sales Agent Details",
+      "woSalesCommissionDetails": "Wo Sales Commission Details",
+      "woSalesOperationalDetails": "Wo Sales Operational Details",
+      "woSalesCommissionTransfer": "Wo Sales Commission Transfer",
+      "salesAgentType": "Sales Agent Type"
+    }
+  }
+}

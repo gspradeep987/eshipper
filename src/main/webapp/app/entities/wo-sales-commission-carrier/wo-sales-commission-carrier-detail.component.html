@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="woSalesCommissionCarrier">
+            <h2><span jhiTranslate="eshipperApp.woSalesCommissionCarrier.detail.title">Wo Sales Commission Carrier</span> {{ woSalesCommissionCarrier.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.woSalesCommissionCarrier.commissionPercentageByCarrier">Commission Percentage By Carrier</span></dt>
+                <dd>
+                    <span>{{ woSalesCommissionCarrier.commissionPercentageByCarrier }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesCommissionCarrier.carrier">Carrier</span></dt>
+                <dd>
+                    <div *ngIf="woSalesCommissionCarrier.carrierId">
+                        <a [routerLink]="['/carrier', woSalesCommissionCarrier.carrierId, 'view']">{{ woSalesCommissionCarrier.carrierId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesCommissionCarrier.carrierService">Carrier Service</span></dt>
+                <dd>
+                    <div *ngIf="woSalesCommissionCarrier.carrierServiceId">
+                        <a [routerLink]="['/carrier-service', woSalesCommissionCarrier.carrierServiceId, 'view']">{{ woSalesCommissionCarrier.carrierServiceId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.woSalesCommissionCarrier.woSalesCommissionDetails">Wo Sales Commission Details</span></dt>
+                <dd>
+                    <div *ngIf="woSalesCommissionCarrier.woSalesCommissionDetailsId">
+                        <a [routerLink]="['/wo-sales-commission-details', woSalesCommissionCarrier.woSalesCommissionDetailsId, 'view']">{{ woSalesCommissionCarrier.woSalesCommissionDetailsId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wo-sales-commission-carrier', woSalesCommissionCarrier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
