@@ -1,0 +1,43 @@
+{
+  "name": "WoSalesOperationalCarrier",
+  "fields": [
+    {
+      "fieldName": "opExp",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carrier",
+      "otherEntityRelationshipName": "woSalesOperationalCarrier",
+      "relationshipName": "carrier",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carrierService",
+      "otherEntityRelationshipName": "woSalesOperationalCarrier",
+      "relationshipName": "carrierService",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "woSalesOperationalDetails",
+      "otherEntityRelationshipName": "woSalesOperationalCarrier",
+      "relationshipName": "woSalesOperationalDetails",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200528101400",
+  "entityTableName": "wo_sales_operational_carrier",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
