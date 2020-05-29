@@ -1,0 +1,10 @@
+entity EcomStoreImages {
+	name String maxlength(255)    
+	imagePath String maxlength(255)
+}
+
+dto all with mapstruct
+service all with serviceImpl
+
+
+
