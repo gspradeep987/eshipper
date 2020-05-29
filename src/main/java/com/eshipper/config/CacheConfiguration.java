@@ -73,6 +73,7 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Province.class.getName());
             createCache(cm, com.eshipper.domain.City.class.getName());
             createCache(cm, com.eshipper.domain.EcomStoreSync.class.getName());
+            createCache(cm, com.eshipper.domain.EcomStoreImages.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,33 @@
+{
+  "name": "EcomStoreImages",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "imagePath",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200529063347",
+  "entityTableName": "ecom_store_images",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
