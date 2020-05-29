@@ -30,6 +30,7 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "ecomStoreImages": "Ecom Store Images",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
