@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-wo-sales-agent-heading" jhiTranslate="eshipperApp.woSalesAgent.home.createOrEditLabel">Create or edit a Wo Sales Agent</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.isActive" for="field_isActive">Is Active</label>
+                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                           formControlName="isActive"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.elasticSearchWoSalesAgent" for="field_elasticSearchWoSalesAgent">Elastic Search Wo Sales Agent</label>
+                    <select class="form-control" id="field_elasticSearchWoSalesAgent" name="elasticSearchWoSalesAgent" formControlName="elasticSearchWoSalesAgentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="elasticSearchWoSalesAgentOption.id" *ngFor="let elasticSearchWoSalesAgentOption of elasticsearchwosalesagents; trackBy: trackById">{{ elasticSearchWoSalesAgentOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.woSalesAgentDetails" for="field_woSalesAgentDetails">Wo Sales Agent Details</label>
+                    <select class="form-control" id="field_woSalesAgentDetails" name="woSalesAgentDetails" formControlName="woSalesAgentDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="woSalesAgentDetailsOption.id" *ngFor="let woSalesAgentDetailsOption of wosalesagentdetails; trackBy: trackById">{{ woSalesAgentDetailsOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.woSalesCommissionDetails" for="field_woSalesCommissionDetails">Wo Sales Commission Details</label>
+                    <select class="form-control" id="field_woSalesCommissionDetails" name="woSalesCommissionDetails" formControlName="woSalesCommissionDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="woSalesCommissionDetailsOption.id" *ngFor="let woSalesCommissionDetailsOption of wosalescommissiondetails; trackBy: trackById">{{ woSalesCommissionDetailsOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.woSalesOperationalDetails" for="field_woSalesOperationalDetails">Wo Sales Operational Details</label>
+                    <select class="form-control" id="field_woSalesOperationalDetails" name="woSalesOperationalDetails" formControlName="woSalesOperationalDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="woSalesOperationalDetailsOption.id" *ngFor="let woSalesOperationalDetailsOption of wosalesoperationaldetails; trackBy: trackById">{{ woSalesOperationalDetailsOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.woSalesCommissionTransfer" for="field_woSalesCommissionTransfer">Wo Sales Commission Transfer</label>
+                    <select class="form-control" id="field_woSalesCommissionTransfer" name="woSalesCommissionTransfer" formControlName="woSalesCommissionTransferId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="woSalesCommissionTransferOption.id" *ngFor="let woSalesCommissionTransferOption of wosalescommissiontransfers; trackBy: trackById">{{ woSalesCommissionTransferOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.woSalesAgent.salesAgentType" for="field_salesAgentType">Sales Agent Type</label>
+                    <select class="form-control" id="field_salesAgentType" name="salesAgentType" formControlName="salesAgentTypeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="salesAgentTypeOption.id" *ngFor="let salesAgentTypeOption of salesagenttypes; trackBy: trackById">{{ salesAgentTypeOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.woSalesAgentDetails.home.title">Wo Sales Agent Details</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wo-sales-agent-details" [routerLink]="['/wo-sales-agent-details/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.woSalesAgentDetails.home.createLabel">
+            Create a new Wo Sales Agent Details
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="woSalesAgentDetails?.length === 0">
+        <span jhiTranslate="eshipperApp.woSalesAgentDetails.home.notFound">No woSalesAgentDetails found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="woSalesAgentDetails && woSalesAgentDetails.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hstNumber"><span jhiTranslate="eshipperApp.woSalesAgentDetails.hstNumber">Hst Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="promoCode"><span jhiTranslate="eshipperApp.woSalesAgentDetails.promoCode">Promo Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="promoUrl"><span jhiTranslate="eshipperApp.woSalesAgentDetails.promoUrl">Promo Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentMethodId"><span jhiTranslate="eshipperApp.woSalesAgentDetails.paymentMethod">Payment Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let woSalesAgentDetails of woSalesAgentDetails ;trackBy: trackId">
+                    <td><a [routerLink]="['/wo-sales-agent-details', woSalesAgentDetails.id, 'view']">{{ woSalesAgentDetails.id }}</a></td>
+                    <td>{{ woSalesAgentDetails.hstNumber }}</td>
+                    <td>{{ woSalesAgentDetails.promoCode }}</td>
+                    <td>{{ woSalesAgentDetails.promoUrl }}</td>
+                    <td>
+                        <div *ngIf="woSalesAgentDetails.paymentMethodId">
+                            <a [routerLink]="['/payment-method', woSalesAgentDetails.paymentMethodId , 'view']" >{{ woSalesAgentDetails.paymentMethodId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/wo-sales-agent-details', woSalesAgentDetails.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/wo-sales-agent-details', woSalesAgentDetails.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(woSalesAgentDetails)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="woSalesAgentDetails && woSalesAgentDetails.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

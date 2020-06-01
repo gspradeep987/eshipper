@@ -1,0 +1,40 @@
+{
+  "name": "WoSalesCommissionTransfer",
+  "fields": [
+    {
+      "fieldName": "customerTransferDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isIncludeHistoricalData",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "woSalesAgent",
+      "otherEntityRelationshipName": "woSalesCommissionTransfer",
+      "relationshipName": "woSalesAgent",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "woSalesAgent",
+      "otherEntityRelationshipName": "woSalesCommissionTransfer",
+      "relationshipName": "woSalesAgent",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200601174717",
+  "entityTableName": "wo_sales_commission_transfer",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
