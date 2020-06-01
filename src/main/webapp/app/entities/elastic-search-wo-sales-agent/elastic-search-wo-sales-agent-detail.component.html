@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="elasticSearchWoSalesAgent">
+            <h2><span jhiTranslate="eshipperApp.elasticSearchWoSalesAgent.detail.title">Elastic Search Wo Sales Agent</span> {{ elasticSearchWoSalesAgent.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.elasticSearchWoSalesAgent.status">Status</span></dt>
+                <dd>
+                    <div *ngIf="elasticSearchWoSalesAgent.statusId">
+                        <a [routerLink]="['/elastic-status', elasticSearchWoSalesAgent.statusId, 'view']">{{ elasticSearchWoSalesAgent.statusId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/elastic-search-wo-sales-agent', elasticSearchWoSalesAgent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

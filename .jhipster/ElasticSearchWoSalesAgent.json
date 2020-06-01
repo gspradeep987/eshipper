@@ -1,0 +1,31 @@
+{
+  "name": "ElasticSearchWoSalesAgent",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "elasticStatus",
+      "otherEntityRelationshipName": "elasticSearchWoSalesAgent",
+      "relationshipName": "status",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "woSalesAgent",
+      "otherEntityRelationshipName": "elasticSearchWoSalesAgent",
+      "relationshipName": "woSalesAgent",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200601175117",
+  "entityTableName": "elastic_search_wo_sales_agent",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

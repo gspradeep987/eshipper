@@ -1,0 +1,23 @@
+{
+  "eshipperApp": {
+    "elasticSearchWoSalesAgent": {
+      "home": {
+        "title": "Elastic Search Wo Sales Agents",
+        "createLabel": "Create a new Elastic Search Wo Sales Agent",
+        "createOrEditLabel": "Create or edit a Elastic Search Wo Sales Agent",
+        "notFound": "No Elastic Search Wo Sales Agents found"
+      },
+      "created": "A new Elastic Search Wo Sales Agent is created with identifier {{ param }}",
+      "updated": "A Elastic Search Wo Sales Agent is updated with identifier {{ param }}",
+      "deleted": "A Elastic Search Wo Sales Agent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Elastic Search Wo Sales Agent {{ id }}?"
+      },
+      "detail": {
+        "title": "Elastic Search Wo Sales Agent"
+      },
+      "status": "Status",
+      "woSalesAgent": "Wo Sales Agent"
+    }
+  }
+}

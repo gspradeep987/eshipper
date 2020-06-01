@@ -1,0 +1,43 @@
+{
+  "name": "WoSalesCommissionCarrier",
+  "fields": [
+    {
+      "fieldName": "commissionPercentageByCarrier",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carrier",
+      "otherEntityRelationshipName": "woSalesCommissionCarrier",
+      "relationshipName": "carrier",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carrierService",
+      "otherEntityRelationshipName": "woSalesCommissionCarrier",
+      "relationshipName": "carrierService",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "woSalesCommissionDetails",
+      "otherEntityRelationshipName": "woSalesCommissionCarrier",
+      "relationshipName": "woSalesCommissionDetails",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200601174417",
+  "entityTableName": "wo_sales_commission_carrier",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
