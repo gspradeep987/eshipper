@@ -2,7 +2,9 @@ package com.eshipper.service;
 
 import com.eshipper.service.dto.CompanyDTO;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,11 @@ public interface CompanyService {
     /**
      * Get all the companies.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<CompanyDTO> findAll();
+    Page<CompanyDTO> findAll(Pageable pageable);
+
 
     /**
      * Get the "id" company.

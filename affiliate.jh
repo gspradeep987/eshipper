@@ -1,0 +1,61 @@
+entity Affiliate {
+	isActive Boolean
+    notifyUser Boolean
+    promoCode String
+    promoCodeUrl String
+    commissionPercentage Float
+    commissionDate LocalDate
+    createdDate LocalDate
+    updatedDate LocalDate
+}
+
+entity Company {
+	
+}
+entity Franchise {
+}
+entity PaymentMethod {
+}
+
+entity ElasticSearchAffiliate {
+}
+
+entity ElasticStatus{
+}
+entity Currency {
+
+}
+entity AffiliateCommitionReport {
+	cutOffDate LocalDate
+    createdDate LocalDate
+    totalAmount Float
+    notifyUser Boolean
+}
+entity ShippingOrder {
+
+}
+relationship OneToOne {
+	ElasticSearchAffiliate to Affiliate
+	
+}
+
+relationship OneToMany {
+	Affiliate{affiliatedCustomers} to Company
+    AffiliateCommitionReport{shipments} to ShippingOrder
+}
+
+relationship ManyToOne {
+	ElasticSearchAffiliate{status} to ElasticStatus
+    Affiliate{paymentMethod} to PaymentMethod
+    Affiliate{affiliate} to Company
+    Affiliate{franchise} to Franchise
+    AffiliateCommitionReport{affiliate} to Affiliate
+    AffiliateCommitionReport{currency}  to Currency
+	
+}
+paginate all with pagination
+
+dto all with mapstruct
+
+service all with serviceImpl
+

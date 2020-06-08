@@ -73,6 +73,15 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Province.class.getName());
             createCache(cm, com.eshipper.domain.City.class.getName());
             createCache(cm, com.eshipper.domain.EcomStoreSync.class.getName());
+            createCache(cm, com.eshipper.domain.Affiliate.class.getName());
+            createCache(cm, com.eshipper.domain.Affiliate.class.getName() + ".affiliatedCustomers");
+            createCache(cm, com.eshipper.domain.Franchise.class.getName());
+            createCache(cm, com.eshipper.domain.PaymentMethod.class.getName());
+            createCache(cm, com.eshipper.domain.ElasticSearchAffiliate.class.getName());
+            createCache(cm, com.eshipper.domain.ElasticStatus.class.getName());
+            createCache(cm, com.eshipper.domain.AffiliateCommitionReport.class.getName());
+            createCache(cm, com.eshipper.domain.AffiliateCommitionReport.class.getName() + ".shipments");
+            createCache(cm, com.eshipper.domain.ShippingOrder.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
