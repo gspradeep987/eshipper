@@ -8,13 +8,12 @@ import com.eshipper.service.mapper.CompanyMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Company}.
@@ -51,16 +50,17 @@ public class CompanyServiceImpl implements CompanyService {
     /**
      * Get all the companies.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<CompanyDTO> findAll() {
+    public Page<CompanyDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Companies");
-        return companyRepository.findAll().stream()
-            .map(companyMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return companyRepository.findAll(pageable)
+            .map(companyMapper::toDto);
     }
+
 
     /**
      * Get one company by id.
