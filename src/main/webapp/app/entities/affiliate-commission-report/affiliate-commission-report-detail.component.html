@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="affiliateCommissionReport">
+            <h2><span jhiTranslate="eshipperApp.affiliateCommissionReport.detail.title">Affiliate Commission Report</span> {{ affiliateCommissionReport.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.cutOffDate">Cut Off Date</span></dt>
+                <dd>
+                    <span>{{ affiliateCommissionReport.cutOffDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ affiliateCommissionReport.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.totalAmount">Total Amount</span></dt>
+                <dd>
+                    <span>{{ affiliateCommissionReport.totalAmount }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.notifyUser">Notify User</span></dt>
+                <dd>
+                    <span>{{ affiliateCommissionReport.notifyUser }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.affiliate">Affiliate</span></dt>
+                <dd>
+                    <div *ngIf="affiliateCommissionReport.affiliateId">
+                        <a [routerLink]="['/affiliate', affiliateCommissionReport.affiliateId, 'view']">{{ affiliateCommissionReport.affiliateId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliateCommissionReport.currency">Currency</span></dt>
+                <dd>
+                    <div *ngIf="affiliateCommissionReport.currencyId">
+                        <a [routerLink]="['/currency', affiliateCommissionReport.currencyId, 'view']">{{ affiliateCommissionReport.currencyId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/affiliate-commission-report', affiliateCommissionReport.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

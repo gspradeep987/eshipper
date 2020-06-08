@@ -1,0 +1,54 @@
+{
+  "name": "AffiliateCommissionReport",
+  "fields": [
+    {
+      "fieldName": "cutOffDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "notifyUser",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "shippingOrder",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "shipments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliate",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "affiliate",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "currency",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "currency",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200608102506",
+  "entityTableName": "affiliate_commission_report",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

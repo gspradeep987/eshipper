@@ -1,37 +1,33 @@
 {
-    "name": "EcomStoreSync",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "255"
-        },
-        {
-            "fieldName": "syncFrequency",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "syncInterval",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "25"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20200312111600",
-    "entityTableName": "ecom_store_sync",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "embedded": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomStoreSync",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "syncFrequency",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "syncInterval",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "25"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200312111600",
+  "entityTableName": "ecom_store_sync",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }
