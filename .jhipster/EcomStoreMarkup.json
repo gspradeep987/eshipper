@@ -1,84 +1,82 @@
 {
-    "name": "EcomStoreMarkup",
-    "fields": [
-        {
-            "fieldName": "markupType",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "20"
-        },
-        {
-            "fieldName": "minValue",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "domesticValue",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "intlValue",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "flatRateValue",
-            "fieldType": "Float"
-        },
-        {
-            "fieldName": "opexValue",
-            "fieldType": "Float"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomMarkupPrimary",
-            "otherEntityRelationshipName": "ecomStoreMarkup",
-            "relationshipName": "ecomMarkupPrimary",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomMarkupSecondary",
-            "otherEntityRelationshipName": "ecomStoreMarkup",
-            "relationshipName": "ecomMarkupSecondary",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomMarkupTertiary",
-            "otherEntityRelationshipName": "ecomStoreMarkup",
-            "relationshipName": "ecomMarkupTertiary",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomMarkupQuaternary",
-            "otherEntityRelationshipName": "ecomStoreMarkup",
-            "relationshipName": "ecomMarkupQuaternary",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomStore",
-            "otherEntityRelationshipName": "ecomStoreMarkup",
-            "relationshipName": "ecomStore",
-            "ownerSide": false
-        }
-    ],
-    "changelogDate": "20200211052100",
-    "entityTableName": "ecom_store_markup",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomStoreMarkup",
+  "fields": [
+    {
+      "fieldName": "markupType",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "minValue",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "domesticValue",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "intlValue",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "flatRateValue",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "opexValue",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomMarkupPrimary",
+      "otherEntityRelationshipName": "ecomStoreMarkup",
+      "relationshipName": "ecomMarkupPrimary",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomMarkupSecondary",
+      "otherEntityRelationshipName": "ecomStoreMarkup",
+      "relationshipName": "ecomMarkupSecondary",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomMarkupTertiary",
+      "otherEntityRelationshipName": "ecomStoreMarkup",
+      "relationshipName": "ecomMarkupTertiary",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomMarkupQuaternary",
+      "otherEntityRelationshipName": "ecomStoreMarkup",
+      "relationshipName": "ecomMarkupQuaternary",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomStore",
+      "otherEntityRelationshipName": "ecomStoreMarkup",
+      "relationshipName": "ecomStore",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200211052100",
+  "entityTableName": "ecom_store_markup",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

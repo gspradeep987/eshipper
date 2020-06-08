@@ -6,25 +6,19 @@ import com.eshipper.repository.CompanyRepository;
 import com.eshipper.service.CompanyService;
 import com.eshipper.service.dto.CompanyDTO;
 import com.eshipper.service.mapper.CompanyMapper;
-import com.eshipper.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -34,6 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link CompanyResource} REST controller.
  */
 @SpringBootTest(classes = EshipperApp.class)
+@AutoConfigureMockMvc
+@WithMockUser
 public class CompanyResourceIT {
 
     @Autowired
@@ -46,35 +42,12 @@ public class CompanyResourceIT {
     private CompanyService companyService;
 
     @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
-
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
-
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
-
-    @Autowired
     private EntityManager em;
 
     @Autowired
-    private Validator validator;
-
     private MockMvc restCompanyMockMvc;
 
     private Company company;
-
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final CompanyResource companyResource = new CompanyResource(companyService);
-        this.restCompanyMockMvc = MockMvcBuilders.standaloneSetup(companyResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
 
     /**
      * Create an entity for this test.
@@ -106,11 +79,10 @@ public class CompanyResourceIT {
     @Transactional
     public void createCompany() throws Exception {
         int databaseSizeBeforeCreate = companyRepository.findAll().size();
-
         // Create the Company
         CompanyDTO companyDTO = companyMapper.toDto(company);
         restCompanyMockMvc.perform(post("/api/companies")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(companyDTO)))
             .andExpect(status().isCreated());
 
@@ -131,7 +103,7 @@ public class CompanyResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCompanyMockMvc.perform(post("/api/companies")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(companyDTO)))
             .andExpect(status().isBadRequest());
 
@@ -166,7 +138,6 @@ public class CompanyResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(company.getId().intValue()));
     }
-
     @Test
     @Transactional
     public void getNonExistingCompany() throws Exception {
@@ -190,7 +161,7 @@ public class CompanyResourceIT {
         CompanyDTO companyDTO = companyMapper.toDto(updatedCompany);
 
         restCompanyMockMvc.perform(put("/api/companies")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(companyDTO)))
             .andExpect(status().isOk());
 
@@ -210,7 +181,7 @@ public class CompanyResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCompanyMockMvc.perform(put("/api/companies")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(companyDTO)))
             .andExpect(status().isBadRequest());
 
@@ -229,7 +200,7 @@ public class CompanyResourceIT {
 
         // Delete the company
         restCompanyMockMvc.perform(delete("/api/companies/{id}", company.getId())
-            .accept(TestUtil.APPLICATION_JSON))
+            .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
