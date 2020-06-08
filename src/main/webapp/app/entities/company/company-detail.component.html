@@ -8,6 +8,12 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.company.affiliate">Affiliate</span></dt>
+                <dd>
+                    <div *ngIf="company.affiliateId">
+                        <a [routerLink]="['/affiliate', company.affiliateId, 'view']">{{ company.affiliateId }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

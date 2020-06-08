@@ -18,17 +18,23 @@
         <span jhiTranslate="eshipperApp.company.home.notFound">No companies found</span>
     </div>
 
-    <div class="table-responsive" id="entities" *ngIf="companies?.length > 0">
+    <div class="table-responsive" id="entities" *ngIf="companies && companies.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="affiliateId"><span jhiTranslate="eshipperApp.company.affiliate">Affiliate</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let company of companies ;trackBy: trackId">
                     <td><a [routerLink]="['/company', company.id, 'view']">{{ company.id }}</a></td>
+                    <td>
+                        <div *ngIf="company.affiliateId">
+                            <a [routerLink]="['/affiliate', company.affiliateId , 'view']" >{{ company.affiliateId }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
@@ -55,5 +61,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="companies && companies.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>
