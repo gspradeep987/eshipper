@@ -1,0 +1,32 @@
+{
+  "name": "ElasticSearchAffiliate",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "affiliate",
+      "otherEntityRelationshipName": "elasticSearchAffiliate",
+      "relationshipName": "affiliate",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "elasticStatus",
+      "otherEntityRelationshipName": "elasticSearchAffiliate",
+      "relationshipName": "elasticStatus",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200608102606",
+  "entityTableName": "elastic_search_affiliate",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ElasticSearchAffiliate.
+    -->
+    <changeSet id="20200608102606-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="affiliate_id"
+                                 baseTableName="elastic_search_affiliate"
+                                 constraintName="fk_elastic_search_affiliate_affiliate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="affiliate"/>
+
+        <addForeignKeyConstraint baseColumnNames="elastic_status_id"
+                                 baseTableName="elastic_search_affiliate"
+                                 constraintName="fk_elastic_search_affiliate_elastic_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="elastic_status"/>
+
+    </changeSet>
+</databaseChangeLog>

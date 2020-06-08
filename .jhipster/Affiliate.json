@@ -1,0 +1,84 @@
+{
+  "name": "Affiliate",
+  "fields": [
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "notifyUser",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "promoCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "promoCodeUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commissionPercentage",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "commissionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "affiliate",
+      "relationshipName": "affiliatedCustomers"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "paymentMethod",
+      "otherEntityRelationshipName": "affiliate",
+      "relationshipName": "paymentMethod",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "affiliate",
+      "relationshipName": "affiliate",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "franchise",
+      "otherEntityRelationshipName": "affiliate",
+      "relationshipName": "franchise",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "elasticSearchAffiliate",
+      "otherEntityRelationshipName": "affiliate",
+      "relationshipName": "elasticSearchAffiliate",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200608102406",
+  "entityTableName": "affiliate",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
