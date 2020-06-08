@@ -1,15 +1,24 @@
 {
-    "name": "Company",
-    "fields": [],
-    "relationships": [],
-    "changelogDate": "20200211053200",
-    "entityTableName": "company",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "Company",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliate",
+      "otherEntityRelationshipName": "affiliatedCustomers",
+      "relationshipName": "affiliate",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200211053200",
+  "entityTableName": "company",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "embedded": false
 }

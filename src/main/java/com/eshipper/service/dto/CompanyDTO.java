@@ -1,16 +1,17 @@
 package com.eshipper.service.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A DTO for the {@link com.eshipper.domain.Company} entity.
  */
 public class CompanyDTO implements Serializable {
-
+    
     private Long id;
 
 
+    private Long affiliateId;
+    
     public Long getId() {
         return id;
     }
@@ -19,31 +20,37 @@ public class CompanyDTO implements Serializable {
         this.id = id;
     }
 
+    public Long getAffiliateId() {
+        return affiliateId;
+    }
+
+    public void setAffiliateId(Long affiliateId) {
+        this.affiliateId = affiliateId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof CompanyDTO)) {
             return false;
         }
 
-        CompanyDTO companyDTO = (CompanyDTO) o;
-        if (companyDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), companyDTO.getId());
+        return id != null && id.equals(((CompanyDTO) o).id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return 31;
     }
 
+    // prettier-ignore
     @Override
     public String toString() {
         return "CompanyDTO{" +
             "id=" + getId() +
+            ", affiliateId=" + getAffiliateId() +
             "}";
     }
 }
