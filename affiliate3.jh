@@ -1,0 +1,59 @@
+entity Affiliate {
+	isActive Boolean
+    notifyUser Boolean
+    promoCode String
+    promoCodeUrl String
+    commissionPercentage BigDecimal
+    commissionDate LocalDate
+    createdDate LocalDate
+    updatedDate LocalDate
+}
+
+entity AffiliateCommissionReport {
+	cutOffDate LocalDate
+    createdDate LocalDate
+    totalCommissionAmount BigDecimal
+    pendingCommissionAmount BigDecimal
+    paidCommissionAmount BigDecimal
+    noOfShipments Integer
+    notifyUser Boolean
+}
+
+entity CommissionReportStatus {
+	name String
+    value String
+
+}
+
+entity Company {
+	
+}
+
+entity Franchise {
+}
+
+entity PaymentMethod {
+}
+entity Currency {
+
+}
+
+relationship OneToMany {
+	Affiliate{affiliatedCustomers} to Company
+}
+
+relationship ManyToOne {
+    Affiliate{paymentMethod} to PaymentMethod
+    Affiliate{affiliate} to Company
+    Affiliate{franchise} to Franchise
+    AffiliateCommissionReport{affiliate} to Affiliate
+    AffiliateCommissionReport{currency}  to Currency
+   AffiliateCommissionReport{status} to CommissionReportStatus
+	
+}
+paginate all with pagination
+
+dto all with mapstruct
+
+service all with serviceImpl
+
