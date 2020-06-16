@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="affiliate">
+            <h2><span jhiTranslate="eshipperApp.affiliate.detail.title">Affiliate</span> {{ affiliate.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.affiliate.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{ affiliate.isActive }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.notifyUser">Notify User</span></dt>
+                <dd>
+                    <span>{{ affiliate.notifyUser }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.promoCode">Promo Code</span></dt>
+                <dd>
+                    <span>{{ affiliate.promoCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.promoCodeUrl">Promo Code Url</span></dt>
+                <dd>
+                    <span>{{ affiliate.promoCodeUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.commissionPercentage">Commission Percentage</span></dt>
+                <dd>
+                    <span>{{ affiliate.commissionPercentage }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.commissionDate">Commission Date</span></dt>
+                <dd>
+                    <span>{{ affiliate.commissionDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ affiliate.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ affiliate.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <div *ngIf="affiliate.paymentMethodId">
+                        <a [routerLink]="['/payment-method', affiliate.paymentMethodId, 'view']">{{ affiliate.paymentMethodId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.affiliate">Affiliate</span></dt>
+                <dd>
+                    <div *ngIf="affiliate.affiliateId">
+                        <a [routerLink]="['/company', affiliate.affiliateId, 'view']">{{ affiliate.affiliateId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.affiliate.franchise">Franchise</span></dt>
+                <dd>
+                    <div *ngIf="affiliate.franchiseId">
+                        <a [routerLink]="['/franchise', affiliate.franchiseId, 'view']">{{ affiliate.franchiseId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/affiliate', affiliate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
