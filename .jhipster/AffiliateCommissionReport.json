@@ -1,0 +1,67 @@
+{
+  "name": "AffiliateCommissionReport",
+  "fields": [
+    {
+      "fieldName": "cutOffDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "totalCommissionAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "pendingCommissionAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "paidCommissionAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "noOfShipments",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "notifyUser",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliate",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "affiliate",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "currency",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "currency",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "commissionReportStatus",
+      "otherEntityRelationshipName": "affiliateCommissionReport",
+      "relationshipName": "status",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200616060150",
+  "entityTableName": "affiliate_commission_report",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

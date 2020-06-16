@@ -1,60 +1,56 @@
 {
-    "name": "EcomStoreShipmentSettings",
-    "fields": [
-        {
-            "fieldName": "shippingMode",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "20"
-        },
-        {
-            "fieldName": "signatureReqd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "255"
-        },
-        {
-            "fieldName": "schedulePickup",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "liveRates",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "addResidential",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "tailgateAtDestination",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "tailgateAtSource",
-            "fieldType": "Boolean"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "ecomStore",
-            "otherEntityRelationshipName": "ecomStoreShipmentSettings",
-            "relationshipName": "ecomStore",
-            "ownerSide": false
-        }
-    ],
-    "changelogDate": "20200211051900",
-    "entityTableName": "ecom_store_shipment_settings",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomStoreShipmentSettings",
+  "fields": [
+    {
+      "fieldName": "shippingMode",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "signatureReqd",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "schedulePickup",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "liveRates",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "addResidential",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tailgateAtDestination",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tailgateAtSource",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ecomStore",
+      "otherEntityRelationshipName": "ecomStoreShipmentSettings",
+      "relationshipName": "ecomStore",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200211051900",
+  "entityTableName": "ecom_store_shipment_settings",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

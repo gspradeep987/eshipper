@@ -1,40 +1,36 @@
 {
-    "name": "EcomProductImage",
-    "fields": [
-        {
-            "fieldName": "imageName",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "100"
-        },
-        {
-            "fieldName": "imagePath",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "100"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "ecomProduct",
-            "otherEntityRelationshipName": "ecomProductImage",
-            "relationshipName": "ecomProduct",
-            "otherEntityField": "id"
-        }
-    ],
-    "changelogDate": "20200211052800",
-    "entityTableName": "ecom_product_image",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "EcomProductImage",
+  "fields": [
+    {
+      "fieldName": "imageName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "imagePath",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ecomProduct",
+      "otherEntityRelationshipName": "ecomProductImage",
+      "relationshipName": "ecomProduct",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200211052800",
+  "entityTableName": "ecom_product_image",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

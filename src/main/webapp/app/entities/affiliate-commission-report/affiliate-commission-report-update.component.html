@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-affiliate-commission-report-heading" jhiTranslate="eshipperApp.affiliateCommissionReport.home.createOrEditLabel">Create or edit a Affiliate Commission Report</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.cutOffDate" for="field_cutOffDate">Cut Off Date</label>
+                    <div class="input-group">
+                        <input id="field_cutOffDate" type="text" class="form-control" name="cutOffDate" ngbDatepicker #cutOffDateDp="ngbDatepicker" formControlName="cutOffDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="cutOffDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.totalCommissionAmount" for="field_totalCommissionAmount">Total Commission Amount</label>
+                    <input type="number" class="form-control" name="totalCommissionAmount" id="field_totalCommissionAmount"
+                           formControlName="totalCommissionAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.pendingCommissionAmount" for="field_pendingCommissionAmount">Pending Commission Amount</label>
+                    <input type="number" class="form-control" name="pendingCommissionAmount" id="field_pendingCommissionAmount"
+                           formControlName="pendingCommissionAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.paidCommissionAmount" for="field_paidCommissionAmount">Paid Commission Amount</label>
+                    <input type="number" class="form-control" name="paidCommissionAmount" id="field_paidCommissionAmount"
+                           formControlName="paidCommissionAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.noOfShipments" for="field_noOfShipments">No Of Shipments</label>
+                    <input type="number" class="form-control" name="noOfShipments" id="field_noOfShipments"
+                           formControlName="noOfShipments"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.notifyUser" for="field_notifyUser">Notify User</label>
+                    <input type="checkbox" class="form-control" name="notifyUser" id="field_notifyUser"
+                           formControlName="notifyUser"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.affiliate" for="field_affiliate">Affiliate</label>
+                    <select class="form-control" id="field_affiliate" name="affiliate" formControlName="affiliateId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="affiliateOption.id" *ngFor="let affiliateOption of affiliates; trackBy: trackById">{{ affiliateOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.currency" for="field_currency">Currency</label>
+                    <select class="form-control" id="field_currency" name="currency" formControlName="currencyId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="currencyOption.id" *ngFor="let currencyOption of currencies; trackBy: trackById">{{ currencyOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.affiliateCommissionReport.status" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" formControlName="statusId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commissionReportStatusOption.id" *ngFor="let commissionReportStatusOption of commissionreportstatuses; trackBy: trackById">{{ commissionReportStatusOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -37,6 +37,11 @@
     <include file="config/liquibase/changelog/20200211053600_added_entity_Province.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053700_added_entity_City.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200312111600_added_entity_EcomStoreSync.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060050_added_entity_Affiliate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060150_added_entity_AffiliateCommissionReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060250_added_entity_CommissionReportStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060450_added_entity_Franchise.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060550_added_entity_PaymentMethod.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200211051500_added_entity_constraints_EcomStore.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211051600_added_entity_constraints_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
@@ -46,5 +51,8 @@
     <include file="config/liquibase/changelog/20200211052700_added_entity_constraints_EcomProduct.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211052800_added_entity_constraints_EcomProductImage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053000_added_entity_constraints_EcomOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060050_added_entity_constraints_Affiliate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616060150_added_entity_constraints_AffiliateCommissionReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200211053200_added_entity_constraints_Company.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
