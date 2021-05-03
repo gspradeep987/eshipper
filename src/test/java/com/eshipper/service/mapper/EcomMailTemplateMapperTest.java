@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class EcomMailTemplateMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private EcomMailTemplateMapper ecomMailTemplateMapper;
+class EcomMailTemplateMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        ecomMailTemplateMapper = new EcomMailTemplateMapperImpl();
-    }
+  private EcomMailTemplateMapper ecomMailTemplateMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(ecomMailTemplateMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(ecomMailTemplateMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    ecomMailTemplateMapper = new EcomMailTemplateMapperImpl();
+  }
 }

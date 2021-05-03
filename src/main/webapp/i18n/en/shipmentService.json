@@ -3,6 +3,7 @@
     "shipmentService": {
       "home": {
         "title": "Shipment Services",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Shipment Service",
         "createOrEditLabel": "Create or edit a Shipment Service",
         "notFound": "No Shipment Services found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Shipment Service"
       },
+      "id": "ID",
       "name": "Name",
       "ecomStore": "Ecom Store"
     }

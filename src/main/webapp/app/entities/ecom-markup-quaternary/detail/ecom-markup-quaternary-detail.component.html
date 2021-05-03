@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecomMarkupQuaternary">
+      <h2 data-cy="ecomMarkupQuaternaryDetailsHeading">
+        <span jhiTranslate="eshipperApp.ecomMarkupQuaternary.detail.title">Ecom Markup Quaternary</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ecomMarkupQuaternary.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomMarkupQuaternary.value">Value</span></dt>
+        <dd>
+          <span>{{ ecomMarkupQuaternary.value }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomMarkupQuaternary.country">Country</span></dt>
+        <dd>
+          <div *ngIf="ecomMarkupQuaternary.country">
+            <a [routerLink]="['/country', ecomMarkupQuaternary.country?.id, 'view']">{{ ecomMarkupQuaternary.country?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ecom-markup-quaternary', ecomMarkupQuaternary.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

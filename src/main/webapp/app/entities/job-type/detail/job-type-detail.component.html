@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="jobType">
+      <h2 data-cy="jobTypeDetailsHeading"><span jhiTranslate="eshipperApp.jobType.detail.title">Job Type</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ jobType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.jobType.iD">I D</span></dt>
+        <dd>
+          <span>{{ jobType.iD }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.jobType.nAME">N AME</span></dt>
+        <dd>
+          <span>{{ jobType.nAME }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.jobType.dESCRIPTION">D ESCRIPTION</span></dt>
+        <dd>
+          <span>{{ jobType.dESCRIPTION }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.jobType.jobType">Job Type</span></dt>
+        <dd>
+          <div *ngIf="jobType.jobType">
+            <a [routerLink]="['/sisyphus-job', jobType.jobType?.id, 'view']">{{ jobType.jobType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/job-type', jobType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

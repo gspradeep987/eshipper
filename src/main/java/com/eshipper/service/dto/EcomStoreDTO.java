@@ -1,244 +1,244 @@
 package com.eshipper.service.dto;
 
-import java.time.LocalDate;
-import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link com.eshipper.domain.EcomStore} entity.
  */
 public class EcomStoreDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
-    @Size(max = 255)
-    private String name;
+  @Size(max = 255)
+  private String name;
 
-    @Size(max = 255)
-    private String nickName;
+  @Size(max = 255)
+  private String nickName;
 
-    @Size(max = 255)
-    private String apiPassword;
+  @Size(max = 255)
+  private String apiPassword;
 
-    @Size(max = 255)
-    private String domain;
+  @Size(max = 255)
+  private String domain;
 
-    private Integer syncFrequency;
+  private Integer syncFrequency;
 
-    @Size(max = 25)
-    private String syncInterval;
+  @Size(max = 25)
+  private String syncInterval;
 
-    private Boolean active;
+  private Boolean active;
 
-    private Boolean isManualSync;
+  private Boolean isManualSync;
 
-    private LocalDate createdDate;
+  private LocalDate createdDate;
 
-    private LocalDate updatedDate;
+  private LocalDate updatedDate;
 
+  private EcomStoreAddressDTO ecomStoreAddress;
 
-    private Long ecomStoreAddressId;
+  private EcomStoreColorThemeDTO ecomStoreColorTheme;
 
-    private Long ecomStoreColorThemeId;
+  private EcomStoreShipmentSettingsDTO ecomStoreShipmentSettings;
 
-    private Long ecomStoreShipmentSettingsId;
+  private EcomStorePackageSettingsDTO ecomStorePackageSettings;
 
-    private Long ecomStorePackageSettingsId;
+  private EcomStoreMarkupDTO ecomStoreMarkup;
 
-    private Long ecomStoreMarkupId;
+  private CompanyDTO company;
 
-    private Long companyId;
+  private UserDTO user;
 
-    private Long userId;
+  private EcomProductDTO ecomProduct;
 
-    private Long ecomProductId;
+  private Set<ShipmentServiceDTO> shipmentServices = new HashSet<>();
 
-    private Set<ShipmentServiceDTO> shipmentServices = new HashSet<>();
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getNickName() {
+    return nickName;
+  }
+
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
+  }
+
+  public String getApiPassword() {
+    return apiPassword;
+  }
+
+  public void setApiPassword(String apiPassword) {
+    this.apiPassword = apiPassword;
+  }
+
+  public String getDomain() {
+    return domain;
+  }
+
+  public void setDomain(String domain) {
+    this.domain = domain;
+  }
+
+  public Integer getSyncFrequency() {
+    return syncFrequency;
+  }
+
+  public void setSyncFrequency(Integer syncFrequency) {
+    this.syncFrequency = syncFrequency;
+  }
+
+  public String getSyncInterval() {
+    return syncInterval;
+  }
+
+  public void setSyncInterval(String syncInterval) {
+    this.syncInterval = syncInterval;
+  }
+
+  public Boolean getActive() {
+    return active;
+  }
+
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
+  public Boolean getIsManualSync() {
+    return isManualSync;
+  }
+
+  public void setIsManualSync(Boolean isManualSync) {
+    this.isManualSync = isManualSync;
+  }
+
+  public LocalDate getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(LocalDate createdDate) {
+    this.createdDate = createdDate;
+  }
+
+  public LocalDate getUpdatedDate() {
+    return updatedDate;
+  }
+
+  public void setUpdatedDate(LocalDate updatedDate) {
+    this.updatedDate = updatedDate;
+  }
+
+  public EcomStoreAddressDTO getEcomStoreAddress() {
+    return ecomStoreAddress;
+  }
+
+  public void setEcomStoreAddress(EcomStoreAddressDTO ecomStoreAddress) {
+    this.ecomStoreAddress = ecomStoreAddress;
+  }
+
+  public EcomStoreColorThemeDTO getEcomStoreColorTheme() {
+    return ecomStoreColorTheme;
+  }
+
+  public void setEcomStoreColorTheme(EcomStoreColorThemeDTO ecomStoreColorTheme) {
+    this.ecomStoreColorTheme = ecomStoreColorTheme;
+  }
+
+  public EcomStoreShipmentSettingsDTO getEcomStoreShipmentSettings() {
+    return ecomStoreShipmentSettings;
+  }
+
+  public void setEcomStoreShipmentSettings(EcomStoreShipmentSettingsDTO ecomStoreShipmentSettings) {
+    this.ecomStoreShipmentSettings = ecomStoreShipmentSettings;
+  }
+
+  public EcomStorePackageSettingsDTO getEcomStorePackageSettings() {
+    return ecomStorePackageSettings;
+  }
+
+  public void setEcomStorePackageSettings(EcomStorePackageSettingsDTO ecomStorePackageSettings) {
+    this.ecomStorePackageSettings = ecomStorePackageSettings;
+  }
+
+  public EcomStoreMarkupDTO getEcomStoreMarkup() {
+    return ecomStoreMarkup;
+  }
+
+  public void setEcomStoreMarkup(EcomStoreMarkupDTO ecomStoreMarkup) {
+    this.ecomStoreMarkup = ecomStoreMarkup;
+  }
+
+  public CompanyDTO getCompany() {
+    return company;
+  }
+
+  public void setCompany(CompanyDTO company) {
+    this.company = company;
+  }
+
+  public UserDTO getUser() {
+    return user;
+  }
+
+  public void setUser(UserDTO user) {
+    this.user = user;
+  }
+
+  public EcomProductDTO getEcomProduct() {
+    return ecomProduct;
+  }
+
+  public void setEcomProduct(EcomProductDTO ecomProduct) {
+    this.ecomProduct = ecomProduct;
+  }
+
+  public Set<ShipmentServiceDTO> getShipmentServices() {
+    return shipmentServices;
+  }
+
+  public void setShipmentServices(Set<ShipmentServiceDTO> shipmentServices) {
+    this.shipmentServices = shipmentServices;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof EcomStoreDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    EcomStoreDTO ecomStoreDTO = (EcomStoreDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, ecomStoreDTO.id);
+  }
 
-    public String getName() {
-        return name;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getApiPassword() {
-        return apiPassword;
-    }
-
-    public void setApiPassword(String apiPassword) {
-        this.apiPassword = apiPassword;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public Integer getSyncFrequency() {
-        return syncFrequency;
-    }
-
-    public void setSyncFrequency(Integer syncFrequency) {
-        this.syncFrequency = syncFrequency;
-    }
-
-    public String getSyncInterval() {
-        return syncInterval;
-    }
-
-    public void setSyncInterval(String syncInterval) {
-        this.syncInterval = syncInterval;
-    }
-
-    public Boolean isActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public Boolean isIsManualSync() {
-        return isManualSync;
-    }
-
-    public void setIsManualSync(Boolean isManualSync) {
-        this.isManualSync = isManualSync;
-    }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public Long getEcomStoreAddressId() {
-        return ecomStoreAddressId;
-    }
-
-    public void setEcomStoreAddressId(Long ecomStoreAddressId) {
-        this.ecomStoreAddressId = ecomStoreAddressId;
-    }
-
-    public Long getEcomStoreColorThemeId() {
-        return ecomStoreColorThemeId;
-    }
-
-    public void setEcomStoreColorThemeId(Long ecomStoreColorThemeId) {
-        this.ecomStoreColorThemeId = ecomStoreColorThemeId;
-    }
-
-    public Long getEcomStoreShipmentSettingsId() {
-        return ecomStoreShipmentSettingsId;
-    }
-
-    public void setEcomStoreShipmentSettingsId(Long ecomStoreShipmentSettingsId) {
-        this.ecomStoreShipmentSettingsId = ecomStoreShipmentSettingsId;
-    }
-
-    public Long getEcomStorePackageSettingsId() {
-        return ecomStorePackageSettingsId;
-    }
-
-    public void setEcomStorePackageSettingsId(Long ecomStorePackageSettingsId) {
-        this.ecomStorePackageSettingsId = ecomStorePackageSettingsId;
-    }
-
-    public Long getEcomStoreMarkupId() {
-        return ecomStoreMarkupId;
-    }
-
-    public void setEcomStoreMarkupId(Long ecomStoreMarkupId) {
-        this.ecomStoreMarkupId = ecomStoreMarkupId;
-    }
-
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getEcomProductId() {
-        return ecomProductId;
-    }
-
-    public void setEcomProductId(Long ecomProductId) {
-        this.ecomProductId = ecomProductId;
-    }
-
-    public Set<ShipmentServiceDTO> getShipmentServices() {
-        return shipmentServices;
-    }
-
-    public void setShipmentServices(Set<ShipmentServiceDTO> shipmentServices) {
-        this.shipmentServices = shipmentServices;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        EcomStoreDTO ecomStoreDTO = (EcomStoreDTO) o;
-        if (ecomStoreDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), ecomStoreDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "EcomStoreDTO{" +
@@ -249,18 +249,19 @@ public class EcomStoreDTO implements Serializable {
             ", domain='" + getDomain() + "'" +
             ", syncFrequency=" + getSyncFrequency() +
             ", syncInterval='" + getSyncInterval() + "'" +
-            ", active='" + isActive() + "'" +
-            ", isManualSync='" + isIsManualSync() + "'" +
+            ", active='" + getActive() + "'" +
+            ", isManualSync='" + getIsManualSync() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
-            ", ecomStoreAddressId=" + getEcomStoreAddressId() +
-            ", ecomStoreColorThemeId=" + getEcomStoreColorThemeId() +
-            ", ecomStoreShipmentSettingsId=" + getEcomStoreShipmentSettingsId() +
-            ", ecomStorePackageSettingsId=" + getEcomStorePackageSettingsId() +
-            ", ecomStoreMarkupId=" + getEcomStoreMarkupId() +
-            ", companyId=" + getCompanyId() +
-            ", userId=" + getUserId() +
-            ", ecomProductId=" + getEcomProductId() +
+            ", ecomStoreAddress=" + getEcomStoreAddress() +
+            ", ecomStoreColorTheme=" + getEcomStoreColorTheme() +
+            ", ecomStoreShipmentSettings=" + getEcomStoreShipmentSettings() +
+            ", ecomStorePackageSettings=" + getEcomStorePackageSettings() +
+            ", ecomStoreMarkup=" + getEcomStoreMarkup() +
+            ", company=" + getCompany() +
+            ", user=" + getUser() +
+            ", ecomProduct=" + getEcomProduct() +
+            ", shipmentServices=" + getShipmentServices() +
             "}";
     }
 }

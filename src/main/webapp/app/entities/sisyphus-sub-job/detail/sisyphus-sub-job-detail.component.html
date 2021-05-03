@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sisyphusSubJob">
+      <h2 data-cy="sisyphusSubJobDetailsHeading"><span jhiTranslate="eshipperApp.sisyphusSubJob.detail.title">Sisyphus Sub Job</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sisyphusSubJob.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusSubJob.sUBJOBID">S UBJOBID</span></dt>
+        <dd>
+          <span>{{ sisyphusSubJob.sUBJOBID }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusSubJob.rUNORDER">R UNORDER</span></dt>
+        <dd>
+          <span>{{ sisyphusSubJob.rUNORDER }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusSubJob.sisyphusJob">Sisyphus Job</span></dt>
+        <dd>
+          <div *ngIf="sisyphusSubJob.sisyphusJob">
+            <a [routerLink]="['/sisyphus-job', sisyphusSubJob.sisyphusJob?.id, 'view']">{{ sisyphusSubJob.sisyphusJob?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sisyphus-sub-job', sisyphusSubJob.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

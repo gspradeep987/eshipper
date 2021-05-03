@@ -3,6 +3,7 @@
     "ecomMarkupSecondary": {
       "home": {
         "title": "Ecom Markup Secondaries",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Markup Secondary",
         "createOrEditLabel": "Create or edit a Ecom Markup Secondary",
         "notFound": "No Ecom Markup Secondaries found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Markup Secondary"
       },
+      "id": "ID",
       "value": "Value",
       "fromZip": "From Zip",
       "toZip": "To Zip",

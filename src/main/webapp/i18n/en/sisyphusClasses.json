@@ -1,0 +1,27 @@
+{
+  "eshipperApp": {
+    "sisyphusClasses": {
+      "home": {
+        "title": "Sisyphus Classes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sisyphus Classes",
+        "createOrEditLabel": "Create or edit a Sisyphus Classes",
+        "notFound": "No Sisyphus Classes found"
+      },
+      "created": "A new Sisyphus Classes is created with identifier {{ param }}",
+      "updated": "A Sisyphus Classes is updated with identifier {{ param }}",
+      "deleted": "A Sisyphus Classes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sisyphus Classes {{ id }}?"
+      },
+      "detail": {
+        "title": "Sisyphus Classes"
+      },
+      "id": "ID",
+      "iD": "I D",
+      "nAME": "N AME",
+      "dESCRIPTION": "D ESCRIPTION",
+      "classes": "Classes"
+    }
+  }
+}

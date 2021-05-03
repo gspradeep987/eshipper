@@ -1,0 +1,27 @@
+{
+  "eshipperApp": {
+    "jobType": {
+      "home": {
+        "title": "Job Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Job Type",
+        "createOrEditLabel": "Create or edit a Job Type",
+        "notFound": "No Job Types found"
+      },
+      "created": "A new Job Type is created with identifier {{ param }}",
+      "updated": "A Job Type is updated with identifier {{ param }}",
+      "deleted": "A Job Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Job Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Job Type"
+      },
+      "id": "ID",
+      "iD": "I D",
+      "nAME": "N AME",
+      "dESCRIPTION": "D ESCRIPTION",
+      "jobType": "Job Type"
+    }
+  }
+}

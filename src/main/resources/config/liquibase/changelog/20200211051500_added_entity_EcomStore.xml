@@ -3,17 +3,15 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity EcomStore.
     -->
     <changeSet id="20200211051500-1" author="jhipster">
         <createTable tableName="ecom_store">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -47,19 +45,19 @@
                 <constraints nullable="true" />
             </column>
             <column name="ecom_store_address_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_ecom_store_address_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store__ecom_store_address_id" />
             </column>
             <column name="ecom_store_color_theme_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_ecom_store_color_theme_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store__ecom_store_color_theme_id" />
             </column>
             <column name="ecom_store_shipment_settings_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_ecom_store_shipment_settings_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store__ecom_store_shipment_settings_id" />
             </column>
             <column name="ecom_store_package_settings_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_ecom_store_package_settings_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store__ecom_store_package_settings_id" />
             </column>
             <column name="ecom_store_markup_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_ecom_store_markup_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store__ecom_store_markup_id" />
             </column>
             <column name="company_id" type="bigint">
                 <constraints nullable="true" />
@@ -70,13 +68,13 @@
             <column name="ecom_product_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
 
     <changeSet id="20200211051500-1-relations" author="jhipster">
 
-        <createTable tableName="ecom_store_shipment_service">
+        <createTable tableName="rel_ecom_store__shipment_service">
             <column name="shipment_service_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
@@ -85,10 +83,10 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="ecom_store_id, shipment_service_id" tableName="ecom_store_shipment_service"/>
-        
+        <addPrimaryKey columnNames="ecom_store_id, shipment_service_id" tableName="rel_ecom_store__shipment_service"/>
     </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--
         Load sample data generated with Faker.js
@@ -114,8 +112,7 @@
             <column name="is_manual_sync" type="boolean"/>
             <column name="created_date" type="date"/>
             <column name="updated_date" type="date"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
-
 </databaseChangeLog>

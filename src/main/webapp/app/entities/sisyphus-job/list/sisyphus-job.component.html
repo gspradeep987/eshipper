@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="SisyphusJobHeading">
+    <span jhiTranslate="eshipperApp.sisyphusJob.home.title">Sisyphus Jobs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eshipperApp.sisyphusJob.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sisyphus-job"
+        [routerLink]="['/sisyphus-job/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eshipperApp.sisyphusJob.home.createLabel"> Create a new Sisyphus Job </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="sisyphusJobs?.length === 0">
+    <span jhiTranslate="eshipperApp.sisyphusJob.home.notFound">No sisyphusJobs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="sisyphusJobs && sisyphusJobs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.iD">I D</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.nAME">N AME</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMINUTE">S CHEDULEMINUTE</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEHOUR">S CHEDULEHOUR</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEDAY">S CHEDULEDAY</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMONTH">S CHEDULEMONTH</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.sHOULDRUNYN">S HOULDRUNYN</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.rETRIES">R ETRIES</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.sisyphusJob.mONITORSCHEDULEYN">M ONITORSCHEDULEYN</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sisyphusJob of sisyphusJobs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sisyphus-job', sisyphusJob.id, 'view']">{{ sisyphusJob.id }}</a>
+          </td>
+          <td>{{ sisyphusJob.iD }}</td>
+          <td>{{ sisyphusJob.nAME }}</td>
+          <td>{{ sisyphusJob.sCHEDULEMINUTE }}</td>
+          <td>{{ sisyphusJob.sCHEDULEHOUR }}</td>
+          <td>{{ sisyphusJob.sCHEDULEDAY }}</td>
+          <td>{{ sisyphusJob.sCHEDULEMONTH }}</td>
+          <td>{{ sisyphusJob.sHOULDRUNYN }}</td>
+          <td>{{ sisyphusJob.rETRIES }}</td>
+          <td>{{ sisyphusJob.mONITORSCHEDULEYN }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/sisyphus-job', sisyphusJob.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/sisyphus-job', sisyphusJob.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sisyphusJob)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -3,6 +3,7 @@
     "city": {
       "home": {
         "title": "Cities",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new City",
         "createOrEditLabel": "Create or edit a City",
         "notFound": "No Cities found"
@@ -15,7 +16,8 @@
       },
       "detail": {
         "title": "City"
-      }
+      },
+      "id": "ID"
     }
   }
 }

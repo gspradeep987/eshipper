@@ -3,6 +3,7 @@
     "ecomMarkupPrimary": {
       "home": {
         "title": "Ecom Markup Primaries",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Markup Primary",
         "createOrEditLabel": "Create or edit a Ecom Markup Primary",
         "notFound": "No Ecom Markup Primaries found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Markup Primary"
       },
+      "id": "ID",
       "value": "Value",
       "fromLane": "From Lane",
       "toLane": "To Lane",

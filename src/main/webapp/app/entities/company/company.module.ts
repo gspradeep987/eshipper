@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { CompanyComponent } from './company.component';
-import { CompanyDetailComponent } from './company-detail.component';
-import { CompanyUpdateComponent } from './company-update.component';
-import { CompanyDeleteDialogComponent } from './company-delete-dialog.component';
-import { companyRoute } from './company.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { CompanyComponent } from './list/company.component';
+import { CompanyDetailComponent } from './detail/company-detail.component';
+import { CompanyUpdateComponent } from './update/company-update.component';
+import { CompanyDeleteDialogComponent } from './delete/company-delete-dialog.component';
+import { CompanyRoutingModule } from './route/company-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(companyRoute)],
+  imports: [SharedModule, CompanyRoutingModule],
   declarations: [CompanyComponent, CompanyDetailComponent, CompanyUpdateComponent, CompanyDeleteDialogComponent],
-  entryComponents: [CompanyDeleteDialogComponent]
+  entryComponents: [CompanyDeleteDialogComponent],
 })
-export class EshipperCompanyModule {}
+export class CompanyModule {}

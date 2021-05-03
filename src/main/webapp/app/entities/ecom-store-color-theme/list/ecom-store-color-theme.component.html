@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="EcomStoreColorThemeHeading">
+    <span jhiTranslate="eshipperApp.ecomStoreColorTheme.home.title">Ecom Store Color Themes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eshipperApp.ecomStoreColorTheme.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ecom-store-color-theme"
+        [routerLink]="['/ecom-store-color-theme/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eshipperApp.ecomStoreColorTheme.home.createLabel"> Create a new Ecom Store Color Theme </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ecomStoreColorThemes?.length === 0">
+    <span jhiTranslate="eshipperApp.ecomStoreColorTheme.home.notFound">No ecomStoreColorThemes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ecomStoreColorThemes && ecomStoreColorThemes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStoreColorTheme.primary">Primary</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStoreColorTheme.secondary">Secondary</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ecomStoreColorTheme of ecomStoreColorThemes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ecom-store-color-theme', ecomStoreColorTheme.id, 'view']">{{ ecomStoreColorTheme.id }}</a>
+          </td>
+          <td>{{ ecomStoreColorTheme.primary }}</td>
+          <td>{{ ecomStoreColorTheme.secondary }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/ecom-store-color-theme', ecomStoreColorTheme.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/ecom-store-color-theme', ecomStoreColorTheme.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ecomStoreColorTheme)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

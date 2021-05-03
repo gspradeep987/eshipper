@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="EcomStoreHeading">
+    <span jhiTranslate="eshipperApp.ecomStore.home.title">Ecom Stores</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eshipperApp.ecomStore.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ecom-store"
+        [routerLink]="['/ecom-store/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eshipperApp.ecomStore.home.createLabel"> Create a new Ecom Store </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ecomStores?.length === 0">
+    <span jhiTranslate="eshipperApp.ecomStore.home.notFound">No ecomStores found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ecomStores && ecomStores.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.nickName">Nick Name</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.apiPassword">Api Password</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.domain">Domain</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.syncFrequency">Sync Frequency</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.syncInterval">Sync Interval</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.active">Active</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.isManualSync">Is Manual Sync</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomStoreAddress">Ecom Store Address</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomStoreColorTheme">Ecom Store Color Theme</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomStoreShipmentSettings">Ecom Store Shipment Settings</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomStorePackageSettings">Ecom Store Package Settings</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomStoreMarkup">Ecom Store Markup</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.company">Company</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.user">User</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.ecomProduct">Ecom Product</span></th>
+          <th scope="col"><span jhiTranslate="eshipperApp.ecomStore.shipmentService">Shipment Service</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ecomStore of ecomStores; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ecom-store', ecomStore.id, 'view']">{{ ecomStore.id }}</a>
+          </td>
+          <td>{{ ecomStore.name }}</td>
+          <td>{{ ecomStore.nickName }}</td>
+          <td>{{ ecomStore.apiPassword }}</td>
+          <td>{{ ecomStore.domain }}</td>
+          <td>{{ ecomStore.syncFrequency }}</td>
+          <td>{{ ecomStore.syncInterval }}</td>
+          <td>{{ ecomStore.active }}</td>
+          <td>{{ ecomStore.isManualSync }}</td>
+          <td>{{ ecomStore.createdDate | formatMediumDate }}</td>
+          <td>{{ ecomStore.updatedDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="ecomStore.ecomStoreAddress">
+              <a [routerLink]="['/ecom-store-address', ecomStore.ecomStoreAddress?.id, 'view']">{{ ecomStore.ecomStoreAddress?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ecomStore.ecomStoreColorTheme">
+              <a [routerLink]="['/ecom-store-color-theme', ecomStore.ecomStoreColorTheme?.id, 'view']">{{
+                ecomStore.ecomStoreColorTheme?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ecomStore.ecomStoreShipmentSettings">
+              <a [routerLink]="['/ecom-store-shipment-settings', ecomStore.ecomStoreShipmentSettings?.id, 'view']">{{
+                ecomStore.ecomStoreShipmentSettings?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ecomStore.ecomStorePackageSettings">
+              <a [routerLink]="['/ecom-store-package-settings', ecomStore.ecomStorePackageSettings?.id, 'view']">{{
+                ecomStore.ecomStorePackageSettings?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ecomStore.ecomStoreMarkup">
+              <a [routerLink]="['/ecom-store-markup', ecomStore.ecomStoreMarkup?.id, 'view']">{{ ecomStore.ecomStoreMarkup?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ecomStore.company">
+              <a [routerLink]="['/company', ecomStore.company?.id, 'view']">{{ ecomStore.company?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ ecomStore.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="ecomStore.ecomProduct">
+              <a [routerLink]="['/ecom-product', ecomStore.ecomProduct?.id, 'view']">{{ ecomStore.ecomProduct?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <span *ngFor="let shipmentService of ecomStore.shipmentServices; let last = last">
+              <a class="form-control-static" [routerLink]="['/shipment-service', shipmentService.id, 'view']">{{ shipmentService.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/ecom-store', ecomStore.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/ecom-store', ecomStore.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ecomStore)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

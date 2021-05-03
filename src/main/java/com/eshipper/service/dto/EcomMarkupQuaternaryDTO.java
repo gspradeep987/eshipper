@@ -8,64 +8,64 @@ import java.util.Objects;
  */
 public class EcomMarkupQuaternaryDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
-    private Float value;
+  private Float value;
 
+  private CountryDTO country;
 
-    private Long countryId;
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Float getValue() {
+    return value;
+  }
+
+  public void setValue(Float value) {
+    this.value = value;
+  }
+
+  public CountryDTO getCountry() {
+    return country;
+  }
+
+  public void setCountry(CountryDTO country) {
+    this.country = country;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof EcomMarkupQuaternaryDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    EcomMarkupQuaternaryDTO ecomMarkupQuaternaryDTO = (EcomMarkupQuaternaryDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, ecomMarkupQuaternaryDTO.id);
+  }
 
-    public Float getValue() {
-        return value;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-    public void setValue(Float value) {
-        this.value = value;
-    }
-
-    public Long getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(Long countryId) {
-        this.countryId = countryId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        EcomMarkupQuaternaryDTO ecomMarkupQuaternaryDTO = (EcomMarkupQuaternaryDTO) o;
-        if (ecomMarkupQuaternaryDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), ecomMarkupQuaternaryDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "EcomMarkupQuaternaryDTO{" +
             "id=" + getId() +
             ", value=" + getValue() +
-            ", countryId=" + getCountryId() +
+            ", country=" + getCountry() +
             "}";
     }
 }

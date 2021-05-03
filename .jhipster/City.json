@@ -1,15 +1,15 @@
 {
-    "name": "City",
-    "fields": [],
-    "relationships": [],
-    "changelogDate": "20200211053700",
-    "entityTableName": "city",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "City",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20200211053700",
+  "entityTableName": "city",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

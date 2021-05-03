@@ -1,0 +1,133 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sisyphus-job-heading"
+        data-cy="SisyphusJobCreateUpdateHeading"
+        jhiTranslate="eshipperApp.sisyphusJob.home.createOrEditLabel"
+      >
+        Create or edit a Sisyphus Job
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.iD" for="field_iD">I D</label>
+          <input type="number" class="form-control" name="iD" id="field_iD" data-cy="iD" formControlName="iD" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.nAME" for="field_nAME">N AME</label>
+          <input type="text" class="form-control" name="nAME" id="field_nAME" data-cy="nAME" formControlName="nAME" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMINUTE" for="field_sCHEDULEMINUTE"
+            >S CHEDULEMINUTE</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sCHEDULEMINUTE"
+            id="field_sCHEDULEMINUTE"
+            data-cy="sCHEDULEMINUTE"
+            formControlName="sCHEDULEMINUTE"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEHOUR" for="field_sCHEDULEHOUR"
+            >S CHEDULEHOUR</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sCHEDULEHOUR"
+            id="field_sCHEDULEHOUR"
+            data-cy="sCHEDULEHOUR"
+            formControlName="sCHEDULEHOUR"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEDAY" for="field_sCHEDULEDAY">S CHEDULEDAY</label>
+          <input
+            type="text"
+            class="form-control"
+            name="sCHEDULEDAY"
+            id="field_sCHEDULEDAY"
+            data-cy="sCHEDULEDAY"
+            formControlName="sCHEDULEDAY"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMONTH" for="field_sCHEDULEMONTH"
+            >S CHEDULEMONTH</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sCHEDULEMONTH"
+            id="field_sCHEDULEMONTH"
+            data-cy="sCHEDULEMONTH"
+            formControlName="sCHEDULEMONTH"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.sHOULDRUNYN" for="field_sHOULDRUNYN">S HOULDRUNYN</label>
+          <input
+            type="text"
+            class="form-control"
+            name="sHOULDRUNYN"
+            id="field_sHOULDRUNYN"
+            data-cy="sHOULDRUNYN"
+            formControlName="sHOULDRUNYN"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.rETRIES" for="field_rETRIES">R ETRIES</label>
+          <input type="number" class="form-control" name="rETRIES" id="field_rETRIES" data-cy="rETRIES" formControlName="rETRIES" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.mONITORSCHEDULEYN" for="field_mONITORSCHEDULEYN"
+            >M ONITORSCHEDULEYN</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="mONITORSCHEDULEYN"
+            id="field_mONITORSCHEDULEYN"
+            data-cy="mONITORSCHEDULEYN"
+            formControlName="mONITORSCHEDULEYN"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

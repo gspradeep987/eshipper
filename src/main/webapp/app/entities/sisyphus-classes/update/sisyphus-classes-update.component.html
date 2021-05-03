@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sisyphus-classes-heading"
+        data-cy="SisyphusClassesCreateUpdateHeading"
+        jhiTranslate="eshipperApp.sisyphusClasses.home.createOrEditLabel"
+      >
+        Create or edit a Sisyphus Classes
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusClasses.iD" for="field_iD">I D</label>
+          <input type="number" class="form-control" name="iD" id="field_iD" data-cy="iD" formControlName="iD" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusClasses.nAME" for="field_nAME">N AME</label>
+          <input type="text" class="form-control" name="nAME" id="field_nAME" data-cy="nAME" formControlName="nAME" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusClasses.dESCRIPTION" for="field_dESCRIPTION"
+            >D ESCRIPTION</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dESCRIPTION"
+            id="field_dESCRIPTION"
+            data-cy="dESCRIPTION"
+            formControlName="dESCRIPTION"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusClasses.classes" for="field_classes">Classes</label>
+          <select class="form-control" id="field_classes" data-cy="classes" name="classes" formControlName="classes">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                sisyphusSubJobOption.id === editForm.get('classes')!.value?.id ? editForm.get('classes')!.value : sisyphusSubJobOption
+              "
+              *ngFor="let sisyphusSubJobOption of sisyphusSubJobsSharedCollection; trackBy: trackSisyphusSubJobById"
+            >
+              {{ sisyphusSubJobOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

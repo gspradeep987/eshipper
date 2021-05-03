@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomProductImageComponent } from './ecom-product-image.component';
-import { EcomProductImageDetailComponent } from './ecom-product-image-detail.component';
-import { EcomProductImageUpdateComponent } from './ecom-product-image-update.component';
-import { EcomProductImageDeleteDialogComponent } from './ecom-product-image-delete-dialog.component';
-import { ecomProductImageRoute } from './ecom-product-image.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomProductImageComponent } from './list/ecom-product-image.component';
+import { EcomProductImageDetailComponent } from './detail/ecom-product-image-detail.component';
+import { EcomProductImageUpdateComponent } from './update/ecom-product-image-update.component';
+import { EcomProductImageDeleteDialogComponent } from './delete/ecom-product-image-delete-dialog.component';
+import { EcomProductImageRoutingModule } from './route/ecom-product-image-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomProductImageRoute)],
+  imports: [SharedModule, EcomProductImageRoutingModule],
   declarations: [
     EcomProductImageComponent,
     EcomProductImageDetailComponent,
     EcomProductImageUpdateComponent,
-    EcomProductImageDeleteDialogComponent
+    EcomProductImageDeleteDialogComponent,
   ],
-  entryComponents: [EcomProductImageDeleteDialogComponent]
+  entryComponents: [EcomProductImageDeleteDialogComponent],
 })
-export class EshipperEcomProductImageModule {}
+export class EcomProductImageModule {}

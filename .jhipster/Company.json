@@ -1,15 +1,15 @@
 {
-    "name": "Company",
-    "fields": [],
-    "relationships": [],
-    "changelogDate": "20200211053200",
-    "entityTableName": "company",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "Company",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20200211053200",
+  "entityTableName": "company",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

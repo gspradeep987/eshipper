@@ -3,6 +3,7 @@
     "shippingAddress": {
       "home": {
         "title": "Shipping Addresses",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Shipping Address",
         "createOrEditLabel": "Create or edit a Shipping Address",
         "notFound": "No Shipping Addresses found"
@@ -15,7 +16,8 @@
       },
       "detail": {
         "title": "Shipping Address"
-      }
+      },
+      "id": "ID"
     }
   }
 }

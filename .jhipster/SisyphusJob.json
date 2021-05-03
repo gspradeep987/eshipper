@@ -1,0 +1,59 @@
+{
+  "name": "SisyphusJob",
+  "fields": [
+    {
+      "fieldName": "iD",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nAME",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sCHEDULEMINUTE",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sCHEDULEHOUR",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sCHEDULEDAY",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sCHEDULEMONTH",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sHOULDRUNYN",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rETRIES",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "mONITORSCHEDULEYN",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sisyphusSubJob",
+      "otherEntityRelationshipName": "sisyphusJob",
+      "relationshipName": "subJobs"
+    }
+  ],
+  "entityTableName": "sisyphus_job",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210503112034"
+}

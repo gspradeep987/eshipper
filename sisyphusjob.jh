@@ -1,0 +1,49 @@
+entity SisyphusJob {
+	ID Long
+    NAME String
+    SCHEDULEMINUTE String
+    SCHEDULEHOUR String
+    SCHEDULEDAY String
+    SCHEDULEMONTH String
+    SHOULDRUNYN String
+    RETRIES Long
+    MONITORSCHEDULEYN Boolean
+    
+}
+
+entity SisyphusSubJob {
+    SUBJOBID Long
+    RUNORDER String
+}
+entity Client {
+  ID Long
+  NAME String
+  CONTACT String
+  DEFAULTFOLDER String
+}
+entity SisyphusClasses {
+  ID Long
+  NAME String
+  DESCRIPTION String            
+}
+entity JobType {
+  ID Long
+  NAME String
+  DESCRIPTION String
+}
+
+relationship ManyToOne {
+  Client{client} to SisyphusJob
+  JobType{jobType} to SisyphusJob
+  SisyphusClasses{classes} to SisyphusSubJob
+  }
+  
+  relationship OneToMany {
+  SisyphusJob{subJobs} to SisyphusSubJob
+  }
+
+dto all with mapstruct
+service all with serviceImpl
+
+
+

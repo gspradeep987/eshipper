@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProvinceMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private ProvinceMapper provinceMapper;
+class ProvinceMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        provinceMapper = new ProvinceMapperImpl();
-    }
+  private ProvinceMapper provinceMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(provinceMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(provinceMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    provinceMapper = new ProvinceMapperImpl();
+  }
 }

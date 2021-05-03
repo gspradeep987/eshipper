@@ -2,35 +2,34 @@
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
     <!--
         Added the constraints for entity EcomOrder.
     -->
     <changeSet id="20200211053000-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="currency_id"
                                  baseTableName="ecom_order"
-                                 constraintName="fk_ecom_order_currency_id"
+                                 constraintName="fk_ecom_order__currency_id"
                                  referencedColumnNames="id"
                                  referencedTableName="currency"/>
 
         <addForeignKeyConstraint baseColumnNames="shipping_address_id"
                                  baseTableName="ecom_order"
-                                 constraintName="fk_ecom_order_shipping_address_id"
+                                 constraintName="fk_ecom_order__shipping_address_id"
                                  referencedColumnNames="id"
                                  referencedTableName="shipping_address"/>
 
         <addForeignKeyConstraint baseColumnNames="billing_address_id"
                                  baseTableName="ecom_order"
-                                 constraintName="fk_ecom_order_billing_address_id"
+                                 constraintName="fk_ecom_order__billing_address_id"
                                  referencedColumnNames="id"
                                  referencedTableName="shipping_address"/>
 
         <addForeignKeyConstraint baseColumnNames="ecom_store_id"
                                  baseTableName="ecom_order"
-                                 constraintName="fk_ecom_order_ecom_store_id"
+                                 constraintName="fk_ecom_order__ecom_store_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ecom_store"/>
-
     </changeSet>
 </databaseChangeLog>
