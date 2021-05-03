@@ -1,9 +1,7 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.CityDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,15 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface CityMapper extends EntityMapper<CityDTO, City> {
-
-
-
-    default City fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        City city = new City();
-        city.setId(id);
-        return city;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  CityDTO toDtoId(City city);
 }

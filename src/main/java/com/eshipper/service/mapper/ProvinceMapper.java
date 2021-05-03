@@ -1,9 +1,7 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.ProvinceDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,15 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface ProvinceMapper extends EntityMapper<ProvinceDTO, Province> {
-
-
-
-    default Province fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Province province = new Province();
-        province.setId(id);
-        return province;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  ProvinceDTO toDtoId(Province province);
 }

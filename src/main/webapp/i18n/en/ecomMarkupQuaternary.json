@@ -3,6 +3,7 @@
     "ecomMarkupQuaternary": {
       "home": {
         "title": "Ecom Markup Quaternaries",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Markup Quaternary",
         "createOrEditLabel": "Create or edit a Ecom Markup Quaternary",
         "notFound": "No Ecom Markup Quaternaries found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Markup Quaternary"
       },
+      "id": "ID",
       "value": "Value",
       "country": "Country",
       "ecomStoreMarkup": "Ecom Store Markup"

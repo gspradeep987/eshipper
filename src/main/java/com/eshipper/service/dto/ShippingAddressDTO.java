@@ -8,38 +8,38 @@ import java.util.Objects;
  */
 public class ShippingAddressDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ShippingAddressDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    ShippingAddressDTO shippingAddressDTO = (ShippingAddressDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, shippingAddressDTO.id);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-        ShippingAddressDTO shippingAddressDTO = (ShippingAddressDTO) o;
-        if (shippingAddressDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), shippingAddressDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "ShippingAddressDTO{" +

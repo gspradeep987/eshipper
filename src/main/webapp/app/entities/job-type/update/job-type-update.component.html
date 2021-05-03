@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-job-type-heading" data-cy="JobTypeCreateUpdateHeading" jhiTranslate="eshipperApp.jobType.home.createOrEditLabel">
+        Create or edit a Job Type
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.jobType.iD" for="field_iD">I D</label>
+          <input type="number" class="form-control" name="iD" id="field_iD" data-cy="iD" formControlName="iD" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.jobType.nAME" for="field_nAME">N AME</label>
+          <input type="text" class="form-control" name="nAME" id="field_nAME" data-cy="nAME" formControlName="nAME" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.jobType.dESCRIPTION" for="field_dESCRIPTION">D ESCRIPTION</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dESCRIPTION"
+            id="field_dESCRIPTION"
+            data-cy="dESCRIPTION"
+            formControlName="dESCRIPTION"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.jobType.jobType" for="field_jobType">Job Type</label>
+          <select class="form-control" id="field_jobType" data-cy="jobType" name="jobType" formControlName="jobType">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sisyphusJobOption.id === editForm.get('jobType')!.value?.id ? editForm.get('jobType')!.value : sisyphusJobOption"
+              *ngFor="let sisyphusJobOption of sisyphusJobsSharedCollection; trackBy: trackSisyphusJobById"
+            >
+              {{ sisyphusJobOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

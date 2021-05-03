@@ -3,6 +3,7 @@
     "ecomWarehouse": {
       "home": {
         "title": "Ecom Warehouses",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Warehouse",
         "createOrEditLabel": "Create or edit a Ecom Warehouse",
         "notFound": "No Ecom Warehouses found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Warehouse"
       },
+      "id": "ID",
       "name": "Name",
       "address": "Address",
       "ecomProduct": "Ecom Product"

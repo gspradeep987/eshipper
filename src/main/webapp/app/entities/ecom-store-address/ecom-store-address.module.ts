@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomStoreAddressComponent } from './ecom-store-address.component';
-import { EcomStoreAddressDetailComponent } from './ecom-store-address-detail.component';
-import { EcomStoreAddressUpdateComponent } from './ecom-store-address-update.component';
-import { EcomStoreAddressDeleteDialogComponent } from './ecom-store-address-delete-dialog.component';
-import { ecomStoreAddressRoute } from './ecom-store-address.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomStoreAddressComponent } from './list/ecom-store-address.component';
+import { EcomStoreAddressDetailComponent } from './detail/ecom-store-address-detail.component';
+import { EcomStoreAddressUpdateComponent } from './update/ecom-store-address-update.component';
+import { EcomStoreAddressDeleteDialogComponent } from './delete/ecom-store-address-delete-dialog.component';
+import { EcomStoreAddressRoutingModule } from './route/ecom-store-address-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomStoreAddressRoute)],
+  imports: [SharedModule, EcomStoreAddressRoutingModule],
   declarations: [
     EcomStoreAddressComponent,
     EcomStoreAddressDetailComponent,
     EcomStoreAddressUpdateComponent,
-    EcomStoreAddressDeleteDialogComponent
+    EcomStoreAddressDeleteDialogComponent,
   ],
-  entryComponents: [EcomStoreAddressDeleteDialogComponent]
+  entryComponents: [EcomStoreAddressDeleteDialogComponent],
 })
-export class EshipperEcomStoreAddressModule {}
+export class EcomStoreAddressModule {}

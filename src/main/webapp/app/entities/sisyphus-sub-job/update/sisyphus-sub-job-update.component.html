@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sisyphus-sub-job-heading"
+        data-cy="SisyphusSubJobCreateUpdateHeading"
+        jhiTranslate="eshipperApp.sisyphusSubJob.home.createOrEditLabel"
+      >
+        Create or edit a Sisyphus Sub Job
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusSubJob.sUBJOBID" for="field_sUBJOBID">S UBJOBID</label>
+          <input type="number" class="form-control" name="sUBJOBID" id="field_sUBJOBID" data-cy="sUBJOBID" formControlName="sUBJOBID" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusSubJob.rUNORDER" for="field_rUNORDER">R UNORDER</label>
+          <input type="text" class="form-control" name="rUNORDER" id="field_rUNORDER" data-cy="rUNORDER" formControlName="rUNORDER" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusSubJob.sisyphusJob" for="field_sisyphusJob"
+            >Sisyphus Job</label
+          >
+          <select class="form-control" id="field_sisyphusJob" data-cy="sisyphusJob" name="sisyphusJob" formControlName="sisyphusJob">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                sisyphusJobOption.id === editForm.get('sisyphusJob')!.value?.id ? editForm.get('sisyphusJob')!.value : sisyphusJobOption
+              "
+              *ngFor="let sisyphusJobOption of sisyphusJobsSharedCollection; trackBy: trackSisyphusJobById"
+            >
+              {{ sisyphusJobOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sisyphusClasses">
+      <h2 data-cy="sisyphusClassesDetailsHeading"><span jhiTranslate="eshipperApp.sisyphusClasses.detail.title">Sisyphus Classes</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sisyphusClasses.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClasses.iD">I D</span></dt>
+        <dd>
+          <span>{{ sisyphusClasses.iD }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClasses.nAME">N AME</span></dt>
+        <dd>
+          <span>{{ sisyphusClasses.nAME }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClasses.dESCRIPTION">D ESCRIPTION</span></dt>
+        <dd>
+          <span>{{ sisyphusClasses.dESCRIPTION }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClasses.classes">Classes</span></dt>
+        <dd>
+          <div *ngIf="sisyphusClasses.classes">
+            <a [routerLink]="['/sisyphus-sub-job', sisyphusClasses.classes?.id, 'view']">{{ sisyphusClasses.classes?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sisyphus-classes', sisyphusClasses.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

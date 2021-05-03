@@ -3,6 +3,7 @@
     "province": {
       "home": {
         "title": "Provinces",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Province",
         "createOrEditLabel": "Create or edit a Province",
         "notFound": "No Provinces found"
@@ -15,7 +16,8 @@
       },
       "detail": {
         "title": "Province"
-      }
+      },
+      "id": "ID"
     }
   }
 }

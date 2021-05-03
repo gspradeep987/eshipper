@@ -3,6 +3,7 @@
     "ecomMarkupTertiary": {
       "home": {
         "title": "Ecom Markup Tertiaries",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Markup Tertiary",
         "createOrEditLabel": "Create or edit a Ecom Markup Tertiary",
         "notFound": "No Ecom Markup Tertiaries found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Markup Tertiary"
       },
+      "id": "ID",
       "wgt1to5": "Wgt 1 To 5",
       "wgt6to10": "Wgt 6 To 10",
       "wgt11to15": "Wgt 11 To 15",

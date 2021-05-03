@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { ProvinceComponent } from './province.component';
-import { ProvinceDetailComponent } from './province-detail.component';
-import { ProvinceUpdateComponent } from './province-update.component';
-import { ProvinceDeleteDialogComponent } from './province-delete-dialog.component';
-import { provinceRoute } from './province.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { ProvinceComponent } from './list/province.component';
+import { ProvinceDetailComponent } from './detail/province-detail.component';
+import { ProvinceUpdateComponent } from './update/province-update.component';
+import { ProvinceDeleteDialogComponent } from './delete/province-delete-dialog.component';
+import { ProvinceRoutingModule } from './route/province-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(provinceRoute)],
+  imports: [SharedModule, ProvinceRoutingModule],
   declarations: [ProvinceComponent, ProvinceDetailComponent, ProvinceUpdateComponent, ProvinceDeleteDialogComponent],
-  entryComponents: [ProvinceDeleteDialogComponent]
+  entryComponents: [ProvinceDeleteDialogComponent],
 })
-export class EshipperProvinceModule {}
+export class ProvinceModule {}

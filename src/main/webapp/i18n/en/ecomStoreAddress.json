@@ -3,6 +3,7 @@
     "ecomStoreAddress": {
       "home": {
         "title": "Ecom Store Addresses",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Address",
         "createOrEditLabel": "Create or edit a Ecom Store Address",
         "notFound": "No Ecom Store Addresses found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Address"
       },
+      "id": "ID",
       "address1": "Address 1",
       "address2": "Address 2",
       "name": "Name",

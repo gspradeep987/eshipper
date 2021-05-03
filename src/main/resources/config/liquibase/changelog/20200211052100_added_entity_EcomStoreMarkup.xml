@@ -3,17 +3,15 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity EcomStoreMarkup.
     -->
     <changeSet id="20200211052100-1" author="jhipster">
         <createTable tableName="ecom_store_markup">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="markup_type" type="varchar(20)">
@@ -35,25 +33,22 @@
                 <constraints nullable="true" />
             </column>
             <column name="ecom_markup_primary_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_primary_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store_markup__ecom_markup_primary_id" />
             </column>
             <column name="ecom_markup_secondary_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_secondary_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store_markup__ecom_markup_secondary_id" />
             </column>
             <column name="ecom_markup_tertiary_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_tertiary_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store_markup__ecom_markup_tertiary_id" />
             </column>
             <column name="ecom_markup_quaternary_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_ecom_store_markup_ecom_markup_quaternary_id" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_ecom_store_markup__ecom_markup_quaternary_id" />
             </column>
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
 
-    <changeSet id="20200211052100-1-relations" author="jhipster">
-
-    </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--
         Load sample data generated with Faker.js
@@ -75,8 +70,7 @@
             <column name="intl_value" type="numeric"/>
             <column name="flat_rate_value" type="numeric"/>
             <column name="opex_value" type="numeric"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
-
 </databaseChangeLog>

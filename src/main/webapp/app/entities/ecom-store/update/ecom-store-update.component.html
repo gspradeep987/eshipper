@@ -1,0 +1,394 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ecom-store-heading" data-cy="EcomStoreCreateUpdateHeading" jhiTranslate="eshipperApp.ecomStore.home.createOrEditLabel">
+        Create or edit a Ecom Store
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.nickName" for="field_nickName">Nick Name</label>
+          <input type="text" class="form-control" name="nickName" id="field_nickName" data-cy="nickName" formControlName="nickName" />
+          <div *ngIf="editForm.get('nickName')!.invalid && (editForm.get('nickName')!.dirty || editForm.get('nickName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nickName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.apiPassword" for="field_apiPassword">Api Password</label>
+          <input
+            type="text"
+            class="form-control"
+            name="apiPassword"
+            id="field_apiPassword"
+            data-cy="apiPassword"
+            formControlName="apiPassword"
+          />
+          <div *ngIf="editForm.get('apiPassword')!.invalid && (editForm.get('apiPassword')!.dirty || editForm.get('apiPassword')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('apiPassword')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.domain" for="field_domain">Domain</label>
+          <input type="text" class="form-control" name="domain" id="field_domain" data-cy="domain" formControlName="domain" />
+          <div *ngIf="editForm.get('domain')!.invalid && (editForm.get('domain')!.dirty || editForm.get('domain')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('domain')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.syncFrequency" for="field_syncFrequency"
+            >Sync Frequency</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="syncFrequency"
+            id="field_syncFrequency"
+            data-cy="syncFrequency"
+            formControlName="syncFrequency"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.syncInterval" for="field_syncInterval">Sync Interval</label>
+          <input
+            type="text"
+            class="form-control"
+            name="syncInterval"
+            id="field_syncInterval"
+            data-cy="syncInterval"
+            formControlName="syncInterval"
+          />
+          <div
+            *ngIf="editForm.get('syncInterval')!.invalid && (editForm.get('syncInterval')!.dirty || editForm.get('syncInterval')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('syncInterval')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 25 }"
+            >
+              This field cannot be longer than 25 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.active" for="field_active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.isManualSync" for="field_isManualSync"
+            >Is Manual Sync</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isManualSync"
+            id="field_isManualSync"
+            data-cy="isManualSync"
+            formControlName="isManualSync"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="input-group">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="text"
+              class="form-control"
+              name="updatedDate"
+              ngbDatepicker
+              #updatedDateDp="ngbDatepicker"
+              formControlName="updatedDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="updatedDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.ecomStoreAddress" for="field_ecomStoreAddress"
+            >Ecom Store Address</label
+          >
+          <select
+            class="form-control"
+            id="field_ecomStoreAddress"
+            data-cy="ecomStoreAddress"
+            name="ecomStoreAddress"
+            formControlName="ecomStoreAddress"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomStoreAddressOption.id === editForm.get('ecomStoreAddress')!.value?.id
+                  ? editForm.get('ecomStoreAddress')!.value
+                  : ecomStoreAddressOption
+              "
+              *ngFor="let ecomStoreAddressOption of ecomStoreAddressesCollection; trackBy: trackEcomStoreAddressById"
+            >
+              {{ ecomStoreAddressOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.ecomStoreColorTheme" for="field_ecomStoreColorTheme"
+            >Ecom Store Color Theme</label
+          >
+          <select
+            class="form-control"
+            id="field_ecomStoreColorTheme"
+            data-cy="ecomStoreColorTheme"
+            name="ecomStoreColorTheme"
+            formControlName="ecomStoreColorTheme"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomStoreColorThemeOption.id === editForm.get('ecomStoreColorTheme')!.value?.id
+                  ? editForm.get('ecomStoreColorTheme')!.value
+                  : ecomStoreColorThemeOption
+              "
+              *ngFor="let ecomStoreColorThemeOption of ecomStoreColorThemesCollection; trackBy: trackEcomStoreColorThemeById"
+            >
+              {{ ecomStoreColorThemeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="eshipperApp.ecomStore.ecomStoreShipmentSettings"
+            for="field_ecomStoreShipmentSettings"
+            >Ecom Store Shipment Settings</label
+          >
+          <select
+            class="form-control"
+            id="field_ecomStoreShipmentSettings"
+            data-cy="ecomStoreShipmentSettings"
+            name="ecomStoreShipmentSettings"
+            formControlName="ecomStoreShipmentSettings"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomStoreShipmentSettingsOption.id === editForm.get('ecomStoreShipmentSettings')!.value?.id
+                  ? editForm.get('ecomStoreShipmentSettings')!.value
+                  : ecomStoreShipmentSettingsOption
+              "
+              *ngFor="
+                let ecomStoreShipmentSettingsOption of ecomStoreShipmentSettingsCollection;
+                trackBy: trackEcomStoreShipmentSettingsById
+              "
+            >
+              {{ ecomStoreShipmentSettingsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="eshipperApp.ecomStore.ecomStorePackageSettings"
+            for="field_ecomStorePackageSettings"
+            >Ecom Store Package Settings</label
+          >
+          <select
+            class="form-control"
+            id="field_ecomStorePackageSettings"
+            data-cy="ecomStorePackageSettings"
+            name="ecomStorePackageSettings"
+            formControlName="ecomStorePackageSettings"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomStorePackageSettingsOption.id === editForm.get('ecomStorePackageSettings')!.value?.id
+                  ? editForm.get('ecomStorePackageSettings')!.value
+                  : ecomStorePackageSettingsOption
+              "
+              *ngFor="let ecomStorePackageSettingsOption of ecomStorePackageSettingsCollection; trackBy: trackEcomStorePackageSettingsById"
+            >
+              {{ ecomStorePackageSettingsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.ecomStoreMarkup" for="field_ecomStoreMarkup"
+            >Ecom Store Markup</label
+          >
+          <select
+            class="form-control"
+            id="field_ecomStoreMarkup"
+            data-cy="ecomStoreMarkup"
+            name="ecomStoreMarkup"
+            formControlName="ecomStoreMarkup"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomStoreMarkupOption.id === editForm.get('ecomStoreMarkup')!.value?.id
+                  ? editForm.get('ecomStoreMarkup')!.value
+                  : ecomStoreMarkupOption
+              "
+              *ngFor="let ecomStoreMarkupOption of ecomStoreMarkupsCollection; trackBy: trackEcomStoreMarkupById"
+            >
+              {{ ecomStoreMarkupOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.company" for="field_company">Company</label>
+          <select class="form-control" id="field_company" data-cy="company" name="company" formControlName="company">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="companyOption.id === editForm.get('company')!.value?.id ? editForm.get('company')!.value : companyOption"
+              *ngFor="let companyOption of companiesSharedCollection; trackBy: trackCompanyById"
+            >
+              {{ companyOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStore.ecomProduct" for="field_ecomProduct">Ecom Product</label>
+          <select class="form-control" id="field_ecomProduct" data-cy="ecomProduct" name="ecomProduct" formControlName="ecomProduct">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomProductOption.id === editForm.get('ecomProduct')!.value?.id ? editForm.get('ecomProduct')!.value : ecomProductOption
+              "
+              *ngFor="let ecomProductOption of ecomProductsSharedCollection; trackBy: trackEcomProductById"
+            >
+              {{ ecomProductOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="eshipperApp.ecomStore.shipmentService" for="field_shipmentServices">Shipment Service</label>
+          <select
+            class="form-control"
+            id="field_shipmentServices"
+            data-cy="shipmentService"
+            multiple
+            name="shipmentServices"
+            formControlName="shipmentServices"
+          >
+            <option
+              [ngValue]="getSelectedShipmentService(shipmentServiceOption, editForm.get('shipmentServices')!.value)"
+              *ngFor="let shipmentServiceOption of shipmentServicesSharedCollection; trackBy: trackShipmentServiceById"
+            >
+              {{ shipmentServiceOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

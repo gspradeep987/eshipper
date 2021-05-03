@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomProductComponent } from './ecom-product.component';
-import { EcomProductDetailComponent } from './ecom-product-detail.component';
-import { EcomProductUpdateComponent } from './ecom-product-update.component';
-import { EcomProductDeleteDialogComponent } from './ecom-product-delete-dialog.component';
-import { ecomProductRoute } from './ecom-product.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomProductComponent } from './list/ecom-product.component';
+import { EcomProductDetailComponent } from './detail/ecom-product-detail.component';
+import { EcomProductUpdateComponent } from './update/ecom-product-update.component';
+import { EcomProductDeleteDialogComponent } from './delete/ecom-product-delete-dialog.component';
+import { EcomProductRoutingModule } from './route/ecom-product-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomProductRoute)],
+  imports: [SharedModule, EcomProductRoutingModule],
   declarations: [EcomProductComponent, EcomProductDetailComponent, EcomProductUpdateComponent, EcomProductDeleteDialogComponent],
-  entryComponents: [EcomProductDeleteDialogComponent]
+  entryComponents: [EcomProductDeleteDialogComponent],
 })
-export class EshipperEcomProductModule {}
+export class EcomProductModule {}

@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sisyphusJob">
+      <h2 data-cy="sisyphusJobDetailsHeading"><span jhiTranslate="eshipperApp.sisyphusJob.detail.title">Sisyphus Job</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.iD">I D</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.iD }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.nAME">N AME</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.nAME }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMINUTE">S CHEDULEMINUTE</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.sCHEDULEMINUTE }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEHOUR">S CHEDULEHOUR</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.sCHEDULEHOUR }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEDAY">S CHEDULEDAY</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.sCHEDULEDAY }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.sCHEDULEMONTH">S CHEDULEMONTH</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.sCHEDULEMONTH }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.sHOULDRUNYN">S HOULDRUNYN</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.sHOULDRUNYN }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.rETRIES">R ETRIES</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.rETRIES }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusJob.mONITORSCHEDULEYN">M ONITORSCHEDULEYN</span></dt>
+        <dd>
+          <span>{{ sisyphusJob.mONITORSCHEDULEYN }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sisyphus-job', sisyphusJob.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

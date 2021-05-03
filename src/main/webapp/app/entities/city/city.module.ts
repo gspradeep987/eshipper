@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { CityComponent } from './city.component';
-import { CityDetailComponent } from './city-detail.component';
-import { CityUpdateComponent } from './city-update.component';
-import { CityDeleteDialogComponent } from './city-delete-dialog.component';
-import { cityRoute } from './city.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { CityComponent } from './list/city.component';
+import { CityDetailComponent } from './detail/city-detail.component';
+import { CityUpdateComponent } from './update/city-update.component';
+import { CityDeleteDialogComponent } from './delete/city-delete-dialog.component';
+import { CityRoutingModule } from './route/city-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(cityRoute)],
+  imports: [SharedModule, CityRoutingModule],
   declarations: [CityComponent, CityDetailComponent, CityUpdateComponent, CityDeleteDialogComponent],
-  entryComponents: [CityDeleteDialogComponent]
+  entryComponents: [CityDeleteDialogComponent],
 })
-export class EshipperCityModule {}
+export class CityModule {}

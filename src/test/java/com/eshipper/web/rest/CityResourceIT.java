@@ -1,239 +1,372 @@
 package com.eshipper.web.rest;
 
-import com.eshipper.EshipperApp;
-import com.eshipper.domain.City;
-import com.eshipper.repository.CityRepository;
-import com.eshipper.service.CityService;
-import com.eshipper.service.dto.CityDTO;
-import com.eshipper.service.mapper.CityMapper;
-import com.eshipper.web.rest.errors.ExceptionTranslator;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
-import javax.persistence.EntityManager;
-import java.util.List;
-
-import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.eshipper.IntegrationTest;
+import com.eshipper.domain.City;
+import com.eshipper.repository.CityRepository;
+import com.eshipper.service.dto.CityDTO;
+import com.eshipper.service.mapper.CityMapper;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Integration tests for the {@link CityResource} REST controller.
  */
-@SpringBootTest(classes = EshipperApp.class)
-public class CityResourceIT {
+@IntegrationTest
+@AutoConfigureMockMvc
+@WithMockUser
+class CityResourceIT {
 
-    @Autowired
-    private CityRepository cityRepository;
+  private static final String ENTITY_API_URL = "/api/cities";
+  private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    @Autowired
-    private CityMapper cityMapper;
+  private static Random random = new Random();
+  private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    @Autowired
-    private CityService cityService;
+  @Autowired
+  private CityRepository cityRepository;
 
-    @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
+  @Autowired
+  private CityMapper cityMapper;
 
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
+  @Autowired
+  private EntityManager em;
 
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
+  @Autowired
+  private MockMvc restCityMockMvc;
 
-    @Autowired
-    private EntityManager em;
+  private City city;
 
-    @Autowired
-    private Validator validator;
+  /**
+   * Create an entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static City createEntity(EntityManager em) {
+    City city = new City();
+    return city;
+  }
 
-    private MockMvc restCityMockMvc;
+  /**
+   * Create an updated entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static City createUpdatedEntity(EntityManager em) {
+    City city = new City();
+    return city;
+  }
 
-    private City city;
+  @BeforeEach
+  public void initTest() {
+    city = createEntity(em);
+  }
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final CityResource cityResource = new CityResource(cityService);
-        this.restCityMockMvc = MockMvcBuilders.standaloneSetup(cityResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
+  @Test
+  @Transactional
+  void createCity() throws Exception {
+    int databaseSizeBeforeCreate = cityRepository.findAll().size();
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
+    restCityMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(cityDTO)))
+      .andExpect(status().isCreated());
 
-    /**
-     * Create an entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static City createEntity(EntityManager em) {
-        City city = new City();
-        return city;
-    }
-    /**
-     * Create an updated entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static City createUpdatedEntity(EntityManager em) {
-        City city = new City();
-        return city;
-    }
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeCreate + 1);
+    City testCity = cityList.get(cityList.size() - 1);
+  }
 
-    @BeforeEach
-    public void initTest() {
-        city = createEntity(em);
-    }
+  @Test
+  @Transactional
+  void createCityWithExistingId() throws Exception {
+    // Create the City with an existing ID
+    city.setId(1L);
+    CityDTO cityDTO = cityMapper.toDto(city);
 
-    @Test
-    @Transactional
-    public void createCity() throws Exception {
-        int databaseSizeBeforeCreate = cityRepository.findAll().size();
+    int databaseSizeBeforeCreate = cityRepository.findAll().size();
 
-        // Create the City
-        CityDTO cityDTO = cityMapper.toDto(city);
-        restCityMockMvc.perform(post("/api/cities")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
-            .andExpect(status().isCreated());
+    // An entity with an existing ID cannot be created, so this API call must fail
+    restCityMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(cityDTO)))
+      .andExpect(status().isBadRequest());
 
-        // Validate the City in the database
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeCreate + 1);
-        City testCity = cityList.get(cityList.size() - 1);
-    }
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeCreate);
+  }
 
-    @Test
-    @Transactional
-    public void createCityWithExistingId() throws Exception {
-        int databaseSizeBeforeCreate = cityRepository.findAll().size();
+  @Test
+  @Transactional
+  void getAllCities() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
 
-        // Create the City with an existing ID
-        city.setId(1L);
-        CityDTO cityDTO = cityMapper.toDto(city);
+    // Get all the cityList
+    restCityMockMvc
+      .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.[*].id").value(hasItem(city.getId().intValue())));
+  }
 
-        // An entity with an existing ID cannot be created, so this API call must fail
-        restCityMockMvc.perform(post("/api/cities")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
-            .andExpect(status().isBadRequest());
+  @Test
+  @Transactional
+  void getCity() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
 
-        // Validate the City in the database
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeCreate);
-    }
+    // Get the city
+    restCityMockMvc
+      .perform(get(ENTITY_API_URL_ID, city.getId()))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.id").value(city.getId().intValue()));
+  }
 
+  @Test
+  @Transactional
+  void getNonExistingCity() throws Exception {
+    // Get the city
+    restCityMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+  }
 
-    @Test
-    @Transactional
-    public void getAllCities() throws Exception {
-        // Initialize the database
-        cityRepository.saveAndFlush(city);
+  @Test
+  @Transactional
+  void putNewCity() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
 
-        // Get all the cityList
-        restCityMockMvc.perform(get("/api/cities?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(city.getId().intValue())));
-    }
-    
-    @Test
-    @Transactional
-    public void getCity() throws Exception {
-        // Initialize the database
-        cityRepository.saveAndFlush(city);
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
 
-        // Get the city
-        restCityMockMvc.perform(get("/api/cities/{id}", city.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(city.getId().intValue()));
-    }
+    // Update the city
+    City updatedCity = cityRepository.findById(city.getId()).get();
+    // Disconnect from session so that the updates on updatedCity are not directly saved in db
+    em.detach(updatedCity);
+    CityDTO cityDTO = cityMapper.toDto(updatedCity);
 
-    @Test
-    @Transactional
-    public void getNonExistingCity() throws Exception {
-        // Get the city
-        restCityMockMvc.perform(get("/api/cities/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
-    }
+    restCityMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, cityDTO.getId()).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(cityDTO))
+      )
+      .andExpect(status().isOk());
 
-    @Test
-    @Transactional
-    public void updateCity() throws Exception {
-        // Initialize the database
-        cityRepository.saveAndFlush(city);
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+    City testCity = cityList.get(cityList.size() - 1);
+  }
 
-        int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+  @Test
+  @Transactional
+  void putNonExistingCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
 
-        // Update the city
-        City updatedCity = cityRepository.findById(city.getId()).get();
-        // Disconnect from session so that the updates on updatedCity are not directly saved in db
-        em.detach(updatedCity);
-        CityDTO cityDTO = cityMapper.toDto(updatedCity);
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
 
-        restCityMockMvc.perform(put("/api/cities")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
-            .andExpect(status().isOk());
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, cityDTO.getId()).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(cityDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the City in the database
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
-        City testCity = cityList.get(cityList.size() - 1);
-    }
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void updateNonExistingCity() throws Exception {
-        int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+  @Test
+  @Transactional
+  void putWithIdMismatchCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
 
-        // Create the City
-        CityDTO cityDTO = cityMapper.toDto(city);
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCityMockMvc.perform(put("/api/cities")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
-            .andExpect(status().isBadRequest());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(cityDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the City in the database
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
-    }
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void deleteCity() throws Exception {
-        // Initialize the database
-        cityRepository.saveAndFlush(city);
+  @Test
+  @Transactional
+  void putWithMissingIdPathParamCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
 
-        int databaseSizeBeforeDelete = cityRepository.findAll().size();
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
 
-        // Delete the city
-        restCityMockMvc.perform(delete("/api/cities/{id}", city.getId())
-            .accept(TestUtil.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(cityDTO)))
+      .andExpect(status().isMethodNotAllowed());
 
-        // Validate the database contains one less item
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeDelete - 1);
-    }
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void partialUpdateCityWithPatch() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
+
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+
+    // Update the city using partial update
+    City partialUpdatedCity = new City();
+    partialUpdatedCity.setId(city.getId());
+
+    restCityMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedCity.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedCity))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+    City testCity = cityList.get(cityList.size() - 1);
+  }
+
+  @Test
+  @Transactional
+  void fullUpdateCityWithPatch() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
+
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+
+    // Update the city using partial update
+    City partialUpdatedCity = new City();
+    partialUpdatedCity.setId(city.getId());
+
+    restCityMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedCity.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedCity))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+    City testCity = cityList.get(cityList.size() - 1);
+  }
+
+  @Test
+  @Transactional
+  void patchNonExistingCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
+
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
+
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, cityDTO.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(cityDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithIdMismatchCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
+
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(cityDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithMissingIdPathParamCity() throws Exception {
+    int databaseSizeBeforeUpdate = cityRepository.findAll().size();
+    city.setId(count.incrementAndGet());
+
+    // Create the City
+    CityDTO cityDTO = cityMapper.toDto(city);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCityMockMvc
+      .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(cityDTO)))
+      .andExpect(status().isMethodNotAllowed());
+
+    // Validate the City in the database
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void deleteCity() throws Exception {
+    // Initialize the database
+    cityRepository.saveAndFlush(city);
+
+    int databaseSizeBeforeDelete = cityRepository.findAll().size();
+
+    // Delete the city
+    restCityMockMvc.perform(delete(ENTITY_API_URL_ID, city.getId()).accept(MediaType.APPLICATION_JSON)).andExpect(status().isNoContent());
+
+    // Validate the database contains one less item
+    List<City> cityList = cityRepository.findAll();
+    assertThat(cityList).hasSize(databaseSizeBeforeDelete - 1);
+  }
 }

@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class EcomStorePackageSettingsMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private EcomStorePackageSettingsMapper ecomStorePackageSettingsMapper;
+class EcomStorePackageSettingsMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        ecomStorePackageSettingsMapper = new EcomStorePackageSettingsMapperImpl();
-    }
+  private EcomStorePackageSettingsMapper ecomStorePackageSettingsMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(ecomStorePackageSettingsMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(ecomStorePackageSettingsMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    ecomStorePackageSettingsMapper = new EcomStorePackageSettingsMapperImpl();
+  }
 }

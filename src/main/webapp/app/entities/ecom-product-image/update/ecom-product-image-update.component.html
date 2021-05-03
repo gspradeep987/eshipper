@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecom-product-image-heading"
+        data-cy="EcomProductImageCreateUpdateHeading"
+        jhiTranslate="eshipperApp.ecomProductImage.home.createOrEditLabel"
+      >
+        Create or edit a Ecom Product Image
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProductImage.imageName" for="field_imageName">Image Name</label>
+          <input type="text" class="form-control" name="imageName" id="field_imageName" data-cy="imageName" formControlName="imageName" />
+          <div *ngIf="editForm.get('imageName')!.invalid && (editForm.get('imageName')!.dirty || editForm.get('imageName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('imageName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProductImage.imagePath" for="field_imagePath">Image Path</label>
+          <input type="text" class="form-control" name="imagePath" id="field_imagePath" data-cy="imagePath" formControlName="imagePath" />
+          <div *ngIf="editForm.get('imagePath')!.invalid && (editForm.get('imagePath')!.dirty || editForm.get('imagePath')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('imagePath')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProductImage.ecomProduct" for="field_ecomProduct"
+            >Ecom Product</label
+          >
+          <select class="form-control" id="field_ecomProduct" data-cy="ecomProduct" name="ecomProduct" formControlName="ecomProduct">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                ecomProductOption.id === editForm.get('ecomProduct')!.value?.id ? editForm.get('ecomProduct')!.value : ecomProductOption
+              "
+              *ngFor="let ecomProductOption of ecomProductsSharedCollection; trackBy: trackEcomProductById"
+            >
+              {{ ecomProductOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

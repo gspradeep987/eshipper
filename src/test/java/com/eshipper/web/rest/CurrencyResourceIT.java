@@ -1,239 +1,378 @@
 package com.eshipper.web.rest;
 
-import com.eshipper.EshipperApp;
-import com.eshipper.domain.Currency;
-import com.eshipper.repository.CurrencyRepository;
-import com.eshipper.service.CurrencyService;
-import com.eshipper.service.dto.CurrencyDTO;
-import com.eshipper.service.mapper.CurrencyMapper;
-import com.eshipper.web.rest.errors.ExceptionTranslator;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
-import javax.persistence.EntityManager;
-import java.util.List;
-
-import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.eshipper.IntegrationTest;
+import com.eshipper.domain.Currency;
+import com.eshipper.repository.CurrencyRepository;
+import com.eshipper.service.dto.CurrencyDTO;
+import com.eshipper.service.mapper.CurrencyMapper;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Integration tests for the {@link CurrencyResource} REST controller.
  */
-@SpringBootTest(classes = EshipperApp.class)
-public class CurrencyResourceIT {
+@IntegrationTest
+@AutoConfigureMockMvc
+@WithMockUser
+class CurrencyResourceIT {
 
-    @Autowired
-    private CurrencyRepository currencyRepository;
+  private static final String ENTITY_API_URL = "/api/currencies";
+  private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    @Autowired
-    private CurrencyMapper currencyMapper;
+  private static Random random = new Random();
+  private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    @Autowired
-    private CurrencyService currencyService;
+  @Autowired
+  private CurrencyRepository currencyRepository;
 
-    @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
+  @Autowired
+  private CurrencyMapper currencyMapper;
 
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
+  @Autowired
+  private EntityManager em;
 
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
+  @Autowired
+  private MockMvc restCurrencyMockMvc;
 
-    @Autowired
-    private EntityManager em;
+  private Currency currency;
 
-    @Autowired
-    private Validator validator;
+  /**
+   * Create an entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static Currency createEntity(EntityManager em) {
+    Currency currency = new Currency();
+    return currency;
+  }
 
-    private MockMvc restCurrencyMockMvc;
+  /**
+   * Create an updated entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static Currency createUpdatedEntity(EntityManager em) {
+    Currency currency = new Currency();
+    return currency;
+  }
 
-    private Currency currency;
+  @BeforeEach
+  public void initTest() {
+    currency = createEntity(em);
+  }
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final CurrencyResource currencyResource = new CurrencyResource(currencyService);
-        this.restCurrencyMockMvc = MockMvcBuilders.standaloneSetup(currencyResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
+  @Test
+  @Transactional
+  void createCurrency() throws Exception {
+    int databaseSizeBeforeCreate = currencyRepository.findAll().size();
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+    restCurrencyMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
+      .andExpect(status().isCreated());
 
-    /**
-     * Create an entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static Currency createEntity(EntityManager em) {
-        Currency currency = new Currency();
-        return currency;
-    }
-    /**
-     * Create an updated entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static Currency createUpdatedEntity(EntityManager em) {
-        Currency currency = new Currency();
-        return currency;
-    }
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeCreate + 1);
+    Currency testCurrency = currencyList.get(currencyList.size() - 1);
+  }
 
-    @BeforeEach
-    public void initTest() {
-        currency = createEntity(em);
-    }
+  @Test
+  @Transactional
+  void createCurrencyWithExistingId() throws Exception {
+    // Create the Currency with an existing ID
+    currency.setId(1L);
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
 
-    @Test
-    @Transactional
-    public void createCurrency() throws Exception {
-        int databaseSizeBeforeCreate = currencyRepository.findAll().size();
+    int databaseSizeBeforeCreate = currencyRepository.findAll().size();
 
-        // Create the Currency
-        CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
-        restCurrencyMockMvc.perform(post("/api/currencies")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
-            .andExpect(status().isCreated());
+    // An entity with an existing ID cannot be created, so this API call must fail
+    restCurrencyMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
+      .andExpect(status().isBadRequest());
 
-        // Validate the Currency in the database
-        List<Currency> currencyList = currencyRepository.findAll();
-        assertThat(currencyList).hasSize(databaseSizeBeforeCreate + 1);
-        Currency testCurrency = currencyList.get(currencyList.size() - 1);
-    }
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeCreate);
+  }
 
-    @Test
-    @Transactional
-    public void createCurrencyWithExistingId() throws Exception {
-        int databaseSizeBeforeCreate = currencyRepository.findAll().size();
+  @Test
+  @Transactional
+  void getAllCurrencies() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
 
-        // Create the Currency with an existing ID
-        currency.setId(1L);
-        CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+    // Get all the currencyList
+    restCurrencyMockMvc
+      .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.[*].id").value(hasItem(currency.getId().intValue())));
+  }
 
-        // An entity with an existing ID cannot be created, so this API call must fail
-        restCurrencyMockMvc.perform(post("/api/currencies")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
-            .andExpect(status().isBadRequest());
+  @Test
+  @Transactional
+  void getCurrency() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
 
-        // Validate the Currency in the database
-        List<Currency> currencyList = currencyRepository.findAll();
-        assertThat(currencyList).hasSize(databaseSizeBeforeCreate);
-    }
+    // Get the currency
+    restCurrencyMockMvc
+      .perform(get(ENTITY_API_URL_ID, currency.getId()))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.id").value(currency.getId().intValue()));
+  }
 
+  @Test
+  @Transactional
+  void getNonExistingCurrency() throws Exception {
+    // Get the currency
+    restCurrencyMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+  }
 
-    @Test
-    @Transactional
-    public void getAllCurrencies() throws Exception {
-        // Initialize the database
-        currencyRepository.saveAndFlush(currency);
+  @Test
+  @Transactional
+  void putNewCurrency() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
 
-        // Get all the currencyList
-        restCurrencyMockMvc.perform(get("/api/currencies?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(currency.getId().intValue())));
-    }
-    
-    @Test
-    @Transactional
-    public void getCurrency() throws Exception {
-        // Initialize the database
-        currencyRepository.saveAndFlush(currency);
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
 
-        // Get the currency
-        restCurrencyMockMvc.perform(get("/api/currencies/{id}", currency.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(currency.getId().intValue()));
-    }
+    // Update the currency
+    Currency updatedCurrency = currencyRepository.findById(currency.getId()).get();
+    // Disconnect from session so that the updates on updatedCurrency are not directly saved in db
+    em.detach(updatedCurrency);
+    CurrencyDTO currencyDTO = currencyMapper.toDto(updatedCurrency);
 
-    @Test
-    @Transactional
-    public void getNonExistingCurrency() throws Exception {
-        // Get the currency
-        restCurrencyMockMvc.perform(get("/api/currencies/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
-    }
+    restCurrencyMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, currencyDTO.getId())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(currencyDTO))
+      )
+      .andExpect(status().isOk());
 
-    @Test
-    @Transactional
-    public void updateCurrency() throws Exception {
-        // Initialize the database
-        currencyRepository.saveAndFlush(currency);
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+    Currency testCurrency = currencyList.get(currencyList.size() - 1);
+  }
 
-        int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+  @Test
+  @Transactional
+  void putNonExistingCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
 
-        // Update the currency
-        Currency updatedCurrency = currencyRepository.findById(currency.getId()).get();
-        // Disconnect from session so that the updates on updatedCurrency are not directly saved in db
-        em.detach(updatedCurrency);
-        CurrencyDTO currencyDTO = currencyMapper.toDto(updatedCurrency);
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
 
-        restCurrencyMockMvc.perform(put("/api/currencies")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
-            .andExpect(status().isOk());
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, currencyDTO.getId())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(currencyDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the Currency in the database
-        List<Currency> currencyList = currencyRepository.findAll();
-        assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
-        Currency testCurrency = currencyList.get(currencyList.size() - 1);
-    }
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void updateNonExistingCurrency() throws Exception {
-        int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+  @Test
+  @Transactional
+  void putWithIdMismatchCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
 
-        // Create the Currency
-        CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCurrencyMockMvc.perform(put("/api/currencies")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
-            .andExpect(status().isBadRequest());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(currencyDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the Currency in the database
-        List<Currency> currencyList = currencyRepository.findAll();
-        assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
-    }
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void deleteCurrency() throws Exception {
-        // Initialize the database
-        currencyRepository.saveAndFlush(currency);
+  @Test
+  @Transactional
+  void putWithMissingIdPathParamCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
 
-        int databaseSizeBeforeDelete = currencyRepository.findAll().size();
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
 
-        // Delete the currency
-        restCurrencyMockMvc.perform(delete("/api/currencies/{id}", currency.getId())
-            .accept(TestUtil.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
+      .andExpect(status().isMethodNotAllowed());
 
-        // Validate the database contains one less item
-        List<Currency> currencyList = currencyRepository.findAll();
-        assertThat(currencyList).hasSize(databaseSizeBeforeDelete - 1);
-    }
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void partialUpdateCurrencyWithPatch() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
+
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+
+    // Update the currency using partial update
+    Currency partialUpdatedCurrency = new Currency();
+    partialUpdatedCurrency.setId(currency.getId());
+
+    restCurrencyMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedCurrency.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedCurrency))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+    Currency testCurrency = currencyList.get(currencyList.size() - 1);
+  }
+
+  @Test
+  @Transactional
+  void fullUpdateCurrencyWithPatch() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
+
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+
+    // Update the currency using partial update
+    Currency partialUpdatedCurrency = new Currency();
+    partialUpdatedCurrency.setId(currency.getId());
+
+    restCurrencyMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedCurrency.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedCurrency))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+    Currency testCurrency = currencyList.get(currencyList.size() - 1);
+  }
+
+  @Test
+  @Transactional
+  void patchNonExistingCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
+
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, currencyDTO.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(currencyDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithIdMismatchCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
+
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(currencyDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithMissingIdPathParamCurrency() throws Exception {
+    int databaseSizeBeforeUpdate = currencyRepository.findAll().size();
+    currency.setId(count.incrementAndGet());
+
+    // Create the Currency
+    CurrencyDTO currencyDTO = currencyMapper.toDto(currency);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restCurrencyMockMvc
+      .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(currencyDTO)))
+      .andExpect(status().isMethodNotAllowed());
+
+    // Validate the Currency in the database
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void deleteCurrency() throws Exception {
+    // Initialize the database
+    currencyRepository.saveAndFlush(currency);
+
+    int databaseSizeBeforeDelete = currencyRepository.findAll().size();
+
+    // Delete the currency
+    restCurrencyMockMvc
+      .perform(delete(ENTITY_API_URL_ID, currency.getId()).accept(MediaType.APPLICATION_JSON))
+      .andExpect(status().isNoContent());
+
+    // Validate the database contains one less item
+    List<Currency> currencyList = currencyRepository.findAll();
+    assertThat(currencyList).hasSize(databaseSizeBeforeDelete - 1);
+  }
 }

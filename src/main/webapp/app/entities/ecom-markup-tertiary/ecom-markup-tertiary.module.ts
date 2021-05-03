@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomMarkupTertiaryComponent } from './ecom-markup-tertiary.component';
-import { EcomMarkupTertiaryDetailComponent } from './ecom-markup-tertiary-detail.component';
-import { EcomMarkupTertiaryUpdateComponent } from './ecom-markup-tertiary-update.component';
-import { EcomMarkupTertiaryDeleteDialogComponent } from './ecom-markup-tertiary-delete-dialog.component';
-import { ecomMarkupTertiaryRoute } from './ecom-markup-tertiary.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomMarkupTertiaryComponent } from './list/ecom-markup-tertiary.component';
+import { EcomMarkupTertiaryDetailComponent } from './detail/ecom-markup-tertiary-detail.component';
+import { EcomMarkupTertiaryUpdateComponent } from './update/ecom-markup-tertiary-update.component';
+import { EcomMarkupTertiaryDeleteDialogComponent } from './delete/ecom-markup-tertiary-delete-dialog.component';
+import { EcomMarkupTertiaryRoutingModule } from './route/ecom-markup-tertiary-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomMarkupTertiaryRoute)],
+  imports: [SharedModule, EcomMarkupTertiaryRoutingModule],
   declarations: [
     EcomMarkupTertiaryComponent,
     EcomMarkupTertiaryDetailComponent,
     EcomMarkupTertiaryUpdateComponent,
-    EcomMarkupTertiaryDeleteDialogComponent
+    EcomMarkupTertiaryDeleteDialogComponent,
   ],
-  entryComponents: [EcomMarkupTertiaryDeleteDialogComponent]
+  entryComponents: [EcomMarkupTertiaryDeleteDialogComponent],
 })
-export class EshipperEcomMarkupTertiaryModule {}
+export class EcomMarkupTertiaryModule {}

@@ -1,0 +1,152 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecomOrder">
+      <h2 data-cy="ecomOrderDetailsHeading"><span jhiTranslate="eshipperApp.ecomOrder.detail.title">Ecom Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ecomOrder.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.ecomOrderNumber">Ecom Order Number</span></dt>
+        <dd>
+          <span>{{ ecomOrder.ecomOrderNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.customerName">Customer Name</span></dt>
+        <dd>
+          <span>{{ ecomOrder.customerName }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.domainName">Domain Name</span></dt>
+        <dd>
+          <span>{{ ecomOrder.domainName }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.name">Name</span></dt>
+        <dd>
+          <span>{{ ecomOrder.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.email">Email</span></dt>
+        <dd>
+          <span>{{ ecomOrder.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.gateway">Gateway</span></dt>
+        <dd>
+          <span>{{ ecomOrder.gateway }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ ecomOrder.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.subTotalPrice">Sub Total Price</span></dt>
+        <dd>
+          <span>{{ ecomOrder.subTotalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.totalWeight">Total Weight</span></dt>
+        <dd>
+          <span>{{ ecomOrder.totalWeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.totalTax">Total Tax</span></dt>
+        <dd>
+          <span>{{ ecomOrder.totalTax }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.fulfillmentStatus">Fulfillment Status</span></dt>
+        <dd>
+          <span>{{ ecomOrder.fulfillmentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.paymentStatus">Payment Status</span></dt>
+        <dd>
+          <span>{{ ecomOrder.paymentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.financialStatus">Financial Status</span></dt>
+        <dd>
+          <span>{{ ecomOrder.financialStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ ecomOrder.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ ecomOrder.updatedDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ ecomOrder.updatedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.isCancelled">Is Cancelled</span></dt>
+        <dd>
+          <span>{{ ecomOrder.isCancelled }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.isShipped">Is Shipped</span></dt>
+        <dd>
+          <span>{{ ecomOrder.isShipped }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.eshipperStatus">Eshipper Status</span></dt>
+        <dd>
+          <span>{{ ecomOrder.eshipperStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.residentialShippingAddress">Residential Shipping Address</span></dt>
+        <dd>
+          <span>{{ ecomOrder.residentialShippingAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.shippingOrderRef">Shipping Order Ref</span></dt>
+        <dd>
+          <span>{{ ecomOrder.shippingOrderRef }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.fromEmail">From Email</span></dt>
+        <dd>
+          <span>{{ ecomOrder.fromEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.isCancelSchedule">Is Cancel Schedule</span></dt>
+        <dd>
+          <span>{{ ecomOrder.isCancelSchedule }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.isSchedulePickup">Is Schedule Pickup</span></dt>
+        <dd>
+          <span>{{ ecomOrder.isSchedulePickup }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.packageTypeId">Package Type Id</span></dt>
+        <dd>
+          <span>{{ ecomOrder.packageTypeId }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="ecomOrder.currency">
+            <a [routerLink]="['/currency', ecomOrder.currency?.id, 'view']">{{ ecomOrder.currency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.shippingAddress">Shipping Address</span></dt>
+        <dd>
+          <div *ngIf="ecomOrder.shippingAddress">
+            <a [routerLink]="['/shipping-address', ecomOrder.shippingAddress?.id, 'view']">{{ ecomOrder.shippingAddress?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.billingAddress">Billing Address</span></dt>
+        <dd>
+          <div *ngIf="ecomOrder.billingAddress">
+            <a [routerLink]="['/shipping-address', ecomOrder.billingAddress?.id, 'view']">{{ ecomOrder.billingAddress?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomOrder.ecomStore">Ecom Store</span></dt>
+        <dd>
+          <div *ngIf="ecomOrder.ecomStore">
+            <a [routerLink]="['/ecom-store', ecomOrder.ecomStore?.id, 'view']">{{ ecomOrder.ecomStore?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ecom-order', ecomOrder.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

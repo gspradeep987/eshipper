@@ -1,260 +1,409 @@
 package com.eshipper.web.rest;
 
-import com.eshipper.EshipperApp;
-import com.eshipper.domain.EcomStoreColorTheme;
-import com.eshipper.repository.EcomStoreColorThemeRepository;
-import com.eshipper.service.EcomStoreColorThemeService;
-import com.eshipper.service.dto.EcomStoreColorThemeDTO;
-import com.eshipper.service.mapper.EcomStoreColorThemeMapper;
-import com.eshipper.web.rest.errors.ExceptionTranslator;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
-import javax.persistence.EntityManager;
-import java.util.List;
-
-import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.eshipper.IntegrationTest;
+import com.eshipper.domain.EcomStoreColorTheme;
+import com.eshipper.repository.EcomStoreColorThemeRepository;
+import com.eshipper.service.dto.EcomStoreColorThemeDTO;
+import com.eshipper.service.mapper.EcomStoreColorThemeMapper;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Integration tests for the {@link EcomStoreColorThemeResource} REST controller.
  */
-@SpringBootTest(classes = EshipperApp.class)
-public class EcomStoreColorThemeResourceIT {
+@IntegrationTest
+@AutoConfigureMockMvc
+@WithMockUser
+class EcomStoreColorThemeResourceIT {
 
-    private static final String DEFAULT_PRIMARY = "AAAAAAAAAA";
-    private static final String UPDATED_PRIMARY = "BBBBBBBBBB";
+  private static final String DEFAULT_PRIMARY = "AAAAAAAAAA";
+  private static final String UPDATED_PRIMARY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SECONDARY = "AAAAAAAAAA";
-    private static final String UPDATED_SECONDARY = "BBBBBBBBBB";
+  private static final String DEFAULT_SECONDARY = "AAAAAAAAAA";
+  private static final String UPDATED_SECONDARY = "BBBBBBBBBB";
 
-    @Autowired
-    private EcomStoreColorThemeRepository ecomStoreColorThemeRepository;
+  private static final String ENTITY_API_URL = "/api/ecom-store-color-themes";
+  private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    @Autowired
-    private EcomStoreColorThemeMapper ecomStoreColorThemeMapper;
+  private static Random random = new Random();
+  private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    @Autowired
-    private EcomStoreColorThemeService ecomStoreColorThemeService;
+  @Autowired
+  private EcomStoreColorThemeRepository ecomStoreColorThemeRepository;
 
-    @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
+  @Autowired
+  private EcomStoreColorThemeMapper ecomStoreColorThemeMapper;
 
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
+  @Autowired
+  private EntityManager em;
 
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
+  @Autowired
+  private MockMvc restEcomStoreColorThemeMockMvc;
 
-    @Autowired
-    private EntityManager em;
+  private EcomStoreColorTheme ecomStoreColorTheme;
 
-    @Autowired
-    private Validator validator;
+  /**
+   * Create an entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static EcomStoreColorTheme createEntity(EntityManager em) {
+    EcomStoreColorTheme ecomStoreColorTheme = new EcomStoreColorTheme().primary(DEFAULT_PRIMARY).secondary(DEFAULT_SECONDARY);
+    return ecomStoreColorTheme;
+  }
 
-    private MockMvc restEcomStoreColorThemeMockMvc;
+  /**
+   * Create an updated entity for this test.
+   *
+   * This is a static method, as tests for other entities might also need it,
+   * if they test an entity which requires the current entity.
+   */
+  public static EcomStoreColorTheme createUpdatedEntity(EntityManager em) {
+    EcomStoreColorTheme ecomStoreColorTheme = new EcomStoreColorTheme().primary(UPDATED_PRIMARY).secondary(UPDATED_SECONDARY);
+    return ecomStoreColorTheme;
+  }
 
-    private EcomStoreColorTheme ecomStoreColorTheme;
+  @BeforeEach
+  public void initTest() {
+    ecomStoreColorTheme = createEntity(em);
+  }
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final EcomStoreColorThemeResource ecomStoreColorThemeResource = new EcomStoreColorThemeResource(ecomStoreColorThemeService);
-        this.restEcomStoreColorThemeMockMvc = MockMvcBuilders.standaloneSetup(ecomStoreColorThemeResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
+  @Test
+  @Transactional
+  void createEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeCreate = ecomStoreColorThemeRepository.findAll().size();
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isCreated());
 
-    /**
-     * Create an entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static EcomStoreColorTheme createEntity(EntityManager em) {
-        EcomStoreColorTheme ecomStoreColorTheme = new EcomStoreColorTheme()
-            .primary(DEFAULT_PRIMARY)
-            .secondary(DEFAULT_SECONDARY);
-        return ecomStoreColorTheme;
-    }
-    /**
-     * Create an updated entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
-    public static EcomStoreColorTheme createUpdatedEntity(EntityManager em) {
-        EcomStoreColorTheme ecomStoreColorTheme = new EcomStoreColorTheme()
-            .primary(UPDATED_PRIMARY)
-            .secondary(UPDATED_SECONDARY);
-        return ecomStoreColorTheme;
-    }
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeCreate + 1);
+    EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
+    assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(DEFAULT_PRIMARY);
+    assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(DEFAULT_SECONDARY);
+  }
 
-    @BeforeEach
-    public void initTest() {
-        ecomStoreColorTheme = createEntity(em);
-    }
+  @Test
+  @Transactional
+  void createEcomStoreColorThemeWithExistingId() throws Exception {
+    // Create the EcomStoreColorTheme with an existing ID
+    ecomStoreColorTheme.setId(1L);
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
 
-    @Test
-    @Transactional
-    public void createEcomStoreColorTheme() throws Exception {
-        int databaseSizeBeforeCreate = ecomStoreColorThemeRepository.findAll().size();
+    int databaseSizeBeforeCreate = ecomStoreColorThemeRepository.findAll().size();
 
-        // Create the EcomStoreColorTheme
-        EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
-        restEcomStoreColorThemeMockMvc.perform(post("/api/ecom-store-color-themes")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO)))
-            .andExpect(status().isCreated());
+    // An entity with an existing ID cannot be created, so this API call must fail
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the EcomStoreColorTheme in the database
-        List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
-        assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeCreate + 1);
-        EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
-        assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(DEFAULT_PRIMARY);
-        assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(DEFAULT_SECONDARY);
-    }
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeCreate);
+  }
 
-    @Test
-    @Transactional
-    public void createEcomStoreColorThemeWithExistingId() throws Exception {
-        int databaseSizeBeforeCreate = ecomStoreColorThemeRepository.findAll().size();
+  @Test
+  @Transactional
+  void getAllEcomStoreColorThemes() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
 
-        // Create the EcomStoreColorTheme with an existing ID
-        ecomStoreColorTheme.setId(1L);
-        EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+    // Get all the ecomStoreColorThemeList
+    restEcomStoreColorThemeMockMvc
+      .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.[*].id").value(hasItem(ecomStoreColorTheme.getId().intValue())))
+      .andExpect(jsonPath("$.[*].primary").value(hasItem(DEFAULT_PRIMARY)))
+      .andExpect(jsonPath("$.[*].secondary").value(hasItem(DEFAULT_SECONDARY)));
+  }
 
-        // An entity with an existing ID cannot be created, so this API call must fail
-        restEcomStoreColorThemeMockMvc.perform(post("/api/ecom-store-color-themes")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO)))
-            .andExpect(status().isBadRequest());
+  @Test
+  @Transactional
+  void getEcomStoreColorTheme() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
 
-        // Validate the EcomStoreColorTheme in the database
-        List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
-        assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeCreate);
-    }
+    // Get the ecomStoreColorTheme
+    restEcomStoreColorThemeMockMvc
+      .perform(get(ENTITY_API_URL_ID, ecomStoreColorTheme.getId()))
+      .andExpect(status().isOk())
+      .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+      .andExpect(jsonPath("$.id").value(ecomStoreColorTheme.getId().intValue()))
+      .andExpect(jsonPath("$.primary").value(DEFAULT_PRIMARY))
+      .andExpect(jsonPath("$.secondary").value(DEFAULT_SECONDARY));
+  }
 
+  @Test
+  @Transactional
+  void getNonExistingEcomStoreColorTheme() throws Exception {
+    // Get the ecomStoreColorTheme
+    restEcomStoreColorThemeMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+  }
 
-    @Test
-    @Transactional
-    public void getAllEcomStoreColorThemes() throws Exception {
-        // Initialize the database
-        ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+  @Test
+  @Transactional
+  void putNewEcomStoreColorTheme() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
 
-        // Get all the ecomStoreColorThemeList
-        restEcomStoreColorThemeMockMvc.perform(get("/api/ecom-store-color-themes?sort=id,desc"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(ecomStoreColorTheme.getId().intValue())))
-            .andExpect(jsonPath("$.[*].primary").value(hasItem(DEFAULT_PRIMARY)))
-            .andExpect(jsonPath("$.[*].secondary").value(hasItem(DEFAULT_SECONDARY)));
-    }
-    
-    @Test
-    @Transactional
-    public void getEcomStoreColorTheme() throws Exception {
-        // Initialize the database
-        ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
 
-        // Get the ecomStoreColorTheme
-        restEcomStoreColorThemeMockMvc.perform(get("/api/ecom-store-color-themes/{id}", ecomStoreColorTheme.getId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(ecomStoreColorTheme.getId().intValue()))
-            .andExpect(jsonPath("$.primary").value(DEFAULT_PRIMARY))
-            .andExpect(jsonPath("$.secondary").value(DEFAULT_SECONDARY));
-    }
+    // Update the ecomStoreColorTheme
+    EcomStoreColorTheme updatedEcomStoreColorTheme = ecomStoreColorThemeRepository.findById(ecomStoreColorTheme.getId()).get();
+    // Disconnect from session so that the updates on updatedEcomStoreColorTheme are not directly saved in db
+    em.detach(updatedEcomStoreColorTheme);
+    updatedEcomStoreColorTheme.primary(UPDATED_PRIMARY).secondary(UPDATED_SECONDARY);
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(updatedEcomStoreColorTheme);
 
-    @Test
-    @Transactional
-    public void getNonExistingEcomStoreColorTheme() throws Exception {
-        // Get the ecomStoreColorTheme
-        restEcomStoreColorThemeMockMvc.perform(get("/api/ecom-store-color-themes/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
-    }
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, ecomStoreColorThemeDTO.getId())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isOk());
 
-    @Test
-    @Transactional
-    public void updateEcomStoreColorTheme() throws Exception {
-        // Initialize the database
-        ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+    EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
+    assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(UPDATED_PRIMARY);
+    assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(UPDATED_SECONDARY);
+  }
 
-        int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+  @Test
+  @Transactional
+  void putNonExistingEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
 
-        // Update the ecomStoreColorTheme
-        EcomStoreColorTheme updatedEcomStoreColorTheme = ecomStoreColorThemeRepository.findById(ecomStoreColorTheme.getId()).get();
-        // Disconnect from session so that the updates on updatedEcomStoreColorTheme are not directly saved in db
-        em.detach(updatedEcomStoreColorTheme);
-        updatedEcomStoreColorTheme
-            .primary(UPDATED_PRIMARY)
-            .secondary(UPDATED_SECONDARY);
-        EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(updatedEcomStoreColorTheme);
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
 
-        restEcomStoreColorThemeMockMvc.perform(put("/api/ecom-store-color-themes")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO)))
-            .andExpect(status().isOk());
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, ecomStoreColorThemeDTO.getId())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the EcomStoreColorTheme in the database
-        List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
-        assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
-        EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
-        assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(UPDATED_PRIMARY);
-        assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(UPDATED_SECONDARY);
-    }
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void updateNonExistingEcomStoreColorTheme() throws Exception {
-        int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+  @Test
+  @Transactional
+  void putWithIdMismatchEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
 
-        // Create the EcomStoreColorTheme
-        EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restEcomStoreColorThemeMockMvc.perform(put("/api/ecom-store-color-themes")
-            .contentType(TestUtil.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO)))
-            .andExpect(status().isBadRequest());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        put(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType(MediaType.APPLICATION_JSON)
+          .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isBadRequest());
 
-        // Validate the EcomStoreColorTheme in the database
-        List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
-        assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
-    }
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
 
-    @Test
-    @Transactional
-    public void deleteEcomStoreColorTheme() throws Exception {
-        // Initialize the database
-        ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+  @Test
+  @Transactional
+  void putWithMissingIdPathParamEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
 
-        int databaseSizeBeforeDelete = ecomStoreColorThemeRepository.findAll().size();
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
 
-        // Delete the ecomStoreColorTheme
-        restEcomStoreColorThemeMockMvc.perform(delete("/api/ecom-store-color-themes/{id}", ecomStoreColorTheme.getId())
-            .accept(TestUtil.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isMethodNotAllowed());
 
-        // Validate the database contains one less item
-        List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
-        assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeDelete - 1);
-    }
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void partialUpdateEcomStoreColorThemeWithPatch() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+
+    // Update the ecomStoreColorTheme using partial update
+    EcomStoreColorTheme partialUpdatedEcomStoreColorTheme = new EcomStoreColorTheme();
+    partialUpdatedEcomStoreColorTheme.setId(ecomStoreColorTheme.getId());
+
+    partialUpdatedEcomStoreColorTheme.primary(UPDATED_PRIMARY).secondary(UPDATED_SECONDARY);
+
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedEcomStoreColorTheme.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedEcomStoreColorTheme))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+    EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
+    assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(UPDATED_PRIMARY);
+    assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(UPDATED_SECONDARY);
+  }
+
+  @Test
+  @Transactional
+  void fullUpdateEcomStoreColorThemeWithPatch() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+
+    // Update the ecomStoreColorTheme using partial update
+    EcomStoreColorTheme partialUpdatedEcomStoreColorTheme = new EcomStoreColorTheme();
+    partialUpdatedEcomStoreColorTheme.setId(ecomStoreColorTheme.getId());
+
+    partialUpdatedEcomStoreColorTheme.primary(UPDATED_PRIMARY).secondary(UPDATED_SECONDARY);
+
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, partialUpdatedEcomStoreColorTheme.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(partialUpdatedEcomStoreColorTheme))
+      )
+      .andExpect(status().isOk());
+
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+    EcomStoreColorTheme testEcomStoreColorTheme = ecomStoreColorThemeList.get(ecomStoreColorThemeList.size() - 1);
+    assertThat(testEcomStoreColorTheme.getPrimary()).isEqualTo(UPDATED_PRIMARY);
+    assertThat(testEcomStoreColorTheme.getSecondary()).isEqualTo(UPDATED_SECONDARY);
+  }
+
+  @Test
+  @Transactional
+  void patchNonExistingEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
+
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+
+    // If the entity doesn't have an ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, ecomStoreColorThemeDTO.getId())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithIdMismatchEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
+
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        patch(ENTITY_API_URL_ID, count.incrementAndGet())
+          .contentType("application/merge-patch+json")
+          .content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isBadRequest());
+
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void patchWithMissingIdPathParamEcomStoreColorTheme() throws Exception {
+    int databaseSizeBeforeUpdate = ecomStoreColorThemeRepository.findAll().size();
+    ecomStoreColorTheme.setId(count.incrementAndGet());
+
+    // Create the EcomStoreColorTheme
+    EcomStoreColorThemeDTO ecomStoreColorThemeDTO = ecomStoreColorThemeMapper.toDto(ecomStoreColorTheme);
+
+    // If url ID doesn't match entity ID, it will throw BadRequestAlertException
+    restEcomStoreColorThemeMockMvc
+      .perform(
+        patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(ecomStoreColorThemeDTO))
+      )
+      .andExpect(status().isMethodNotAllowed());
+
+    // Validate the EcomStoreColorTheme in the database
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeUpdate);
+  }
+
+  @Test
+  @Transactional
+  void deleteEcomStoreColorTheme() throws Exception {
+    // Initialize the database
+    ecomStoreColorThemeRepository.saveAndFlush(ecomStoreColorTheme);
+
+    int databaseSizeBeforeDelete = ecomStoreColorThemeRepository.findAll().size();
+
+    // Delete the ecomStoreColorTheme
+    restEcomStoreColorThemeMockMvc
+      .perform(delete(ENTITY_API_URL_ID, ecomStoreColorTheme.getId()).accept(MediaType.APPLICATION_JSON))
+      .andExpect(status().isNoContent());
+
+    // Validate the database contains one less item
+    List<EcomStoreColorTheme> ecomStoreColorThemeList = ecomStoreColorThemeRepository.findAll();
+    assertThat(ecomStoreColorThemeList).hasSize(databaseSizeBeforeDelete - 1);
+  }
 }

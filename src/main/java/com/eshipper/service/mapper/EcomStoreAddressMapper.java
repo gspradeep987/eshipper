@@ -1,34 +1,21 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.EcomStoreAddressDTO;
-
 import org.mapstruct.*;
 
 /**
  * Mapper for the entity {@link EcomStoreAddress} and its DTO {@link EcomStoreAddressDTO}.
  */
-@Mapper(componentModel = "spring", uses = {CountryMapper.class, ProvinceMapper.class, CityMapper.class})
+@Mapper(componentModel = "spring", uses = { CountryMapper.class, ProvinceMapper.class, CityMapper.class })
 public interface EcomStoreAddressMapper extends EntityMapper<EcomStoreAddressDTO, EcomStoreAddress> {
+  @Mapping(target = "country", source = "country", qualifiedByName = "id")
+  @Mapping(target = "province", source = "province", qualifiedByName = "id")
+  @Mapping(target = "city", source = "city", qualifiedByName = "id")
+  EcomStoreAddressDTO toDto(EcomStoreAddress s);
 
-    @Mapping(source = "country.id", target = "countryId")
-    @Mapping(source = "province.id", target = "provinceId")
-    @Mapping(source = "city.id", target = "cityId")
-    EcomStoreAddressDTO toDto(EcomStoreAddress ecomStoreAddress);
-
-    @Mapping(source = "countryId", target = "country")
-    @Mapping(source = "provinceId", target = "province")
-    @Mapping(source = "cityId", target = "city")
-    @Mapping(target = "ecomStore", ignore = true)
-    EcomStoreAddress toEntity(EcomStoreAddressDTO ecomStoreAddressDTO);
-
-    default EcomStoreAddress fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        EcomStoreAddress ecomStoreAddress = new EcomStoreAddress();
-        ecomStoreAddress.setId(id);
-        return ecomStoreAddress;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  EcomStoreAddressDTO toDtoId(EcomStoreAddress ecomStoreAddress);
 }

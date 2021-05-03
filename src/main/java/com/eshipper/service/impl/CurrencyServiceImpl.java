@@ -1,20 +1,18 @@
 package com.eshipper.service.impl;
 
-import com.eshipper.service.CurrencyService;
 import com.eshipper.domain.Currency;
 import com.eshipper.repository.CurrencyRepository;
+import com.eshipper.service.CurrencyService;
 import com.eshipper.service.dto.CurrencyDTO;
 import com.eshipper.service.mapper.CurrencyMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service Implementation for managing {@link Currency}.
@@ -23,67 +21,58 @@ import java.util.stream.Collectors;
 @Transactional
 public class CurrencyServiceImpl implements CurrencyService {
 
-    private final Logger log = LoggerFactory.getLogger(CurrencyServiceImpl.class);
+  private final Logger log = LoggerFactory.getLogger(CurrencyServiceImpl.class);
 
-    private final CurrencyRepository currencyRepository;
+  private final CurrencyRepository currencyRepository;
 
-    private final CurrencyMapper currencyMapper;
+  private final CurrencyMapper currencyMapper;
 
-    public CurrencyServiceImpl(CurrencyRepository currencyRepository, CurrencyMapper currencyMapper) {
-        this.currencyRepository = currencyRepository;
-        this.currencyMapper = currencyMapper;
-    }
+  public CurrencyServiceImpl(CurrencyRepository currencyRepository, CurrencyMapper currencyMapper) {
+    this.currencyRepository = currencyRepository;
+    this.currencyMapper = currencyMapper;
+  }
 
-    /**
-     * Save a currency.
-     *
-     * @param currencyDTO the entity to save.
-     * @return the persisted entity.
-     */
-    @Override
-    public CurrencyDTO save(CurrencyDTO currencyDTO) {
-        log.debug("Request to save Currency : {}", currencyDTO);
-        Currency currency = currencyMapper.toEntity(currencyDTO);
-        currency = currencyRepository.save(currency);
-        return currencyMapper.toDto(currency);
-    }
+  @Override
+  public CurrencyDTO save(CurrencyDTO currencyDTO) {
+    log.debug("Request to save Currency : {}", currencyDTO);
+    Currency currency = currencyMapper.toEntity(currencyDTO);
+    currency = currencyRepository.save(currency);
+    return currencyMapper.toDto(currency);
+  }
 
-    /**
-     * Get all the currencies.
-     *
-     * @return the list of entities.
-     */
-    @Override
-    @Transactional(readOnly = true)
-    public List<CurrencyDTO> findAll() {
-        log.debug("Request to get all Currencies");
-        return currencyRepository.findAll().stream()
-            .map(currencyMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
+  @Override
+  public Optional<CurrencyDTO> partialUpdate(CurrencyDTO currencyDTO) {
+    log.debug("Request to partially update Currency : {}", currencyDTO);
 
-    /**
-     * Get one currency by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<CurrencyDTO> findOne(Long id) {
-        log.debug("Request to get Currency : {}", id);
-        return currencyRepository.findById(id)
-            .map(currencyMapper::toDto);
-    }
+    return currencyRepository
+      .findById(currencyDTO.getId())
+      .map(
+        existingCurrency -> {
+          currencyMapper.partialUpdate(existingCurrency, currencyDTO);
+          return existingCurrency;
+        }
+      )
+      .map(currencyRepository::save)
+      .map(currencyMapper::toDto);
+  }
 
-    /**
-     * Delete the currency by id.
-     *
-     * @param id the id of the entity.
-     */
-    @Override
-    public void delete(Long id) {
-        log.debug("Request to delete Currency : {}", id);
-        currencyRepository.deleteById(id);
-    }
+  @Override
+  @Transactional(readOnly = true)
+  public List<CurrencyDTO> findAll() {
+    log.debug("Request to get all Currencies");
+    return currencyRepository.findAll().stream().map(currencyMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<CurrencyDTO> findOne(Long id) {
+    log.debug("Request to get Currency : {}", id);
+    return currencyRepository.findById(id).map(currencyMapper::toDto);
+  }
+
+  @Override
+  public void delete(Long id) {
+    log.debug("Request to delete Currency : {}", id);
+    currencyRepository.deleteById(id);
+  }
 }
