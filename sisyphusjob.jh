@@ -1,0 +1,52 @@
+entity SisyphusJob {
+    name String
+    scheduleMinute String
+    scheduleHour String
+    scheduleDay String
+    scheduleMonth String
+    shouldrunYN String
+    retries Long
+    moniterScheduleYN Boolean
+    
+}
+
+entity SisyphusSubJob {
+    runOrder String
+}
+entity SisyphusJobParam {
+    name String
+    value String
+}
+entity SisyphusClient {
+  name String
+  contact String
+  defaultFolder String
+}
+entity SisyphusClasses {
+  name String
+  description String            
+}
+entity SisyphusJobType {
+  name String
+  description String            
+}
+
+relationship ManyToOne {
+  SisyphusClient{sisyphusClient} to SisyphusJob
+  SisyphusJobType{sisyphusJobType} to SisyphusJob
+  SisyphusClasses{sisyphusClasses} to SisyphusSubJob
+  }
+  
+  relationship OneToMany {
+  SisyphusJob{subJobs} to SisyphusSubJob
+  SisyphusJob{params} to SisyphusJobParam
+  }
+
+paginate all with pagination
+
+dto all with mapstruct
+
+service all with serviceImpl
+
+
+
