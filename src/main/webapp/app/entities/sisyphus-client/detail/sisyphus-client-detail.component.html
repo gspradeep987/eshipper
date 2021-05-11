@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sisyphusClient">
+      <h2 data-cy="sisyphusClientDetailsHeading"><span jhiTranslate="eshipperApp.sisyphusClient.detail.title">Sisyphus Client</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sisyphusClient.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClient.name">Name</span></dt>
+        <dd>
+          <span>{{ sisyphusClient.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClient.contact">Contact</span></dt>
+        <dd>
+          <span>{{ sisyphusClient.contact }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClient.defaultFolder">Default Folder</span></dt>
+        <dd>
+          <span>{{ sisyphusClient.defaultFolder }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.sisyphusClient.sisyphusClient">Sisyphus Client</span></dt>
+        <dd>
+          <div *ngIf="sisyphusClient.sisyphusClient">
+            <a [routerLink]="['/sisyphus-job', sisyphusClient.sisyphusClient?.id, 'view']">{{ sisyphusClient.sisyphusClient?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sisyphus-client', sisyphusClient.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

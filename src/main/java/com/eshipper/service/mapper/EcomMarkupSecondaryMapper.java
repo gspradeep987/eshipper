@@ -1,9 +1,7 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.EcomMarkupSecondaryDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,17 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface EcomMarkupSecondaryMapper extends EntityMapper<EcomMarkupSecondaryDTO, EcomMarkupSecondary> {
-
-
-    @Mapping(target = "ecomStoreMarkup", ignore = true)
-    EcomMarkupSecondary toEntity(EcomMarkupSecondaryDTO ecomMarkupSecondaryDTO);
-
-    default EcomMarkupSecondary fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        EcomMarkupSecondary ecomMarkupSecondary = new EcomMarkupSecondary();
-        ecomMarkupSecondary.setId(id);
-        return ecomMarkupSecondary;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  EcomMarkupSecondaryDTO toDtoId(EcomMarkupSecondary ecomMarkupSecondary);
 }

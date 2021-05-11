@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecom-store-sync-heading"
+        data-cy="EcomStoreSyncCreateUpdateHeading"
+        jhiTranslate="eshipperApp.ecomStoreSync.home.createOrEditLabel"
+      >
+        Create or edit a Ecom Store Sync
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreSync.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreSync.syncFrequency" for="field_syncFrequency"
+            >Sync Frequency</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="syncFrequency"
+            id="field_syncFrequency"
+            data-cy="syncFrequency"
+            formControlName="syncFrequency"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreSync.syncInterval" for="field_syncInterval"
+            >Sync Interval</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="syncInterval"
+            id="field_syncInterval"
+            data-cy="syncInterval"
+            formControlName="syncInterval"
+          />
+          <div
+            *ngIf="editForm.get('syncInterval')!.invalid && (editForm.get('syncInterval')!.dirty || editForm.get('syncInterval')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('syncInterval')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 25 }"
+            >
+              This field cannot be longer than 25 characters.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

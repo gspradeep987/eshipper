@@ -2,35 +2,34 @@
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
     <!--
         Added the constraints for entity EcomStoreMarkup.
     -->
     <changeSet id="20200211052100-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="ecom_markup_primary_id"
                                  baseTableName="ecom_store_markup"
-                                 constraintName="fk_ecom_store_markup_ecom_markup_primary_id"
+                                 constraintName="fk_ecom_store_markup__ecom_markup_primary_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ecom_markup_primary"/>
 
         <addForeignKeyConstraint baseColumnNames="ecom_markup_secondary_id"
                                  baseTableName="ecom_store_markup"
-                                 constraintName="fk_ecom_store_markup_ecom_markup_secondary_id"
+                                 constraintName="fk_ecom_store_markup__ecom_markup_secondary_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ecom_markup_secondary"/>
 
         <addForeignKeyConstraint baseColumnNames="ecom_markup_tertiary_id"
                                  baseTableName="ecom_store_markup"
-                                 constraintName="fk_ecom_store_markup_ecom_markup_tertiary_id"
+                                 constraintName="fk_ecom_store_markup__ecom_markup_tertiary_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ecom_markup_tertiary"/>
 
         <addForeignKeyConstraint baseColumnNames="ecom_markup_quaternary_id"
                                  baseTableName="ecom_store_markup"
-                                 constraintName="fk_ecom_store_markup_ecom_markup_quaternary_id"
+                                 constraintName="fk_ecom_store_markup__ecom_markup_quaternary_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ecom_markup_quaternary"/>
-
     </changeSet>
 </databaseChangeLog>

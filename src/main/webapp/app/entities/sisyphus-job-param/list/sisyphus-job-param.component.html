@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="SisyphusJobParamHeading">
+    <span jhiTranslate="eshipperApp.sisyphusJobParam.home.title">Sisyphus Job Params</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="eshipperApp.sisyphusJobParam.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sisyphus-job-param"
+        [routerLink]="['/sisyphus-job-param/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="eshipperApp.sisyphusJobParam.home.createLabel"> Create a new Sisyphus Job Param </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="sisyphusJobParams?.length === 0">
+    <span jhiTranslate="eshipperApp.sisyphusJobParam.home.notFound">No sisyphusJobParams found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="sisyphusJobParams && sisyphusJobParams.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="eshipperApp.sisyphusJobParam.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="value">
+            <span jhiTranslate="eshipperApp.sisyphusJobParam.value">Value</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sisyphusJob.id">
+            <span jhiTranslate="eshipperApp.sisyphusJobParam.sisyphusJob">Sisyphus Job</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sisyphusJobParam of sisyphusJobParams; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sisyphus-job-param', sisyphusJobParam.id, 'view']">{{ sisyphusJobParam.id }}</a>
+          </td>
+          <td>{{ sisyphusJobParam.name }}</td>
+          <td>{{ sisyphusJobParam.value }}</td>
+          <td>
+            <div *ngIf="sisyphusJobParam.sisyphusJob">
+              <a [routerLink]="['/sisyphus-job', sisyphusJobParam.sisyphusJob?.id, 'view']">{{ sisyphusJobParam.sisyphusJob?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/sisyphus-job-param', sisyphusJobParam.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/sisyphus-job-param', sisyphusJobParam.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sisyphusJobParam)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="sisyphusJobParams && sisyphusJobParams.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

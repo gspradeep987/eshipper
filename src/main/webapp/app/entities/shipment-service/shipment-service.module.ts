@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { ShipmentServiceComponent } from './shipment-service.component';
-import { ShipmentServiceDetailComponent } from './shipment-service-detail.component';
-import { ShipmentServiceUpdateComponent } from './shipment-service-update.component';
-import { ShipmentServiceDeleteDialogComponent } from './shipment-service-delete-dialog.component';
-import { shipmentServiceRoute } from './shipment-service.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { ShipmentServiceComponent } from './list/shipment-service.component';
+import { ShipmentServiceDetailComponent } from './detail/shipment-service-detail.component';
+import { ShipmentServiceUpdateComponent } from './update/shipment-service-update.component';
+import { ShipmentServiceDeleteDialogComponent } from './delete/shipment-service-delete-dialog.component';
+import { ShipmentServiceRoutingModule } from './route/shipment-service-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(shipmentServiceRoute)],
+  imports: [SharedModule, ShipmentServiceRoutingModule],
   declarations: [
     ShipmentServiceComponent,
     ShipmentServiceDetailComponent,
     ShipmentServiceUpdateComponent,
-    ShipmentServiceDeleteDialogComponent
+    ShipmentServiceDeleteDialogComponent,
   ],
-  entryComponents: [ShipmentServiceDeleteDialogComponent]
+  entryComponents: [ShipmentServiceDeleteDialogComponent],
 })
-export class EshipperShipmentServiceModule {}
+export class ShipmentServiceModule {}

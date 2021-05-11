@@ -3,6 +3,7 @@
     "ecomStore": {
       "home": {
         "title": "Ecom Stores",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store",
         "createOrEditLabel": "Create or edit a Ecom Store",
         "notFound": "No Ecom Stores found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store"
       },
+      "id": "ID",
       "name": "Name",
       "nickName": "Nick Name",
       "apiPassword": "Api Password",

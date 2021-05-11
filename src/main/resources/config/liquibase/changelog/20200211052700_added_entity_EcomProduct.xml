@@ -3,17 +3,15 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity EcomProduct.
     -->
     <changeSet id="20200211052700-1" author="jhipster">
         <createTable tableName="ecom_product">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(100)">
@@ -64,13 +62,13 @@
             <column name="ecom_order_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
 
     <changeSet id="20200211052700-1-relations" author="jhipster">
 
-        <createTable tableName="ecom_product_ecom_warehouse">
+        <createTable tableName="rel_ecom_product__ecom_warehouse">
             <column name="ecom_warehouse_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
@@ -79,10 +77,10 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="ecom_product_id, ecom_warehouse_id" tableName="ecom_product_ecom_warehouse"/>
-        
+        <addPrimaryKey columnNames="ecom_product_id, ecom_warehouse_id" tableName="rel_ecom_product__ecom_warehouse"/>
     </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--
         Load sample data generated with Faker.js
@@ -112,8 +110,7 @@
             <column name="policy" type="string"/>
             <column name="insurance_amt" type="numeric"/>
             <column name="is_insured" type="boolean"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
-
 </databaseChangeLog>

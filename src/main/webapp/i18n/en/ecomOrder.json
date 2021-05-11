@@ -3,6 +3,7 @@
     "ecomOrder": {
       "home": {
         "title": "Ecom Orders",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Order",
         "createOrEditLabel": "Create or edit a Ecom Order",
         "notFound": "No Ecom Orders found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Order"
       },
+      "id": "ID",
       "ecomOrderNumber": "Ecom Order Number",
       "customerName": "Customer Name",
       "domainName": "Domain Name",

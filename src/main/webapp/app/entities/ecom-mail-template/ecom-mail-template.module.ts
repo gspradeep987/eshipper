@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomMailTemplateComponent } from './ecom-mail-template.component';
-import { EcomMailTemplateDetailComponent } from './ecom-mail-template-detail.component';
-import { EcomMailTemplateUpdateComponent } from './ecom-mail-template-update.component';
-import { EcomMailTemplateDeleteDialogComponent } from './ecom-mail-template-delete-dialog.component';
-import { ecomMailTemplateRoute } from './ecom-mail-template.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomMailTemplateComponent } from './list/ecom-mail-template.component';
+import { EcomMailTemplateDetailComponent } from './detail/ecom-mail-template-detail.component';
+import { EcomMailTemplateUpdateComponent } from './update/ecom-mail-template-update.component';
+import { EcomMailTemplateDeleteDialogComponent } from './delete/ecom-mail-template-delete-dialog.component';
+import { EcomMailTemplateRoutingModule } from './route/ecom-mail-template-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomMailTemplateRoute)],
+  imports: [SharedModule, EcomMailTemplateRoutingModule],
   declarations: [
     EcomMailTemplateComponent,
     EcomMailTemplateDetailComponent,
     EcomMailTemplateUpdateComponent,
-    EcomMailTemplateDeleteDialogComponent
+    EcomMailTemplateDeleteDialogComponent,
   ],
-  entryComponents: [EcomMailTemplateDeleteDialogComponent]
+  entryComponents: [EcomMailTemplateDeleteDialogComponent],
 })
-export class EshipperEcomMailTemplateModule {}
+export class EcomMailTemplateModule {}

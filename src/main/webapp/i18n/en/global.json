@@ -30,6 +30,12 @@
         "province": "Province",
         "city": "City",
         "ecomStoreSync": "Ecom Store Sync",
+        "sisyphusJob": "Sisyphus Job",
+        "sisyphusSubJob": "Sisyphus Sub Job",
+        "sisyphusJobParam": "Sisyphus Job Param",
+        "sisyphusClient": "Sisyphus Client",
+        "sisyphusClasses": "Sisyphus Classes",
+        "sisyphusJobType": "Sisyphus Job Type",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,9 +1,7 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.ShippingAddressDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,15 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface ShippingAddressMapper extends EntityMapper<ShippingAddressDTO, ShippingAddress> {
-
-
-
-    default ShippingAddress fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        ShippingAddress shippingAddress = new ShippingAddress();
-        shippingAddress.setId(id);
-        return shippingAddress;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  ShippingAddressDTO toDtoId(ShippingAddress shippingAddress);
 }

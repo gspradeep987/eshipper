@@ -37,6 +37,12 @@
     <include file="config/liquibase/changelog/20200211053600_added_entity_Province.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053700_added_entity_City.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200312111600_added_entity_EcomStoreSync.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071636_added_entity_SisyphusJob.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071637_added_entity_SisyphusSubJob.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071638_added_entity_SisyphusJobParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071639_added_entity_SisyphusClient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071640_added_entity_SisyphusClasses.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071641_added_entity_SisyphusJobType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200211051500_added_entity_constraints_EcomStore.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211051600_added_entity_constraints_EcomStoreAddress.xml" relativeToChangelogFile="false"/>
@@ -46,5 +52,10 @@
     <include file="config/liquibase/changelog/20200211052700_added_entity_constraints_EcomProduct.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211052800_added_entity_constraints_EcomProductImage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200211053000_added_entity_constraints_EcomOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071637_added_entity_constraints_SisyphusSubJob.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071638_added_entity_constraints_SisyphusJobParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071639_added_entity_constraints_SisyphusClient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071640_added_entity_constraints_SisyphusClasses.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210511071641_added_entity_constraints_SisyphusJobType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

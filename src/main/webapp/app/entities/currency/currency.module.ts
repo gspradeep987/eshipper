@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { CurrencyComponent } from './currency.component';
-import { CurrencyDetailComponent } from './currency-detail.component';
-import { CurrencyUpdateComponent } from './currency-update.component';
-import { CurrencyDeleteDialogComponent } from './currency-delete-dialog.component';
-import { currencyRoute } from './currency.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { CurrencyComponent } from './list/currency.component';
+import { CurrencyDetailComponent } from './detail/currency-detail.component';
+import { CurrencyUpdateComponent } from './update/currency-update.component';
+import { CurrencyDeleteDialogComponent } from './delete/currency-delete-dialog.component';
+import { CurrencyRoutingModule } from './route/currency-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(currencyRoute)],
+  imports: [SharedModule, CurrencyRoutingModule],
   declarations: [CurrencyComponent, CurrencyDetailComponent, CurrencyUpdateComponent, CurrencyDeleteDialogComponent],
-  entryComponents: [CurrencyDeleteDialogComponent]
+  entryComponents: [CurrencyDeleteDialogComponent],
 })
-export class EshipperCurrencyModule {}
+export class CurrencyModule {}

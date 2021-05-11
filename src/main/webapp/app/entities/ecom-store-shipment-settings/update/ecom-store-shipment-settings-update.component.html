@@ -1,0 +1,161 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecom-store-shipment-settings-heading"
+        data-cy="EcomStoreShipmentSettingsCreateUpdateHeading"
+        jhiTranslate="eshipperApp.ecomStoreShipmentSettings.home.createOrEditLabel"
+      >
+        Create or edit a Ecom Store Shipment Settings
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreShipmentSettings.shippingMode" for="field_shippingMode"
+            >Shipping Mode</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="shippingMode"
+            id="field_shippingMode"
+            data-cy="shippingMode"
+            formControlName="shippingMode"
+          />
+          <div
+            *ngIf="editForm.get('shippingMode')!.invalid && (editForm.get('shippingMode')!.dirty || editForm.get('shippingMode')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('shippingMode')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 20 }"
+            >
+              This field cannot be longer than 20 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreShipmentSettings.signatureReqd" for="field_signatureReqd"
+            >Signature Reqd</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="signatureReqd"
+            id="field_signatureReqd"
+            data-cy="signatureReqd"
+            formControlName="signatureReqd"
+          />
+          <div
+            *ngIf="
+              editForm.get('signatureReqd')!.invalid && (editForm.get('signatureReqd')!.dirty || editForm.get('signatureReqd')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('signatureReqd')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreShipmentSettings.schedulePickup" for="field_schedulePickup"
+            >Schedule Pickup</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="schedulePickup"
+            id="field_schedulePickup"
+            data-cy="schedulePickup"
+            formControlName="schedulePickup"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreShipmentSettings.liveRates" for="field_liveRates"
+            >Live Rates</label
+          >
+          <input type="checkbox" class="form-check" name="liveRates" id="field_liveRates" data-cy="liveRates" formControlName="liveRates" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomStoreShipmentSettings.addResidential" for="field_addResidential"
+            >Add Residential</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="addResidential"
+            id="field_addResidential"
+            data-cy="addResidential"
+            formControlName="addResidential"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="eshipperApp.ecomStoreShipmentSettings.tailgateAtDestination"
+            for="field_tailgateAtDestination"
+            >Tailgate At Destination</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="tailgateAtDestination"
+            id="field_tailgateAtDestination"
+            data-cy="tailgateAtDestination"
+            formControlName="tailgateAtDestination"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="eshipperApp.ecomStoreShipmentSettings.tailgateAtSource"
+            for="field_tailgateAtSource"
+            >Tailgate At Source</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="tailgateAtSource"
+            id="field_tailgateAtSource"
+            data-cy="tailgateAtSource"
+            formControlName="tailgateAtSource"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

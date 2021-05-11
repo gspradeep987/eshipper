@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CompanyMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private CompanyMapper companyMapper;
+class CompanyMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        companyMapper = new CompanyMapperImpl();
-    }
+  private CompanyMapper companyMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(companyMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(companyMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    companyMapper = new CompanyMapperImpl();
+  }
 }

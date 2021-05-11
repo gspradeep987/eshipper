@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomMarkupPrimaryComponent } from './ecom-markup-primary.component';
-import { EcomMarkupPrimaryDetailComponent } from './ecom-markup-primary-detail.component';
-import { EcomMarkupPrimaryUpdateComponent } from './ecom-markup-primary-update.component';
-import { EcomMarkupPrimaryDeleteDialogComponent } from './ecom-markup-primary-delete-dialog.component';
-import { ecomMarkupPrimaryRoute } from './ecom-markup-primary.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomMarkupPrimaryComponent } from './list/ecom-markup-primary.component';
+import { EcomMarkupPrimaryDetailComponent } from './detail/ecom-markup-primary-detail.component';
+import { EcomMarkupPrimaryUpdateComponent } from './update/ecom-markup-primary-update.component';
+import { EcomMarkupPrimaryDeleteDialogComponent } from './delete/ecom-markup-primary-delete-dialog.component';
+import { EcomMarkupPrimaryRoutingModule } from './route/ecom-markup-primary-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomMarkupPrimaryRoute)],
+  imports: [SharedModule, EcomMarkupPrimaryRoutingModule],
   declarations: [
     EcomMarkupPrimaryComponent,
     EcomMarkupPrimaryDetailComponent,
     EcomMarkupPrimaryUpdateComponent,
-    EcomMarkupPrimaryDeleteDialogComponent
+    EcomMarkupPrimaryDeleteDialogComponent,
   ],
-  entryComponents: [EcomMarkupPrimaryDeleteDialogComponent]
+  entryComponents: [EcomMarkupPrimaryDeleteDialogComponent],
 })
-export class EshipperEcomMarkupPrimaryModule {}
+export class EcomMarkupPrimaryModule {}

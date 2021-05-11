@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class EcomProductImageMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private EcomProductImageMapper ecomProductImageMapper;
+class EcomProductImageMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        ecomProductImageMapper = new EcomProductImageMapperImpl();
-    }
+  private EcomProductImageMapper ecomProductImageMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(ecomProductImageMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(ecomProductImageMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    ecomProductImageMapper = new EcomProductImageMapperImpl();
+  }
 }

@@ -3,6 +3,7 @@
     "ecomStoreShipmentSettings": {
       "home": {
         "title": "Ecom Store Shipment Settings",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Shipment Settings",
         "createOrEditLabel": "Create or edit a Ecom Store Shipment Settings",
         "notFound": "No Ecom Store Shipment Settings found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Shipment Settings"
       },
+      "id": "ID",
       "shippingMode": "Shipping Mode",
       "signatureReqd": "Signature Reqd",
       "schedulePickup": "Schedule Pickup",

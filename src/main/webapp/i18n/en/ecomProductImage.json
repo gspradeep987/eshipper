@@ -3,6 +3,7 @@
     "ecomProductImage": {
       "home": {
         "title": "Ecom Product Images",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Product Image",
         "createOrEditLabel": "Create or edit a Ecom Product Image",
         "notFound": "No Ecom Product Images found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Product Image"
       },
+      "id": "ID",
       "imageName": "Image Name",
       "imagePath": "Image Path",
       "ecomProduct": "Ecom Product"

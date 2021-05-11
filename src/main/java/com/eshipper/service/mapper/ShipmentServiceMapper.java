@@ -1,9 +1,8 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.ShipmentServiceDTO;
-
+import java.util.Set;
 import org.mapstruct.*;
 
 /**
@@ -11,18 +10,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface ShipmentServiceMapper extends EntityMapper<ShipmentServiceDTO, ShipmentService> {
-
-
-    @Mapping(target = "ecomStores", ignore = true)
-    @Mapping(target = "removeEcomStore", ignore = true)
-    ShipmentService toEntity(ShipmentServiceDTO shipmentServiceDTO);
-
-    default ShipmentService fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        ShipmentService shipmentService = new ShipmentService();
-        shipmentService.setId(id);
-        return shipmentService;
-    }
+  @Named("idSet")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  Set<ShipmentServiceDTO> toDtoIdSet(Set<ShipmentService> shipmentService);
 }

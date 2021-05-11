@@ -1,22 +1,16 @@
 package com.eshipper.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CurrencyMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    private CurrencyMapper currencyMapper;
+class CurrencyMapperTest {
 
-    @BeforeEach
-    public void setUp() {
-        currencyMapper = new CurrencyMapperImpl();
-    }
+  private CurrencyMapper currencyMapper;
 
-    @Test
-    public void testEntityFromId() {
-        Long id = 1L;
-        assertThat(currencyMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(currencyMapper.fromId(null)).isNull();
-    }
+  @BeforeEach
+  public void setUp() {
+    currencyMapper = new CurrencyMapperImpl();
+  }
 }

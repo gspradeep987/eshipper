@@ -1,0 +1,26 @@
+{
+  "eshipperApp": {
+    "sisyphusJobParam": {
+      "home": {
+        "title": "Sisyphus Job Params",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sisyphus Job Param",
+        "createOrEditLabel": "Create or edit a Sisyphus Job Param",
+        "notFound": "No Sisyphus Job Params found"
+      },
+      "created": "A new Sisyphus Job Param is created with identifier {{ param }}",
+      "updated": "A Sisyphus Job Param is updated with identifier {{ param }}",
+      "deleted": "A Sisyphus Job Param is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sisyphus Job Param {{ id }}?"
+      },
+      "detail": {
+        "title": "Sisyphus Job Param"
+      },
+      "id": "ID",
+      "name": "Name",
+      "value": "Value",
+      "sisyphusJob": "Sisyphus Job"
+    }
+  }
+}

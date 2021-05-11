@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecomStoreAddress">
+      <h2 data-cy="ecomStoreAddressDetailsHeading">
+        <span jhiTranslate="eshipperApp.ecomStoreAddress.detail.title">Ecom Store Address</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.address1">Address 1</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.address1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.address2">Address 2</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.address2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.name">Name</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.phone">Phone</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.emailAccId">Email Acc Id</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.emailAccId }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.defaultAddress">Default Address</span></dt>
+        <dd>
+          <span>{{ ecomStoreAddress.defaultAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.country">Country</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreAddress.country">
+            <a [routerLink]="['/country', ecomStoreAddress.country?.id, 'view']">{{ ecomStoreAddress.country?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.province">Province</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreAddress.province">
+            <a [routerLink]="['/province', ecomStoreAddress.province?.id, 'view']">{{ ecomStoreAddress.province?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreAddress.city">City</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreAddress.city">
+            <a [routerLink]="['/city', ecomStoreAddress.city?.id, 'view']">{{ ecomStoreAddress.city?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ecom-store-address', ecomStoreAddress.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

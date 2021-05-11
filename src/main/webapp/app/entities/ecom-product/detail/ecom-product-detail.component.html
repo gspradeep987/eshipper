@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecomProduct">
+      <h2 data-cy="ecomProductDetailsHeading"><span jhiTranslate="eshipperApp.ecomProduct.detail.title">Ecom Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ecomProduct.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.title">Title</span></dt>
+        <dd>
+          <span>{{ ecomProduct.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.length">Length</span></dt>
+        <dd>
+          <span>{{ ecomProduct.length }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.width">Width</span></dt>
+        <dd>
+          <span>{{ ecomProduct.width }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.height">Height</span></dt>
+        <dd>
+          <span>{{ ecomProduct.height }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.weight">Weight</span></dt>
+        <dd>
+          <span>{{ ecomProduct.weight }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.dimUnit">Dim Unit</span></dt>
+        <dd>
+          <span>{{ ecomProduct.dimUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.wghtUnit">Wght Unit</span></dt>
+        <dd>
+          <span>{{ ecomProduct.wghtUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.goodsValue">Goods Value</span></dt>
+        <dd>
+          <span>{{ ecomProduct.goodsValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.productValue">Product Value</span></dt>
+        <dd>
+          <span>{{ ecomProduct.productValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.hsCodes">Hs Codes</span></dt>
+        <dd>
+          <span>{{ ecomProduct.hsCodes }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.sku">Sku</span></dt>
+        <dd>
+          <span>{{ ecomProduct.sku }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.policy">Policy</span></dt>
+        <dd>
+          <span>{{ ecomProduct.policy }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.insuranceAmt">Insurance Amt</span></dt>
+        <dd>
+          <span>{{ ecomProduct.insuranceAmt }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.isInsured">Is Insured</span></dt>
+        <dd>
+          <span>{{ ecomProduct.isInsured }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.country">Country</span></dt>
+        <dd>
+          <div *ngIf="ecomProduct.country">
+            <a [routerLink]="['/country', ecomProduct.country?.id, 'view']">{{ ecomProduct.country?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.ecomWarehouse">Ecom Warehouse</span></dt>
+        <dd>
+          <span *ngFor="let ecomWarehouse of ecomProduct.ecomWarehouses; let last = last">
+            <a [routerLink]="['/ecom-warehouse', ecomWarehouse?.id, 'view']">{{ ecomWarehouse.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomProduct.ecomOrder">Ecom Order</span></dt>
+        <dd>
+          <div *ngIf="ecomProduct.ecomOrder">
+            <a [routerLink]="['/ecom-order', ecomProduct.ecomOrder?.id, 'view']">{{ ecomProduct.ecomOrder?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ecom-product', ecomProduct.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { CountryComponent } from './country.component';
-import { CountryDetailComponent } from './country-detail.component';
-import { CountryUpdateComponent } from './country-update.component';
-import { CountryDeleteDialogComponent } from './country-delete-dialog.component';
-import { countryRoute } from './country.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { CountryComponent } from './list/country.component';
+import { CountryDetailComponent } from './detail/country-detail.component';
+import { CountryUpdateComponent } from './update/country-update.component';
+import { CountryDeleteDialogComponent } from './delete/country-delete-dialog.component';
+import { CountryRoutingModule } from './route/country-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(countryRoute)],
+  imports: [SharedModule, CountryRoutingModule],
   declarations: [CountryComponent, CountryDetailComponent, CountryUpdateComponent, CountryDeleteDialogComponent],
-  entryComponents: [CountryDeleteDialogComponent]
+  entryComponents: [CountryDeleteDialogComponent],
 })
-export class EshipperCountryModule {}
+export class CountryModule {}

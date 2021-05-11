@@ -3,6 +3,7 @@
     "ecomStoreMarkup": {
       "home": {
         "title": "Ecom Store Markups",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Markup",
         "createOrEditLabel": "Create or edit a Ecom Store Markup",
         "notFound": "No Ecom Store Markups found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Markup"
       },
+      "id": "ID",
       "markupType": "Markup Type",
       "minValue": "Min Value",
       "domesticValue": "Domestic Value",

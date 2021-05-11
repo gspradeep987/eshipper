@@ -3,6 +3,7 @@
     "ecomProduct": {
       "home": {
         "title": "Ecom Products",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Product",
         "createOrEditLabel": "Create or edit a Ecom Product",
         "notFound": "No Ecom Products found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Product"
       },
+      "id": "ID",
       "title": "Title",
       "length": "Length",
       "width": "Width",
