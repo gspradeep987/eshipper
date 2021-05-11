@@ -1,0 +1,31 @@
+{
+  "name": "SisyphusJobType",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sisyphusJob",
+      "otherEntityRelationshipName": "sisyphusJobType",
+      "relationshipName": "sisyphusJobType"
+    }
+  ],
+  "entityTableName": "sisyphus_job_type",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210511071641"
+}

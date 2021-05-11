@@ -1,0 +1,228 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecom-mail-template-heading"
+        data-cy="EcomMailTemplateCreateUpdateHeading"
+        jhiTranslate="eshipperApp.ecomMailTemplate.home.createOrEditLabel"
+      >
+        Create or edit a Ecom Mail Template
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.templateName" for="field_templateName"
+            >Template Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="templateName"
+            id="field_templateName"
+            data-cy="templateName"
+            formControlName="templateName"
+          />
+          <div
+            *ngIf="editForm.get('templateName')!.invalid && (editForm.get('templateName')!.dirty || editForm.get('templateName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('templateName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.templateType" for="field_templateType"
+            >Template Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="templateType"
+            id="field_templateType"
+            data-cy="templateType"
+            formControlName="templateType"
+          />
+          <div
+            *ngIf="editForm.get('templateType')!.invalid && (editForm.get('templateType')!.dirty || editForm.get('templateType')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('templateType')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.note" for="field_note">Note</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+          <div *ngIf="editForm.get('note')!.invalid && (editForm.get('note')!.dirty || editForm.get('note')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('note')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.subject" for="field_subject">Subject</label>
+          <input type="text" class="form-control" name="subject" id="field_subject" data-cy="subject" formControlName="subject" />
+          <div *ngIf="editForm.get('subject')!.invalid && (editForm.get('subject')!.dirty || editForm.get('subject')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subject')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.content" for="field_content">Content</label>
+          <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+          <div *ngIf="editForm.get('content')!.invalid && (editForm.get('content')!.dirty || editForm.get('content')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('content')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isCustomTemplate" for="field_isCustomTemplate"
+            >Is Custom Template</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isCustomTemplate"
+            id="field_isCustomTemplate"
+            data-cy="isCustomTemplate"
+            formControlName="isCustomTemplate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isOrder" for="field_isOrder">Is Order</label>
+          <input type="checkbox" class="form-check" name="isOrder" id="field_isOrder" data-cy="isOrder" formControlName="isOrder" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isShipment" for="field_isShipment"
+            >Is Shipment</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isShipment"
+            id="field_isShipment"
+            data-cy="isShipment"
+            formControlName="isShipment"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isProductPurchased" for="field_isProductPurchased"
+            >Is Product Purchased</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isProductPurchased"
+            id="field_isProductPurchased"
+            data-cy="isProductPurchased"
+            formControlName="isProductPurchased"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isAmountPaid" for="field_isAmountPaid"
+            >Is Amount Paid</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isAmountPaid"
+            id="field_isAmountPaid"
+            data-cy="isAmountPaid"
+            formControlName="isAmountPaid"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isStoreInfo" for="field_isStoreInfo"
+            >Is Store Info</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isStoreInfo"
+            id="field_isStoreInfo"
+            data-cy="isStoreInfo"
+            formControlName="isStoreInfo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.isBody1" for="field_isBody1">Is Body 1</label>
+          <input type="checkbox" class="form-check" name="isBody1" id="field_isBody1" data-cy="isBody1" formControlName="isBody1" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomMailTemplate.ecomStore" for="field_ecomStore">Ecom Store</label>
+          <select class="form-control" id="field_ecomStore" data-cy="ecomStore" name="ecomStore" formControlName="ecomStore">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ecomStoreOption.id === editForm.get('ecomStore')!.value?.id ? editForm.get('ecomStore')!.value : ecomStoreOption"
+              *ngFor="let ecomStoreOption of ecomStoresSharedCollection; trackBy: trackEcomStoreById"
+            >
+              {{ ecomStoreOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

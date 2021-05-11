@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { ShippingAddressComponent } from './shipping-address.component';
-import { ShippingAddressDetailComponent } from './shipping-address-detail.component';
-import { ShippingAddressUpdateComponent } from './shipping-address-update.component';
-import { ShippingAddressDeleteDialogComponent } from './shipping-address-delete-dialog.component';
-import { shippingAddressRoute } from './shipping-address.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { ShippingAddressComponent } from './list/shipping-address.component';
+import { ShippingAddressDetailComponent } from './detail/shipping-address-detail.component';
+import { ShippingAddressUpdateComponent } from './update/shipping-address-update.component';
+import { ShippingAddressDeleteDialogComponent } from './delete/shipping-address-delete-dialog.component';
+import { ShippingAddressRoutingModule } from './route/shipping-address-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(shippingAddressRoute)],
+  imports: [SharedModule, ShippingAddressRoutingModule],
   declarations: [
     ShippingAddressComponent,
     ShippingAddressDetailComponent,
     ShippingAddressUpdateComponent,
-    ShippingAddressDeleteDialogComponent
+    ShippingAddressDeleteDialogComponent,
   ],
-  entryComponents: [ShippingAddressDeleteDialogComponent]
+  entryComponents: [ShippingAddressDeleteDialogComponent],
 })
-export class EshipperShippingAddressModule {}
+export class ShippingAddressModule {}

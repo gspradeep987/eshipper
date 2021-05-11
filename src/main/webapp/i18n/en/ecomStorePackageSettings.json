@@ -3,6 +3,7 @@
     "ecomStorePackageSettings": {
       "home": {
         "title": "Ecom Store Package Settings",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Package Settings",
         "createOrEditLabel": "Create or edit a Ecom Store Package Settings",
         "notFound": "No Ecom Store Package Settings found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Package Settings"
       },
+      "id": "ID",
       "packingInfo1": "Packing Info 1",
       "packingInfo2": "Packing Info 2",
       "packingInfo3": "Packing Info 3",

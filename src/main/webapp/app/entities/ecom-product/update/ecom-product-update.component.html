@@ -1,0 +1,218 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ecom-product-heading"
+        data-cy="EcomProductCreateUpdateHeading"
+        jhiTranslate="eshipperApp.ecomProduct.home.createOrEditLabel"
+      >
+        Create or edit a Ecom Product
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('title')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.length" for="field_length">Length</label>
+          <input type="number" class="form-control" name="length" id="field_length" data-cy="length" formControlName="length" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.width" for="field_width">Width</label>
+          <input type="number" class="form-control" name="width" id="field_width" data-cy="width" formControlName="width" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.height" for="field_height">Height</label>
+          <input type="number" class="form-control" name="height" id="field_height" data-cy="height" formControlName="height" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.weight" for="field_weight">Weight</label>
+          <input type="number" class="form-control" name="weight" id="field_weight" data-cy="weight" formControlName="weight" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.dimUnit" for="field_dimUnit">Dim Unit</label>
+          <input type="text" class="form-control" name="dimUnit" id="field_dimUnit" data-cy="dimUnit" formControlName="dimUnit" />
+          <div *ngIf="editForm.get('dimUnit')!.invalid && (editForm.get('dimUnit')!.dirty || editForm.get('dimUnit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dimUnit')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 5 }"
+            >
+              This field cannot be longer than 5 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.wghtUnit" for="field_wghtUnit">Wght Unit</label>
+          <input type="text" class="form-control" name="wghtUnit" id="field_wghtUnit" data-cy="wghtUnit" formControlName="wghtUnit" />
+          <div *ngIf="editForm.get('wghtUnit')!.invalid && (editForm.get('wghtUnit')!.dirty || editForm.get('wghtUnit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('wghtUnit')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 5 }"
+            >
+              This field cannot be longer than 5 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.goodsValue" for="field_goodsValue">Goods Value</label>
+          <input
+            type="number"
+            class="form-control"
+            name="goodsValue"
+            id="field_goodsValue"
+            data-cy="goodsValue"
+            formControlName="goodsValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.productValue" for="field_productValue"
+            >Product Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="productValue"
+            id="field_productValue"
+            data-cy="productValue"
+            formControlName="productValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.hsCodes" for="field_hsCodes">Hs Codes</label>
+          <input type="text" class="form-control" name="hsCodes" id="field_hsCodes" data-cy="hsCodes" formControlName="hsCodes" />
+          <div *ngIf="editForm.get('hsCodes')!.invalid && (editForm.get('hsCodes')!.dirty || editForm.get('hsCodes')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('hsCodes')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 6 }"
+            >
+              This field cannot be longer than 6 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.sku" for="field_sku">Sku</label>
+          <input type="text" class="form-control" name="sku" id="field_sku" data-cy="sku" formControlName="sku" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.policy" for="field_policy">Policy</label>
+          <input type="text" class="form-control" name="policy" id="field_policy" data-cy="policy" formControlName="policy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.insuranceAmt" for="field_insuranceAmt"
+            >Insurance Amt</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="insuranceAmt"
+            id="field_insuranceAmt"
+            data-cy="insuranceAmt"
+            formControlName="insuranceAmt"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.isInsured" for="field_isInsured">Is Insured</label>
+          <input type="checkbox" class="form-check" name="isInsured" id="field_isInsured" data-cy="isInsured" formControlName="isInsured" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.country" for="field_country">Country</label>
+          <select class="form-control" id="field_country" data-cy="country" name="country" formControlName="country">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="countryOption.id === editForm.get('country')!.value?.id ? editForm.get('country')!.value : countryOption"
+              *ngFor="let countryOption of countriesSharedCollection; trackBy: trackCountryById"
+            >
+              {{ countryOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="eshipperApp.ecomProduct.ecomWarehouse" for="field_ecomWarehouses">Ecom Warehouse</label>
+          <select
+            class="form-control"
+            id="field_ecomWarehouses"
+            data-cy="ecomWarehouse"
+            multiple
+            name="ecomWarehouses"
+            formControlName="ecomWarehouses"
+          >
+            <option
+              [ngValue]="getSelectedEcomWarehouse(ecomWarehouseOption, editForm.get('ecomWarehouses')!.value)"
+              *ngFor="let ecomWarehouseOption of ecomWarehousesSharedCollection; trackBy: trackEcomWarehouseById"
+            >
+              {{ ecomWarehouseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.ecomProduct.ecomOrder" for="field_ecomOrder">Ecom Order</label>
+          <select class="form-control" id="field_ecomOrder" data-cy="ecomOrder" name="ecomOrder" formControlName="ecomOrder">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ecomOrderOption.id === editForm.get('ecomOrder')!.value?.id ? editForm.get('ecomOrder')!.value : ecomOrderOption"
+              *ngFor="let ecomOrderOption of ecomOrdersSharedCollection; trackBy: trackEcomOrderById"
+            >
+              {{ ecomOrderOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

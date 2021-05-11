@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ecomStoreMarkup">
+      <h2 data-cy="ecomStoreMarkupDetailsHeading">
+        <span jhiTranslate="eshipperApp.ecomStoreMarkup.detail.title">Ecom Store Markup</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.markupType">Markup Type</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.markupType }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.minValue">Min Value</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.minValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.domesticValue">Domestic Value</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.domesticValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.intlValue">Intl Value</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.intlValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.flatRateValue">Flat Rate Value</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.flatRateValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.opexValue">Opex Value</span></dt>
+        <dd>
+          <span>{{ ecomStoreMarkup.opexValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupPrimary">Ecom Markup Primary</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreMarkup.ecomMarkupPrimary">
+            <a [routerLink]="['/ecom-markup-primary', ecomStoreMarkup.ecomMarkupPrimary?.id, 'view']">{{
+              ecomStoreMarkup.ecomMarkupPrimary?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupSecondary">Ecom Markup Secondary</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreMarkup.ecomMarkupSecondary">
+            <a [routerLink]="['/ecom-markup-secondary', ecomStoreMarkup.ecomMarkupSecondary?.id, 'view']">{{
+              ecomStoreMarkup.ecomMarkupSecondary?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupTertiary">Ecom Markup Tertiary</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreMarkup.ecomMarkupTertiary">
+            <a [routerLink]="['/ecom-markup-tertiary', ecomStoreMarkup.ecomMarkupTertiary?.id, 'view']">{{
+              ecomStoreMarkup.ecomMarkupTertiary?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="eshipperApp.ecomStoreMarkup.ecomMarkupQuaternary">Ecom Markup Quaternary</span></dt>
+        <dd>
+          <div *ngIf="ecomStoreMarkup.ecomMarkupQuaternary">
+            <a [routerLink]="['/ecom-markup-quaternary', ecomStoreMarkup.ecomMarkupQuaternary?.id, 'view']">{{
+              ecomStoreMarkup.ecomMarkupQuaternary?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ecom-store-markup', ecomStoreMarkup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

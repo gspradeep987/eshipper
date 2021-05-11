@@ -3,6 +3,7 @@
     "ecomStoreSync": {
       "home": {
         "title": "Ecom Store Syncs",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Sync",
         "createOrEditLabel": "Create or edit a Ecom Store Sync",
         "notFound": "No Ecom Store Syncs found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Sync"
       },
+      "id": "ID",
       "name": "Name",
       "syncFrequency": "Sync Frequency",
       "syncInterval": "Sync Interval"

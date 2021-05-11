@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomMarkupQuaternaryComponent } from './ecom-markup-quaternary.component';
-import { EcomMarkupQuaternaryDetailComponent } from './ecom-markup-quaternary-detail.component';
-import { EcomMarkupQuaternaryUpdateComponent } from './ecom-markup-quaternary-update.component';
-import { EcomMarkupQuaternaryDeleteDialogComponent } from './ecom-markup-quaternary-delete-dialog.component';
-import { ecomMarkupQuaternaryRoute } from './ecom-markup-quaternary.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomMarkupQuaternaryComponent } from './list/ecom-markup-quaternary.component';
+import { EcomMarkupQuaternaryDetailComponent } from './detail/ecom-markup-quaternary-detail.component';
+import { EcomMarkupQuaternaryUpdateComponent } from './update/ecom-markup-quaternary-update.component';
+import { EcomMarkupQuaternaryDeleteDialogComponent } from './delete/ecom-markup-quaternary-delete-dialog.component';
+import { EcomMarkupQuaternaryRoutingModule } from './route/ecom-markup-quaternary-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomMarkupQuaternaryRoute)],
+  imports: [SharedModule, EcomMarkupQuaternaryRoutingModule],
   declarations: [
     EcomMarkupQuaternaryComponent,
     EcomMarkupQuaternaryDetailComponent,
     EcomMarkupQuaternaryUpdateComponent,
-    EcomMarkupQuaternaryDeleteDialogComponent
+    EcomMarkupQuaternaryDeleteDialogComponent,
   ],
-  entryComponents: [EcomMarkupQuaternaryDeleteDialogComponent]
+  entryComponents: [EcomMarkupQuaternaryDeleteDialogComponent],
 })
-export class EshipperEcomMarkupQuaternaryModule {}
+export class EcomMarkupQuaternaryModule {}

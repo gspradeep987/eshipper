@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { EshipperSharedModule } from 'app/shared/shared.module';
-import { EcomStoreMarkupComponent } from './ecom-store-markup.component';
-import { EcomStoreMarkupDetailComponent } from './ecom-store-markup-detail.component';
-import { EcomStoreMarkupUpdateComponent } from './ecom-store-markup-update.component';
-import { EcomStoreMarkupDeleteDialogComponent } from './ecom-store-markup-delete-dialog.component';
-import { ecomStoreMarkupRoute } from './ecom-store-markup.route';
+import { SharedModule } from 'app/shared/shared.module';
+import { EcomStoreMarkupComponent } from './list/ecom-store-markup.component';
+import { EcomStoreMarkupDetailComponent } from './detail/ecom-store-markup-detail.component';
+import { EcomStoreMarkupUpdateComponent } from './update/ecom-store-markup-update.component';
+import { EcomStoreMarkupDeleteDialogComponent } from './delete/ecom-store-markup-delete-dialog.component';
+import { EcomStoreMarkupRoutingModule } from './route/ecom-store-markup-routing.module';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ecomStoreMarkupRoute)],
+  imports: [SharedModule, EcomStoreMarkupRoutingModule],
   declarations: [
     EcomStoreMarkupComponent,
     EcomStoreMarkupDetailComponent,
     EcomStoreMarkupUpdateComponent,
-    EcomStoreMarkupDeleteDialogComponent
+    EcomStoreMarkupDeleteDialogComponent,
   ],
-  entryComponents: [EcomStoreMarkupDeleteDialogComponent]
+  entryComponents: [EcomStoreMarkupDeleteDialogComponent],
 })
-export class EshipperEcomStoreMarkupModule {}
+export class EcomStoreMarkupModule {}

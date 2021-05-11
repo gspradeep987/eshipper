@@ -1,0 +1,25 @@
+{
+  "eshipperApp": {
+    "sisyphusSubJob": {
+      "home": {
+        "title": "Sisyphus Sub Jobs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sisyphus Sub Job",
+        "createOrEditLabel": "Create or edit a Sisyphus Sub Job",
+        "notFound": "No Sisyphus Sub Jobs found"
+      },
+      "created": "A new Sisyphus Sub Job is created with identifier {{ param }}",
+      "updated": "A Sisyphus Sub Job is updated with identifier {{ param }}",
+      "deleted": "A Sisyphus Sub Job is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sisyphus Sub Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Sisyphus Sub Job"
+      },
+      "id": "ID",
+      "runOrder": "Run Order",
+      "sisyphusJob": "Sisyphus Job"
+    }
+  }
+}

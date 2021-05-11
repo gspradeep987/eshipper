@@ -3,6 +3,7 @@
     "ecomMailTemplate": {
       "home": {
         "title": "Ecom Mail Templates",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Mail Template",
         "createOrEditLabel": "Create or edit a Ecom Mail Template",
         "notFound": "No Ecom Mail Templates found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Mail Template"
       },
+      "id": "ID",
       "templateName": "Template Name",
       "templateType": "Template Type",
       "note": "Note",

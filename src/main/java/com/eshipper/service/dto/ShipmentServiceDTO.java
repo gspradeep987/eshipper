@@ -1,57 +1,57 @@
 package com.eshipper.service.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link com.eshipper.domain.ShipmentService} entity.
  */
 public class ShipmentServiceDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
-    @Size(max = 255)
-    private String name;
+  @Size(max = 255)
+  private String name;
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ShipmentServiceDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    ShipmentServiceDTO shipmentServiceDTO = (ShipmentServiceDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, shipmentServiceDTO.id);
+  }
 
-    public String getName() {
-        return name;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        ShipmentServiceDTO shipmentServiceDTO = (ShipmentServiceDTO) o;
-        if (shipmentServiceDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), shipmentServiceDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "ShipmentServiceDTO{" +

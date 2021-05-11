@@ -1,9 +1,7 @@
 package com.eshipper.service.mapper;
 
-
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.EcomStoreColorThemeDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,17 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface EcomStoreColorThemeMapper extends EntityMapper<EcomStoreColorThemeDTO, EcomStoreColorTheme> {
-
-
-    @Mapping(target = "ecomStore", ignore = true)
-    EcomStoreColorTheme toEntity(EcomStoreColorThemeDTO ecomStoreColorThemeDTO);
-
-    default EcomStoreColorTheme fromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        EcomStoreColorTheme ecomStoreColorTheme = new EcomStoreColorTheme();
-        ecomStoreColorTheme.setId(id);
-        return ecomStoreColorTheme;
-    }
+  @Named("id")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  EcomStoreColorThemeDTO toDtoId(EcomStoreColorTheme ecomStoreColorTheme);
 }

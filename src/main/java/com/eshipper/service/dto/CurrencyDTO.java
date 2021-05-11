@@ -8,38 +8,38 @@ import java.util.Objects;
  */
 public class CurrencyDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CurrencyDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    CurrencyDTO currencyDTO = (CurrencyDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, currencyDTO.id);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-        CurrencyDTO currencyDTO = (CurrencyDTO) o;
-        if (currencyDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), currencyDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "CurrencyDTO{" +

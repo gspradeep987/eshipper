@@ -8,38 +8,38 @@ import java.util.Objects;
  */
 public class CityDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CityDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    CityDTO cityDTO = (CityDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, cityDTO.id);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-        CityDTO cityDTO = (CityDTO) o;
-        if (cityDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), cityDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
+  // prettier-ignore
     @Override
     public String toString() {
         return "CityDTO{" +

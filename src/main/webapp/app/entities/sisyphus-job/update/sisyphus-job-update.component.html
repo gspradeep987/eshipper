@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sisyphus-job-heading"
+        data-cy="SisyphusJobCreateUpdateHeading"
+        jhiTranslate="eshipperApp.sisyphusJob.home.createOrEditLabel"
+      >
+        Create or edit a Sisyphus Job
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.scheduleMinute" for="field_scheduleMinute"
+            >Schedule Minute</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="scheduleMinute"
+            id="field_scheduleMinute"
+            data-cy="scheduleMinute"
+            formControlName="scheduleMinute"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.scheduleHour" for="field_scheduleHour"
+            >Schedule Hour</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="scheduleHour"
+            id="field_scheduleHour"
+            data-cy="scheduleHour"
+            formControlName="scheduleHour"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.scheduleDay" for="field_scheduleDay">Schedule Day</label>
+          <input
+            type="text"
+            class="form-control"
+            name="scheduleDay"
+            id="field_scheduleDay"
+            data-cy="scheduleDay"
+            formControlName="scheduleDay"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.scheduleMonth" for="field_scheduleMonth"
+            >Schedule Month</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="scheduleMonth"
+            id="field_scheduleMonth"
+            data-cy="scheduleMonth"
+            formControlName="scheduleMonth"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.shouldrunYN" for="field_shouldrunYN">Shouldrun YN</label>
+          <input
+            type="text"
+            class="form-control"
+            name="shouldrunYN"
+            id="field_shouldrunYN"
+            data-cy="shouldrunYN"
+            formControlName="shouldrunYN"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.retries" for="field_retries">Retries</label>
+          <input type="number" class="form-control" name="retries" id="field_retries" data-cy="retries" formControlName="retries" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="eshipperApp.sisyphusJob.moniterScheduleYN" for="field_moniterScheduleYN"
+            >Moniter Schedule YN</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="moniterScheduleYN"
+            id="field_moniterScheduleYN"
+            data-cy="moniterScheduleYN"
+            formControlName="moniterScheduleYN"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

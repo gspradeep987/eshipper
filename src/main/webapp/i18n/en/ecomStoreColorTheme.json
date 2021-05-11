@@ -3,6 +3,7 @@
     "ecomStoreColorTheme": {
       "home": {
         "title": "Ecom Store Color Themes",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Ecom Store Color Theme",
         "createOrEditLabel": "Create or edit a Ecom Store Color Theme",
         "notFound": "No Ecom Store Color Themes found"
@@ -16,6 +17,7 @@
       "detail": {
         "title": "Ecom Store Color Theme"
       },
+      "id": "ID",
       "primary": "Primary",
       "secondary": "Secondary",
       "ecomStore": "Ecom Store"

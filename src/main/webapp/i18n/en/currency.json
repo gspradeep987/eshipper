@@ -3,6 +3,7 @@
     "currency": {
       "home": {
         "title": "Currencies",
+        "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Currency",
         "createOrEditLabel": "Create or edit a Currency",
         "notFound": "No Currencies found"
@@ -15,7 +16,8 @@
       },
       "detail": {
         "title": "Currency"
-      }
+      },
+      "id": "ID"
     }
   }
 }
